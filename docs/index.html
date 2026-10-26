@@ -1,0 +1,158 @@
+html
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>B3 Estratégias</title>
+<script src="https://unpkg.com/lightweight-charts@4.2.0/dist/lightweight-charts.standalone.production.js"></script>
+<style>
+  :root {
+    --bg:#0f1115; --card:#181b22; --borda:#262a33; --txt:#e6e8ec; --mudo:#8b93a1;
+    --alta:#26a69a; --baixa:#ef5350; --acento:#4c8dff;
+  }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f5f6f8; --card:#fff; --borda:#e2e5ea; --txt:#1b1f27; --mudo:#667085; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--txt);
+         font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  header { padding:14px 16px 6px; display:flex; flex-wrap:wrap; gap:4px 12px; align-items:baseline; }
+  h1 { font-size:18px; margin:0; }
+  #meta { color:var(--mudo); font-size:12px; }
+  main { padding:8px 16px 24px; display:grid; gap:12px; max-width:1200px; margin:0 auto; }
+  @media (min-width:900px) { main { grid-template-columns:380px 1fr; align-items:start; } }
+  .card { background:var(--card); border:1px solid var(--borda); border-radius:12px; overflow:hidden; }
+  #busca { width:100%; padding:12px 14px; border:0; border-bottom:1px solid var(--borda);
+           background:transparent; color:var(--txt); font-size:16px; outline:none; }
+  #lista { max-height:60vh; overflow:auto; }
+  @media (min-width:900px) { #lista { max-height:78vh; } }
+  .linha { display:grid; grid-template-columns:1fr auto auto; gap:12px; padding:10px 14px;
+           border-bottom:1px solid var(--borda); cursor:pointer; align-items:center; }
+  .linha:hover, .linha.ativa { background:color-mix(in srgb, var(--acento) 12%, transparent); }
+  .tk { font-weight:600; }
+  .sub { color:var(--mudo); font-size:12px; }
+  .num { text-align:right; font-variant-numeric:tabular-nums; }
+  .alta { color:var(--alta); } .baixa { color:var(--baixa); }
+  #painel { padding:12px; }
+  #titulo { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; margin:0 0 8px; }
+  #titulo b { font-size:18px; }
+  #grafico { width:100%; height:420px; }
+  @media (max-width:600px) { #grafico { height:340px; } }
+  .tabs { display:flex; gap:6px; margin-bottom:8px; }
+  .tabs button { background:transparent; color:var(--mudo); border:1px solid var(--borda);
+                 border-radius:999px; padding:4px 12px; font-size:13px; cursor:pointer; }
+  .tabs button.on { color:var(--txt); border-color:var(--acento); }
+  #vazio { padding:40px 16px; text-align:center; color:var(--mudo); }
+</style>
+</head>
+<body>
+<header>
+  <h1>B3 · Ações mais líquidas</h1>
+  <span id="meta">carregando…</span>
+</header>
+<main>
+  <section class="card">
+    <input id="busca" type="search" placeholder="Buscar ticker (ex.: PETR4)" autocomplete="off">
+    <div id="lista"></div>
+  </section>
+  <section class="card" id="painel">
+    <div id="vazio">Selecione uma ação para ver o gráfico.</div>
+    <div id="conteudo" hidden>
+      <div id="titulo"><b id="tk"></b><span id="info" class="sub"></span></div>
+      <div class="tabs" id="tabs">
+        <button data-d="63">3M</button><button data-d="126">6M</button>
+        <button data-d="252" class="on">1A</button><button data-d="0">Tudo</button>
+      </div>
+      <div id="grafico"></div>
+    </div>
+  </section>
+</main>
+
+<script>
+const $ = s => document.querySelector(s);
+const fmt = (n, d=2) => n.toLocaleString("pt-BR", {minimumFractionDigits:d, maximumFractionDigits:d});
+let acoes = [], chart, candles, volume, candlesData = [], janela = 252;
+
+function compacto(n) {
+  if (n >= 1e9) return fmt(n/1e9, 1) + " bi";
+  if (n >= 1e6) return fmt(n/1e6, 1) + " mi";
+  if (n >= 1e3) return fmt(n/1e3, 0) + " mil";
+  return String(n);
+}
+
+function desenharLista(filtro="") {
+  const f = filtro.trim().toUpperCase();
+  $("#lista").innerHTML = acoes.filter(a => a.acao.includes(f)).map(a => `
+    <div class="linha" data-t="${a.acao}">
+      <div><div class="tk">${a.acao}</div><div class="sub">liq. ${compacto(a.liquidez)}</div></div>
+      <div class="num">${fmt(a.fechamento)}</div>
+      <div class="num ${a.variacao_dia_pct >= 0 ? "alta" : "baixa"}">${a.variacao_dia_pct >= 0 ? "+" : ""}${fmt(a.variacao_dia_pct)}%</div>
+    </div>`).join("") || '<div id="vazio">Nada encontrado.</div>';
+}
+
+function criarGrafico() {
+  const css = getComputedStyle(document.documentElement);
+  const txt = css.getPropertyValue("--mudo").trim(), borda = css.getPropertyValue("--borda").trim();
+  chart = LightweightCharts.createChart($("#grafico"), {
+    autoSize: true,
+    layout: { background:{color:"transparent"}, textColor:txt },
+    grid: { vertLines:{color:borda}, horzLines:{color:borda} },
+    rightPriceScale: { borderColor:borda },
+    timeScale: { borderColor:borda },
+  });
+  candles = chart.addCandlestickSeries({
+    upColor:"#26a69a", downColor:"#ef5350", borderVisible:false,
+    wickUpColor:"#26a69a", wickDownColor:"#ef5350",
+  });
+  volume = chart.addHistogramSeries({ priceFormat:{type:"volume"}, priceScaleId:"" });
+  volume.priceScale().applyOptions({ scaleMargins:{top:0.8, bottom:0} });
+}
+
+function aplicarJanela() {
+  if (!candlesData.length) return;
+  const fim = candlesData.length - 1;
+  const ini = janela ? Math.max(0, fim - janela + 1) : 0;
+  chart.timeScale().setVisibleRange({ from: candlesData[ini].time, to: candlesData[fim].time });
+}
+
+async function abrir(t) {
+  document.querySelectorAll(".linha").forEach(l => l.classList.toggle("ativa", l.dataset.t === t));
+  $("#vazio").hidden = true; $("#conteudo").hidden = false;
+  if (!chart) criarGrafico();
+  const txt = await (await fetch(`data/ohlcv/${t}.csv`)).text();
+  const linhas = txt.trim().split("\n").slice(1).map(l => l.split(","));
+  candlesData = linhas.map(([d,o,h,l,c]) => ({ time:d.slice(0,10), open:+o, high:+h, low:+l, close:+c }));
+  candles.setData(candlesData);
+  volume.setData(linhas.map(([d,o,h,l,c,v]) => ({
+    time:d.slice(0,10), value:+v, color: +c >= +o ? "rgba(38,166,154,.5)" : "rgba(239,83,80,.5)" })));
+  const a = acoes.find(x => x.acao === t);
+  $("#tk").textContent = t;
+  $("#info").textContent = `${fmt(a.fechamento)} · ${a.variacao_dia_pct >= 0 ? "+" : ""}${fmt(a.variacao_dia_pct)}% · ${a.ultimo_pregao}`;
+  aplicarJanela();
+  $("#painel").scrollIntoView({ behavior:"smooth", block:"start" });
+}
+
+$("#lista").addEventListener("click", e => { const l = e.target.closest(".linha"); if (l) abrir(l.dataset.t); });
+$("#busca").addEventListener("input", e => desenharLista(e.target.value));
+$("#tabs").addEventListener("click", e => {
+  if (e.target.tagName !== "BUTTON") return;
+  document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("on", b === e.target));
+  janela = +e.target.dataset.d; aplicarJanela();
+});
+
+(async () => {
+  try {
+    const [a, m] = await Promise.all([
+      fetch("data/acoes.json", {cache:"no-cache"}).then(r => r.json()),
+      fetch("data/meta.json", {cache:"no-cache"}).then(r => r.json()),
+    ]);
+    acoes = a; desenharLista();
+    $("#meta").textContent = `${m.ativos} ativos · atualizado em ${m.atualizado_em}`;
+  } catch (e) {
+    $("#meta").textContent = "Sem dados ainda. Rode o workflow no GitHub Actions.";
+  }
+})();
+</script>
+</body>
+</html>
