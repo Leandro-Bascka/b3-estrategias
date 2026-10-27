@@ -1,15 +1,14 @@
-html
 <!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>B3 Estratégias</title>
+<title>B3 Estratégias · SMC</title>
 <script src="https://unpkg.com/lightweight-charts@4.2.0/dist/lightweight-charts.standalone.production.js"></script>
 <style>
   :root {
     --bg:#0f1115; --card:#181b22; --borda:#262a33; --txt:#e6e8ec; --mudo:#8b93a1;
-    --alta:#26a69a; --baixa:#ef5350; --acento:#4c8dff;
+    --alta:#26a69a; --baixa:#ef5350; --acento:#4c8dff; --aviso:#f5a623;
   }
   @media (prefers-color-scheme: light) {
     :root { --bg:#f5f6f8; --card:#fff; --borda:#e2e5ea; --txt:#1b1f27; --mudo:#667085; }
@@ -19,14 +18,15 @@ html
          font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
   header { padding:14px 16px 6px; display:flex; flex-wrap:wrap; gap:4px 12px; align-items:baseline; }
   h1 { font-size:18px; margin:0; }
-  #meta { color:var(--mudo); font-size:12px; }
-  main { padding:8px 16px 24px; display:grid; gap:12px; max-width:1200px; margin:0 auto; }
-  @media (min-width:900px) { main { grid-template-columns:380px 1fr; align-items:start; } }
+  #meta, #global { color:var(--mudo); font-size:12px; }
+  main { padding:8px 16px 24px; display:grid; gap:12px; max-width:1280px; margin:0 auto; }
+  @media (min-width:900px) { main { grid-template-columns:360px 1fr; align-items:start; } }
   .card { background:var(--card); border:1px solid var(--borda); border-radius:12px; overflow:hidden; }
   #busca { width:100%; padding:12px 14px; border:0; border-bottom:1px solid var(--borda);
            background:transparent; color:var(--txt); font-size:16px; outline:none; }
+  .filtros { display:flex; gap:6px; padding:8px 14px; border-bottom:1px solid var(--borda); }
   #lista { max-height:60vh; overflow:auto; }
-  @media (min-width:900px) { #lista { max-height:78vh; } }
+  @media (min-width:900px) { #lista { max-height:74vh; } }
   .linha { display:grid; grid-template-columns:1fr auto auto; gap:12px; padding:10px 14px;
            border-bottom:1px solid var(--borda); cursor:pointer; align-items:center; }
   .linha:hover, .linha.ativa { background:color-mix(in srgb, var(--acento) 12%, transparent); }
@@ -34,45 +34,128 @@ html
   .sub { color:var(--mudo); font-size:12px; }
   .num { text-align:right; font-variant-numeric:tabular-nums; }
   .alta { color:var(--alta); } .baixa { color:var(--baixa); }
+  .badge { display:inline-block; font-size:11px; font-weight:600; padding:1px 7px; border-radius:999px; margin-left:6px; vertical-align:1px; }
+  .badge.C { background:color-mix(in srgb, var(--alta) 22%, transparent); color:var(--alta); }
+  .badge.V { background:color-mix(in srgb, var(--baixa) 22%, transparent); color:var(--baixa); }
   #painel { padding:12px; }
   #titulo { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; margin:0 0 8px; }
   #titulo b { font-size:18px; }
-  #grafico { width:100%; height:420px; }
-  @media (max-width:600px) { #grafico { height:340px; } }
-  .tabs { display:flex; gap:6px; margin-bottom:8px; }
-  .tabs button { background:transparent; color:var(--mudo); border:1px solid var(--borda);
-                 border-radius:999px; padding:4px 12px; font-size:13px; cursor:pointer; }
-  .tabs button.on { color:var(--txt); border-color:var(--acento); }
+  #grafico { width:100%; height:460px; }
+  @media (max-width:600px) { #grafico { height:360px; } }
+  .barra { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px; }
+  .barra .sep { width:1px; background:var(--borda); margin:0 4px; }
+  button.chip { background:transparent; color:var(--mudo); border:1px solid var(--borda);
+                border-radius:999px; padding:4px 12px; font-size:13px; cursor:pointer; }
+  button.chip.on { color:var(--txt); border-color:var(--acento); }
   #vazio { padding:40px 16px; text-align:center; color:var(--mudo); }
+  #stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; margin:12px 0; }
+  .stat { border:1px solid var(--borda); border-radius:10px; padding:8px 10px; }
+  .stat small { color:var(--mudo); display:block; font-size:11px; }
+  .stat b { font-size:15px; }
+  .tabela { overflow-x:auto; }
+  table { border-collapse:collapse; width:100%; font-size:13px; font-variant-numeric:tabular-nums; }
+  th, td { padding:6px 8px; text-align:right; white-space:nowrap; border-bottom:1px solid var(--borda); }
+  th:first-child, td:first-child { text-align:left; }
+  th { color:var(--mudo); font-weight:500; }
+  #situacao { display:grid; gap:8px; margin-bottom:10px; }
+  .sit { border:1px solid var(--borda); border-left:4px solid var(--mudo); border-radius:10px; padding:8px 12px; font-size:13.5px; }
+  .sit b { display:block; font-size:14px; margin-bottom:2px; }
+  .sit.esp { border-left-color:var(--aviso); } .sit.ok { border-left-color:var(--alta); }
+  .sit.mal { border-left-color:var(--baixa); } .sit small { color:var(--mudo); }
+  .aviso { color:var(--mudo); font-size:11.5px; margin-top:10px; }
 </style>
 </head>
 <body>
 <header>
-  <h1>B3 · Ações mais líquidas</h1>
+  <h1>B3 · Smart Money Concepts</h1>
   <span id="meta">carregando…</span>
+  <span id="global"></span>
 </header>
 <main>
   <section class="card">
     <input id="busca" type="search" placeholder="Buscar ticker (ex.: PETR4)" autocomplete="off">
+    <div class="filtros">
+      <button class="chip on" data-f="todos">Todos</button>
+      <button class="chip" data-f="ativos">Com setup ativo</button>
+    </div>
     <div id="lista"></div>
   </section>
   <section class="card" id="painel">
     <div id="vazio">Selecione uma ação para ver o gráfico.</div>
     <div id="conteudo" hidden>
       <div id="titulo"><b id="tk"></b><span id="info" class="sub"></span></div>
-      <div class="tabs" id="tabs">
-        <button data-d="63">3M</button><button data-d="126">6M</button>
-        <button data-d="252" class="on">1A</button><button data-d="0">Tudo</button>
+      <div class="barra" id="janelas">
+        <button class="chip" data-d="63">3M</button><button class="chip" data-d="126">6M</button>
+        <button class="chip on" data-d="252">1A</button><button class="chip" data-d="0">Tudo</button>
+        <span class="sep"></span>
+        <button class="chip on" data-k="estrutura">BOS/CHoCH</button>
+        <button class="chip on" data-k="ob">Order Blocks</button>
+        <button class="chip on" data-k="fvg">FVG</button>
+        <button class="chip on" data-k="ops">Entrada/Stop/Alvo</button>
+        <button class="chip" data-k="hist">Histórico completo</button>
       </div>
+      <div id="situacao"></div>
       <div id="grafico"></div>
+      <div id="stats"></div>
+      <div class="tabela"><table id="tabela"></table></div>
+      <p class="aviso">Estudo educacional, não é recomendação de investimento. O backtest usa candles diários,
+        ordem limite na borda do OB, stop prioritário se stop e alvo caem na mesma barra, e não inclui custos,
+        slippage nem dividendos. Zonas e níveis são calculados só com dados até o fechamento de cada setup.</p>
     </div>
   </section>
 </main>
 
 <script>
 const $ = s => document.querySelector(s);
-const fmt = (n, d=2) => n.toLocaleString("pt-BR", {minimumFractionDigits:d, maximumFractionDigits:d});
-let acoes = [], chart, candles, volume, candlesData = [], janela = 252;
+const fmt = (n, d=2) => n == null ? "–" : n.toLocaleString("pt-BR", {minimumFractionDigits:d, maximumFractionDigits:d});
+const EXT = 12; // barras projetadas à direita
+const ESTADO = {pendente:"Aguardando entrada", em_trade:"Entrada acionada", alvo:"Alvo", stop:"Stop",
+                timeout:"Saída por tempo", invalidada:"Zona rompida", expirada:"Entrada perdida"};
+const MORTOS = ["invalidada", "expirada"];
+const dataBR = d => d.split("-").reverse().join("/");
+const pct = n => fmt(Math.abs(n), 1) + "%";
+
+function situacaoHTML(s) {
+  const compra = s.dir === "C", lado = compra ? "compra" : "venda";
+  const zonaRompe = compra ? `fechar abaixo de ${fmt(s.zona[0])}` : `fechar acima de ${fmt(s.zona[1])}`;
+  if (s.estado === "pendente") {
+    const dist = (s.atual / s.entrada - 1) * 100, lado2 = dist >= 0 ? "acima" : "abaixo";
+    return `<div class="sit esp"><b>⏳ Aguardando entrada · ${lado} · ★${s.score}</b>
+      Ordem limite em <b style="display:inline">${fmt(s.entrada)}</b>. O preço (${fmt(s.atual)}) está ${pct(dist)} ${lado2} da entrada e ainda não a tocou.
+      Segue válida por mais ${s.restam} pregões; é cancelada se o preço ${zonaRompe} ou se não voltar à zona até lá.
+      O alvo acompanha a máxima enquanto o preço não recua.
+      <br><small>Stop ${fmt(s.stop)} · Alvo ${fmt(s.alvo)} · RR ${fmt(s.rr, 1)} · setup de ${dataBR(s.data)}</small></div>`;
+  }
+  if (s.estado === "em_trade") {
+    const r = s.r_aberto, c = r >= 0 ? "alta" : "baixa";
+    return `<div class="sit ok"><b>✅ Entrada acionada · ${lado} · ★${s.score}</b>
+      Entrou em ${dataBR(s.data_entrada)} a ${fmt(s.preco_entrada)} (${s.pregoes_em_trade} pregões atrás). Preço atual ${fmt(s.atual)},
+      resultado aberto <span class="${c}">${r > 0 ? "+" : ""}${fmt(r, 1)}R</span>.
+      <br><small>Stop ${fmt(s.stop)} · Alvo ${fmt(s.alvo)} · RR ${fmt(s.rr, 1)}</small></div>`;
+  }
+  const msg = {
+    invalidada: `O fechamento rompeu a zona em ${dataBR(s.data_fim)}. Setup cancelado, não entrar.`,
+    expirada: `O preço não voltou à zona de entrada (${fmt(s.entrada)}) em ${smcAtual?.parametros?.max_espera ?? 30} pregões. Setup cancelado, a entrada foi perdida.`,
+  }[s.estado];
+  return `<div class="sit mal"><b>${s.estado === "expirada" ? "⛔" : "✖"} ${ESTADO[s.estado]} · ${lado} · ★${s.score}</b>${msg}
+    <br><small>Setup de ${dataBR(s.data)} · entrada ${fmt(s.entrada)} · stop ${fmt(s.stop)} · alvo ${fmt(s.alvo)}</small></div>`;
+}
+
+function desenharSituacao() {
+  const ult = candlesData.length - 1, lista = (smcAtual?.setups || []).filter(s => {
+    if (s.estado === "pendente" || s.estado === "em_trade") return true;
+    const f = idxMap.get(s.data_fim);
+    return MORTOS.includes(s.estado) && f != null && f >= ult - 10; // perdidos/cancelados nos últimos 10 pregões
+  }).sort((a, b) => a.data < b.data ? 1 : -1);
+  $("#situacao").innerHTML = lista.length ? lista.map(situacaoHTML).join("") +
+    `<div class="sub">Situação no fechamento de ${dataBR(smcAtual.ultimo_pregao)}.</div>`
+    : `<div class="sit"><b>Sem setup ativo</b>Nenhuma entrada aguardando ou em andamento nesta ação.</div>`;
+}
+let acoes = [], resumo = null, atual = null;
+let chart, candles, volume, prim, candlesData = [], idxMap = new Map(), janela = 252, linhasPreco = [];
+let smcAtual = null, filtro = "todos";
+const camadas = {estrutura:true, ob:true, fvg:true, ops:true, hist:false};
+const RECENTE = 60; // barras: sem "Histórico completo", só setups ativos ou criados nesta janela
 
 function compacto(n) {
   if (n >= 1e9) return fmt(n/1e9, 1) + " bi";
@@ -81,16 +164,66 @@ function compacto(n) {
   return String(n);
 }
 
-function desenharLista(filtro="") {
-  const f = filtro.trim().toUpperCase();
-  $("#lista").innerHTML = acoes.filter(a => a.acao.includes(f)).map(a => `
-    <div class="linha" data-t="${a.acao}">
-      <div><div class="tk">${a.acao}</div><div class="sub">liq. ${compacto(a.liquidez)}</div></div>
-      <div class="num">${fmt(a.fechamento)}</div>
-      <div class="num ${a.variacao_dia_pct >= 0 ? "alta" : "baixa"}">${a.variacao_dia_pct >= 0 ? "+" : ""}${fmt(a.variacao_dia_pct)}%</div>
-    </div>`).join("") || '<div id="vazio">Nada encontrado.</div>';
+/* ---------- primitiva que desenha zonas e linhas no gráfico ---------- */
+class SMCPrimitive {
+  constructor() {
+    this.shapes = []; this.chart = null; this.series = null; this._req = null;
+    const self = this;
+    this._pv = { zOrder: () => "bottom", renderer: () => ({ drawBackground: t => self.draw(t), draw() {} }) };
+  }
+  attached(p) { this.chart = p.chart; this.series = p.series; this._req = p.requestUpdate; }
+  detached() { this.chart = null; this.series = null; }
+  updateAllViews() {}
+  paneViews() { return [this._pv]; }
+  set(shapes) { this.shapes = shapes; if (this._req) this._req(); }
+  draw(target) {
+    if (!this.chart || !this.series) return;
+    const ts = this.chart.timeScale(), txtCor = getComputedStyle(document.documentElement).getPropertyValue("--txt").trim();
+    target.useBitmapCoordinateSpace(({context:ctx, horizontalPixelRatio:hr, verticalPixelRatio:vr}) => {
+      ctx.font = `${11*vr}px system-ui, sans-serif`; ctx.textBaseline = "top";
+      for (const s of this.shapes) {
+        const xa = ts.logicalToCoordinate(s.i1), xb = ts.logicalToCoordinate(s.i2);
+        if (xa == null || xb == null) continue;
+        const x1 = Math.min(xa, xb)*hr, x2 = Math.max(xa, xb)*hr;
+        ctx.save();
+        if (s.tipo === "rect") {
+          const ya = this.series.priceToCoordinate(s.p1), yb = this.series.priceToCoordinate(s.p2);
+          if (ya == null || yb == null) { ctx.restore(); continue; }
+          const y1 = Math.min(ya, yb)*vr, h = Math.abs(ya-yb)*vr;
+          ctx.fillStyle = s.fill; ctx.fillRect(x1, y1, x2-x1, h);
+          if (s.borda) { ctx.strokeStyle = s.borda; ctx.lineWidth = vr; if (s.tracejado) ctx.setLineDash([4*hr,3*hr]);
+                         ctx.strokeRect(x1, y1, x2-x1, h); }
+          if (s.rotulo) { ctx.fillStyle = txtCor; ctx.globalAlpha = .85; ctx.fillText(s.rotulo, x1 + 4*hr, y1 + 3*vr); }
+        } else {
+          const y = this.series.priceToCoordinate(s.p);
+          if (y == null) { ctx.restore(); continue; }
+          ctx.strokeStyle = s.cor; ctx.lineWidth = vr; if (s.tracejado) ctx.setLineDash([5*hr,4*hr]);
+          ctx.beginPath(); ctx.moveTo(x1, y*vr); ctx.lineTo(x2, y*vr); ctx.stroke();
+          if (s.rotulo) { ctx.fillStyle = s.cor; ctx.fillText(s.rotulo, x1 + (x2-x1)/2 - 14*hr, y*vr - 13*vr); }
+        }
+        ctx.restore();
+      }
+    });
+  }
 }
 
+/* ------------------------------ lista ------------------------------ */
+function desenharLista() {
+  const f = $("#busca").value.trim().toUpperCase();
+  const ativosDe = t => (resumo?.por_acao?.[t]?.ativos) || [];
+  let itens = acoes.filter(a => a.acao.includes(f));
+  if (filtro === "ativos") itens = itens.filter(a => ativosDe(a.acao).length);
+  $("#lista").innerHTML = itens.map(a => {
+    const b = ativosDe(a.acao).map(s => `<span class="badge ${s.dir}" title="RR ${s.rr}">${s.dir === "C" ? "Compra" : "Venda"} ★${s.score} · ${s.estado === "pendente" ? "aguardando" : "entrou"}</span>`).join("");
+    return `<div class="linha ${a.acao === atual ? "ativa" : ""}" data-t="${a.acao}">
+      <div><div class="tk">${a.acao}${b}</div><div class="sub">liq. ${compacto(a.liquidez)}</div></div>
+      <div class="num">${fmt(a.fechamento)}</div>
+      <div class="num ${a.variacao_dia_pct >= 0 ? "alta" : "baixa"}">${a.variacao_dia_pct >= 0 ? "+" : ""}${fmt(a.variacao_dia_pct)}%</div>
+    </div>`;
+  }).join("") || '<div id="vazio">Nada encontrado.</div>';
+}
+
+/* ------------------------------ gráfico ----------------------------- */
 function criarGrafico() {
   const css = getComputedStyle(document.documentElement);
   const txt = css.getPropertyValue("--mudo").trim(), borda = css.getPropertyValue("--borda").trim();
@@ -99,46 +232,152 @@ function criarGrafico() {
     layout: { background:{color:"transparent"}, textColor:txt },
     grid: { vertLines:{color:borda}, horzLines:{color:borda} },
     rightPriceScale: { borderColor:borda },
-    timeScale: { borderColor:borda },
+    timeScale: { borderColor:borda, rightOffset: 0 },
   });
   candles = chart.addCandlestickSeries({
     upColor:"#26a69a", downColor:"#ef5350", borderVisible:false,
     wickUpColor:"#26a69a", wickDownColor:"#ef5350",
   });
   volume = chart.addHistogramSeries({ priceFormat:{type:"volume"}, priceScaleId:"" });
-  volume.priceScale().applyOptions({ scaleMargins:{top:0.8, bottom:0} });
+  volume.priceScale().applyOptions({ scaleMargins:{top:0.85, bottom:0} });
+  prim = new SMCPrimitive();
+  candles.attachPrimitive(prim);
 }
 
 function aplicarJanela() {
   if (!candlesData.length) return;
   const fim = candlesData.length - 1;
-  const ini = janela ? Math.max(0, fim - janela + 1) : 0;
-  chart.timeScale().setVisibleRange({ from: candlesData[ini].time, to: candlesData[fim].time });
+  chart.timeScale().setVisibleLogicalRange({ from: janela ? Math.max(0, fim - janela + 1) : 0, to: fim + EXT + 2 });
+}
+
+const VERDE = "38,166,154", VERM = "239,83,80";
+
+function montarCamadas() {
+  const shapes = [], marcadores = [];
+  linhasPreco.forEach(l => candles.removePriceLine(l)); linhasPreco = [];
+  if (!smcAtual) { prim.set([]); candles.setMarkers([]); return; }
+  const ult = candlesData.length - 1, fimProj = ult + EXT;
+  const ix = d => idxMap.get(d);
+
+  if (camadas.estrutura) for (const e of smcAtual.eventos) {
+    const a = ix(e.data_nivel), b = ix(e.data);
+    if (a == null || b == null || (!camadas.hist && b < ult - RECENTE - 30)) continue;
+    shapes.push({ tipo:"linha", i1:a, i2:b, p:e.nivel, tracejado:true, rotulo:e.tipo,
+                  cor: e.tipo === "CHoCH" ? "#f5a623" : "#8b93a1" });
+  }
+
+  for (const s of smcAtual.setups) {
+    const compra = s.dir === "C", cor = compra ? VERDE : VERM;
+    const ativo = s.estado === "pendente" || s.estado === "em_trade";
+    const iT = ix(s.data), iOB = ix(s.data_ob);
+    if (iT == null || iOB == null) continue;
+    const iFim = s.data_fim ? (ix(s.data_fim) ?? ult) : fimProj;
+    const morto = MORTOS.includes(s.estado);
+    const fimIdx = s.data_fim ? ix(s.data_fim) : null;
+    const mortoRecente = morto && fimIdx != null && fimIdx >= ult - 10; // mostra o que acabou de ser perdido/cancelado
+    if (!ativo && !mortoRecente && (morto || (!camadas.hist && iT < ult - RECENTE))) continue;
+
+    if (camadas.ob) shapes.push({ tipo:"rect", i1:iOB, i2:iFim, p1:s.zona[0], p2:s.zona[1],
+        fill: morto ? "rgba(139,147,161,.12)" : `rgba(${cor},${ativo ? .22 : .12})`,
+        borda: morto ? "rgba(139,147,161,.6)" : `rgba(${cor},.7)`, tracejado: morto,
+        rotulo:`OB ${compra ? "alta" : "baixa"} · ${s.tipo} · ★${s.score}${morto ? " · " + ESTADO[s.estado].toLowerCase() : ativo ? " · " + (s.estado === "pendente" ? "aguardando" : "acionada") : ""}` });
+    if (morto) continue; // perdidos/cancelados: só a zona, sem projetar entrada/stop/alvo
+
+    if (camadas.fvg && s.fvg) {
+      const f = ix(s.fvg.data) ?? iT;
+      shapes.push({ tipo:"rect", i1:f-1, i2:Math.min(iFim, f+20), p1:s.fvg.zona[0], p2:s.fvg.zona[1],
+        fill:"rgba(124,92,255,.18)", borda:"rgba(124,92,255,.6)", tracejado:true, rotulo:"FVG" });
+    }
+
+    if (camadas.ops && (s.data_entrada || ativo)) {
+      const iE = s.data_entrada ? (ix(s.data_entrada) ?? iT) : iT;
+      const iX = s.data_fim && s.data_entrada ? (ix(s.data_fim) ?? ult) : fimProj;
+      const tr = !s.data_entrada; // projeção ainda não executada
+      const alvoP = [s.entrada, s.alvo], stopP = [s.entrada, s.stop];
+      shapes.push({ tipo:"rect", i1:iE, i2:iX, p1:alvoP[0], p2:alvoP[1], fill:`rgba(${VERDE},${tr ? .10 : .20})`,
+        borda:`rgba(${VERDE},.6)`, tracejado:tr, rotulo:`Alvo ${fmt(s.alvo)} · RR ${fmt(s.rr, 1)}` });
+      shapes.push({ tipo:"rect", i1:iE, i2:iX, p1:stopP[0], p2:stopP[1], fill:`rgba(${VERM},${tr ? .10 : .20})`,
+        borda:`rgba(${VERM},.6)`, tracejado:tr, rotulo:`Stop ${fmt(s.stop)}` });
+      shapes.push({ tipo:"linha", i1:iE, i2:iX, p:s.entrada, cor: compra ? "#26a69a" : "#ef5350",
+        rotulo:`${tr ? "Entrada limite" : "Entrada"} ${fmt(s.entrada)}` });
+      if (s.data_entrada) marcadores.push({ time:s.data_entrada, position: compra ? "belowBar" : "aboveBar",
+        color: compra ? "#26a69a" : "#ef5350", shape: compra ? "arrowUp" : "arrowDown", text: compra ? "C" : "V" });
+      if (s.data_entrada && s.data_fim && s.r != null) marcadores.push({ time:s.data_fim,
+        position: compra ? "aboveBar" : "belowBar", color: s.r > 0 ? "#26a69a" : "#ef5350", shape:"circle",
+        text: `${s.r > 0 ? "+" : ""}${fmt(s.r, 1)}R` });
+    }
+    if (camadas.ops && ativo) {
+      const rot = e => `${compra ? "C" : "V"} ${e}`;
+      linhasPreco.push(candles.createPriceLine({ price:s.alvo, color:"#26a69a", lineStyle:2, lineWidth:1, title:rot("alvo") }));
+      linhasPreco.push(candles.createPriceLine({ price:s.entrada, color:"#4c8dff", lineStyle:2, lineWidth:1, title:rot("entrada") }));
+      linhasPreco.push(candles.createPriceLine({ price:s.stop, color:"#ef5350", lineStyle:2, lineWidth:1, title:rot("stop") }));
+    }
+  }
+  marcadores.sort((a, b) => a.time < b.time ? -1 : a.time > b.time ? 1 : 0);
+  candles.setMarkers(marcadores);
+  prim.set(shapes);
+}
+
+function statCard(rot, st) {
+  if (!st || !st.trades) return `<div class="stat"><small>${rot}</small><b>sem operações</b></div>`;
+  return `<div class="stat"><small>${rot} · ${st.trades} operações</small>
+    <b>${fmt(st.acerto, 0)}% acerto · ${st.r_medio > 0 ? "+" : ""}${fmt(st.r_medio)}R/op</b></div>`;
+}
+
+function desenharTabela() {
+  const st = smcAtual?.stats;
+  $("#stats").innerHTML = st ? statCard("Backtest geral", st.todos) + statCard("Só score ≥ 2", st.score2) +
+    statCard("Compras", st.compra) + statCard("Vendas", st.venda) : "";
+  const lista = [...(smcAtual?.setups || [])].sort((a, b) => {
+    const pa = a.estado === "pendente" || a.estado === "em_trade", pb = b.estado === "pendente" || b.estado === "em_trade";
+    return pa !== pb ? (pa ? -1 : 1) : (a.data < b.data ? 1 : -1);
+  }).slice(0, 20);
+  $("#tabela").innerHTML = `<tr><th>Setup</th><th>Lado</th><th>Tipo</th><th>★</th><th>Entrada</th><th>Stop</th><th>Alvo</th><th>RR</th><th>Situação</th><th>Resultado</th></tr>` +
+    lista.map(s => `<tr><td>${s.data.split("-").reverse().join("/")}</td>
+      <td class="${s.dir === "C" ? "alta" : "baixa"}">${s.dir === "C" ? "Compra" : "Venda"}</td><td>${s.tipo}</td><td>${s.score}</td>
+      <td>${fmt(s.entrada)}</td><td>${fmt(s.stop)}</td><td>${fmt(s.alvo)}</td><td>${fmt(s.rr, 1)}</td>
+      <td>${ESTADO[s.estado]}</td><td class="${s.r > 0 ? "alta" : s.r < 0 ? "baixa" : ""}">${s.r == null ? "–" : (s.r > 0 ? "+" : "") + fmt(s.r, 1) + "R"}</td></tr>`).join("");
 }
 
 async function abrir(t) {
-  document.querySelectorAll(".linha").forEach(l => l.classList.toggle("ativa", l.dataset.t === t));
+  atual = t; desenharLista();
   $("#vazio").hidden = true; $("#conteudo").hidden = false;
   if (!chart) criarGrafico();
-  const txt = await (await fetch(`data/ohlcv/${t}.csv`)).text();
-  const linhas = txt.trim().split("\n").slice(1).map(l => l.split(","));
+  const [csv, sm] = await Promise.all([
+    fetch(`data/ohlcv/${t}.csv`).then(r => r.text()),
+    fetch(`data/smc/${t}.json`, {cache:"no-cache"}).then(r => r.ok ? r.json() : null).catch(() => null),
+  ]);
+  const linhas = csv.trim().split("\n").slice(1).map(l => l.split(","));
   candlesData = linhas.map(([d,o,h,l,c]) => ({ time:d.slice(0,10), open:+o, high:+h, low:+l, close:+c }));
+  idxMap = new Map(candlesData.map((c, i) => [c.time, i]));
   candles.setData(candlesData);
   volume.setData(linhas.map(([d,o,h,l,c,v]) => ({
-    time:d.slice(0,10), value:+v, color: +c >= +o ? "rgba(38,166,154,.5)" : "rgba(239,83,80,.5)" })));
+    time:d.slice(0,10), value:+v, color: +c >= +o ? "rgba(38,166,154,.45)" : "rgba(239,83,80,.45)" })));
+  smcAtual = sm;
   const a = acoes.find(x => x.acao === t);
   $("#tk").textContent = t;
   $("#info").textContent = `${fmt(a.fechamento)} · ${a.variacao_dia_pct >= 0 ? "+" : ""}${fmt(a.variacao_dia_pct)}% · ${a.ultimo_pregao}`;
-  aplicarJanela();
+  desenharSituacao(); montarCamadas(); desenharTabela(); aplicarJanela();
   $("#painel").scrollIntoView({ behavior:"smooth", block:"start" });
 }
 
+/* ------------------------------ eventos ----------------------------- */
 $("#lista").addEventListener("click", e => { const l = e.target.closest(".linha"); if (l) abrir(l.dataset.t); });
-$("#busca").addEventListener("input", e => desenharLista(e.target.value));
-$("#tabs").addEventListener("click", e => {
-  if (e.target.tagName !== "BUTTON") return;
-  document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("on", b === e.target));
-  janela = +e.target.dataset.d; aplicarJanela();
+$("#busca").addEventListener("input", desenharLista);
+document.querySelector(".filtros").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  filtro = b.dataset.f;
+  document.querySelectorAll(".filtros button").forEach(x => x.classList.toggle("on", x === b));
+  desenharLista();
+});
+$("#janelas").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  if (b.dataset.d != null) {
+    document.querySelectorAll("#janelas [data-d]").forEach(x => x.classList.toggle("on", x === b));
+    janela = +b.dataset.d; aplicarJanela();
+  } else if (b.dataset.k) {
+    camadas[b.dataset.k] = !camadas[b.dataset.k]; b.classList.toggle("on", camadas[b.dataset.k]); montarCamadas();
+  }
 });
 
 (async () => {
@@ -147,8 +386,16 @@ $("#tabs").addEventListener("click", e => {
       fetch("data/acoes.json", {cache:"no-cache"}).then(r => r.json()),
       fetch("data/meta.json", {cache:"no-cache"}).then(r => r.json()),
     ]);
-    acoes = a; desenharLista();
+    acoes = a;
     $("#meta").textContent = `${m.ativos} ativos · atualizado em ${m.atualizado_em}`;
+    try {
+      resumo = await fetch("data/smc/resumo.json", {cache:"no-cache"}).then(r => r.json());
+      const g = resumo.global_.todos, g2 = resumo.global_.score2;
+      const n = Object.values(resumo.por_acao).reduce((s, x) => s + x.ativos.length, 0);
+      $("#global").textContent = `· ${n} setups ativos · backtest geral: ${g.trades} ops, ${fmt(g.acerto, 0)}% acerto, ${fmt(g.r_medio)}R/op` +
+        (g2.trades ? ` · score ≥ 2: ${g2.trades} ops, ${fmt(g2.r_medio)}R/op` : "");
+    } catch (e) {}
+    desenharLista();
   } catch (e) {
     $("#meta").textContent = "Sem dados ainda. Rode o workflow no GitHub Actions.";
   }
