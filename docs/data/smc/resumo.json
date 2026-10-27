@@ -1,0 +1,577 @@
+{
+ "parametros": {
+  "swing": 5,
+  "max_espera": 30,
+  "max_posicao": 60,
+  "rr_min": 1.5,
+  "buffer_atr": 0.1,
+  "ob_busca": 5
+ },
+ "global_": {
+  "todos": {
+   "trades": 414,
+   "acerto": 27.8,
+   "r_medio": 2.72,
+   "r_total": 1127.9
+  },
+  "score2": {
+   "trades": 219,
+   "acerto": 27.4,
+   "r_medio": 3.65,
+   "r_total": 798.4
+  },
+  "score3": {
+   "trades": 126,
+   "acerto": 24.6,
+   "r_medio": 2.62,
+   "r_total": 330.1
+  }
+ },
+ "por_acao": {
+  "ALPA3": {
+   "ativos": [
+    {
+     "dir": "C",
+     "estado": "pendente",
+     "tipo": "BOS",
+     "score": 1,
+     "rr": 14.83,
+     "data": "2026-10-02",
+     "entrada": 9.75,
+     "stop": 9.5,
+     "alvo": 13.45
+    }
+   ],
+   "stats": {
+    "trades": 20,
+    "acerto": 35.0,
+    "r_medio": 0.36,
+    "r_total": 7.2
+   }
+  },
+  "ALPA4": {
+   "ativos": [],
+   "stats": {
+    "trades": 15,
+    "acerto": 53.3,
+    "r_medio": 1.72,
+    "r_total": 25.9
+   }
+  },
+  "BAUH4": {
+   "ativos": [],
+   "stats": {
+    "trades": 4,
+    "acerto": 75.0,
+    "r_medio": 3.17,
+    "r_total": 12.7
+   }
+  },
+  "BIOM3": {
+   "ativos": [],
+   "stats": {
+    "trades": 12,
+    "acerto": 8.3,
+    "r_medio": -0.61,
+    "r_total": -7.3
+   }
+  },
+  "BLAU3": {
+   "ativos": [
+    {
+     "dir": "V",
+     "estado": "pendente",
+     "tipo": "CHoCH",
+     "score": 3,
+     "rr": 4.62,
+     "data": "2026-10-26",
+     "entrada": 12.25,
+     "stop": 12.92,
+     "alvo": 9.13
+    }
+   ],
+   "stats": {
+    "trades": 15,
+    "acerto": 33.3,
+    "r_medio": 0.2,
+    "r_total": 3.0
+   }
+  },
+  "BMOB3": {
+   "ativos": [
+    {
+     "dir": "V",
+     "estado": "pendente",
+     "tipo": "CHoCH",
+     "score": 3,
+     "rr": 3.37,
+     "data": "2026-10-26",
+     "entrada": 32.4,
+     "stop": 34.9,
+     "alvo": 23.97
+    }
+   ],
+   "stats": {
+    "trades": 15,
+    "acerto": 40.0,
+    "r_medio": 0.53,
+    "r_total": 7.9
+   }
+  },
+  "BRAP3": {
+   "ativos": [
+    {
+     "dir": "V",
+     "estado": "pendente",
+     "tipo": "CHoCH",
+     "score": 2,
+     "rr": 2.83,
+     "data": "2026-10-22",
+     "entrada": 18.04,
+     "stop": 18.39,
+     "alvo": 17.06
+    }
+   ],
+   "stats": {
+    "trades": 17,
+    "acerto": 11.8,
+    "r_medio": -0.61,
+    "r_total": -10.3
+   }
+  },
+  "BRAP4": {
+   "ativos": [
+    {
+     "dir": "V",
+     "estado": "pendente",
+     "tipo": "CHoCH",
+     "score": 2,
+     "rr": 3.59,
+     "data": "2026-10-21",
+     "entrada": 20.34,
+     "stop": 20.94,
+     "alvo": 18.18
+    }
+   ],
+   "stats": {
+    "trades": 21,
+    "acerto": 33.3,
+    "r_medio": 0.19,
+    "r_total": 3.9
+   }
+  },
+  "CXSE3": {
+   "ativos": [],
+   "stats": {
+    "trades": 22,
+    "acerto": 18.2,
+    "r_medio": -0.34,
+    "r_total": -7.4
+   }
+  },
+  "CYRE3": {
+   "ativos": [
+    {
+     "dir": "V",
+     "estado": "pendente",
+     "tipo": "CHoCH",
+     "score": 2,
+     "rr": 7.53,
+     "data": "2026-10-26",
+     "entrada": 33.76,
+     "stop": 35.88,
+     "alvo": 17.79
+    }
+   ],
+   "stats": {
+    "trades": 12,
+    "acerto": 16.7,
+    "r_medio": -0.29,
+    "r_total": -3.5
+   }
+  },
+  "ECOM3": {
+   "ativos": [],
+   "stats": {
+    "trades": 11,
+    "acerto": 18.2,
+    "r_medio": -0.49,
+    "r_total": -5.4
+   }
+  },
+  "FESA3": {
+   "ativos": [],
+   "stats": {
+    "trades": 14,
+    "acerto": 35.7,
+    "r_medio": 16.43,
+    "r_total": 230.0
+   }
+  },
+  "GGBR3": {
+   "ativos": [],
+   "stats": {
+    "trades": 10,
+    "acerto": 30.0,
+    "r_medio": 0.44,
+    "r_total": 4.4
+   }
+  },
+  "GGBR4": {
+   "ativos": [],
+   "stats": {
+    "trades": 15,
+    "acerto": 20.0,
+    "r_medio": -0.18,
+    "r_total": -2.6
+   }
+  },
+  "GMAT3": {
+   "ativos": [
+    {
+     "dir": "V",
+     "estado": "pendente",
+     "tipo": "CHoCH",
+     "score": 3,
+     "rr": 7.68,
+     "data": "2026-10-26",
+     "entrada": 5.45,
+     "stop": 5.71,
+     "alvo": 3.46
+    }
+   ],
+   "stats": {
+    "trades": 15,
+    "acerto": 33.3,
+    "r_medio": -0.34,
+    "r_total": -5.1
+   }
+  },
+  "GOAU3": {
+   "ativos": [
+    {
+     "dir": "C",
+     "estado": "pendente",
+     "tipo": "BOS",
+     "score": 1,
+     "rr": 4.19,
+     "data": "2026-09-22",
+     "entrada": 9.19,
+     "stop": 8.81,
+     "alvo": 10.78
+    }
+   ],
+   "stats": {
+    "trades": 15,
+    "acerto": 33.3,
+    "r_medio": 0.13,
+    "r_total": 1.9
+   }
+  },
+  "GOAU4": {
+   "ativos": [],
+   "stats": {
+    "trades": 11,
+    "acerto": 0.0,
+    "r_medio": -1.09,
+    "r_total": -12.0
+   }
+  },
+  "LWSA3": {
+   "ativos": [
+    {
+     "dir": "V",
+     "estado": "pendente",
+     "tipo": "CHoCH",
+     "score": 3,
+     "rr": 2.96,
+     "data": "2026-10-27",
+     "entrada": 5.24,
+     "stop": 5.86,
+     "alvo": 3.42
+    }
+   ],
+   "stats": {
+    "trades": 20,
+    "acerto": 15.0,
+    "r_medio": -0.31,
+    "r_total": -6.3
+   }
+  },
+  "MNPR3": {
+   "ativos": [],
+   "stats": {
+    "trades": 15,
+    "acerto": 26.7,
+    "r_medio": 0.56,
+    "r_total": 8.4
+   }
+  },
+  "NUTR3": {
+   "ativos": [],
+   "stats": {
+    "trades": 7,
+    "acerto": 57.1,
+    "r_medio": 1.11,
+    "r_total": 7.7
+   }
+  },
+  "POMO3": {
+   "ativos": [
+    {
+     "dir": "V",
+     "estado": "pendente",
+     "tipo": "CHoCH",
+     "score": 3,
+     "rr": 2.99,
+     "data": "2026-10-26",
+     "entrada": 4.4,
+     "stop": 4.64,
+     "alvo": 3.69
+    }
+   ],
+   "stats": {
+    "trades": 14,
+    "acerto": 21.4,
+    "r_medio": -0.18,
+    "r_total": -2.5
+   }
+  },
+  "POMO4": {
+   "ativos": [
+    {
+     "dir": "V",
+     "estado": "pendente",
+     "tipo": "CHoCH",
+     "score": 3,
+     "rr": 3.09,
+     "data": "2026-10-27",
+     "entrada": 4.73,
+     "stop": 5.02,
+     "alvo": 3.83
+    }
+   ],
+   "stats": {
+    "trades": 12,
+    "acerto": 25.0,
+    "r_medio": -0.19,
+    "r_total": -2.3
+   }
+  },
+  "RIAA3": {
+   "ativos": [
+    {
+     "dir": "V",
+     "estado": "pendente",
+     "tipo": "CHoCH",
+     "score": 2,
+     "rr": 6.35,
+     "data": "2026-10-26",
+     "entrada": 10.91,
+     "stop": 11.65,
+     "alvo": 6.2
+    }
+   ],
+   "stats": {
+    "trades": 19,
+    "acerto": 21.1,
+    "r_medio": -0.08,
+    "r_total": -1.4
+   }
+  },
+  "RPAD3": {
+   "ativos": [],
+   "stats": {
+    "trades": 0,
+    "acerto": null,
+    "r_medio": null,
+    "r_total": 0.0
+   }
+  },
+  "RPAD5": {
+   "ativos": [],
+   "stats": {
+    "trades": 6,
+    "acerto": 33.3,
+    "r_medio": -6.08,
+    "r_total": -36.5
+   }
+  },
+  "RPAD6": {
+   "ativos": [
+    {
+     "dir": "C",
+     "estado": "pendente",
+     "tipo": "BOS",
+     "score": 1,
+     "rr": 140.0,
+     "data": "2026-09-21",
+     "entrada": 7.0,
+     "stop": 7.0,
+     "alvo": 7.5
+    }
+   ],
+   "stats": {
+    "trades": 4,
+    "acerto": 25.0,
+    "r_medio": 11.03,
+    "r_total": 44.1
+   }
+  },
+  "SOND5": {
+   "ativos": [
+    {
+     "dir": "C",
+     "estado": "em_trade",
+     "tipo": "CHoCH",
+     "score": 3,
+     "rr": 577.25,
+     "data": "2026-08-28",
+     "entrada": 75.01,
+     "stop": 74.99,
+     "alvo": 89.4
+    }
+   ],
+   "stats": {
+    "trades": 2,
+    "acerto": 50.0,
+    "r_medio": 234.0,
+    "r_total": 468.0
+   }
+  },
+  "SOND6": {
+   "ativos": [
+    {
+     "dir": "C",
+     "estado": "pendente",
+     "tipo": "CHoCH",
+     "score": 3,
+     "rr": 11.67,
+     "data": "2026-10-05",
+     "entrada": 78.0,
+     "stop": 76.97,
+     "alvo": 90.0
+    }
+   ],
+   "stats": {
+    "trades": 0,
+    "acerto": null,
+    "r_medio": null,
+    "r_total": 0.0
+   }
+  },
+  "TFCO4": {
+   "ativos": [
+    {
+     "dir": "V",
+     "estado": "pendente",
+     "tipo": "CHoCH",
+     "score": 3,
+     "rr": 6.83,
+     "data": "2026-10-26",
+     "entrada": 14.23,
+     "stop": 14.84,
+     "alvo": 10.05
+    }
+   ],
+   "stats": {
+    "trades": 17,
+    "acerto": 17.6,
+    "r_medio": -0.34,
+    "r_total": -5.8
+   }
+  },
+  "TGMA3": {
+   "ativos": [
+    {
+     "dir": "C",
+     "estado": "pendente",
+     "tipo": "BOS",
+     "score": 1,
+     "rr": 23.75,
+     "data": "2026-09-15",
+     "entrada": 34.25,
+     "stop": 33.51,
+     "alvo": 51.92
+    }
+   ],
+   "stats": {
+    "trades": 14,
+    "acerto": 21.4,
+    "r_medio": -0.04,
+    "r_total": -0.6
+   }
+  },
+  "VLID3": {
+   "ativos": [
+    {
+     "dir": "V",
+     "estado": "pendente",
+     "tipo": "CHoCH",
+     "score": 3,
+     "rr": 4.67,
+     "data": "2026-10-26",
+     "entrada": 19.53,
+     "stop": 20.54,
+     "alvo": 14.8
+    }
+   ],
+   "stats": {
+    "trades": 11,
+    "acerto": 18.2,
+    "r_medio": -0.34,
+    "r_total": -3.8
+   }
+  },
+  "WEGE3": {
+   "ativos": [],
+   "stats": {
+    "trades": 14,
+    "acerto": 42.9,
+    "r_medio": 0.51,
+    "r_total": 7.2
+   }
+  },
+  "WLMM3": {
+   "ativos": [
+    {
+     "dir": "V",
+     "estado": "pendente",
+     "tipo": "BOS",
+     "score": 1,
+     "rr": 91.48,
+     "data": "2026-09-23",
+     "entrada": 18.99,
+     "stop": 19.02,
+     "alvo": 16.03
+    },
+    {
+     "dir": "V",
+     "estado": "pendente",
+     "tipo": "BOS",
+     "score": 1,
+     "rr": 9.17,
+     "data": "2026-10-21",
+     "entrada": 18.39,
+     "stop": 18.65,
+     "alvo": 16.03
+    }
+   ],
+   "stats": {
+    "trades": 4,
+    "acerto": 75.0,
+    "r_medio": 87.27,
+    "r_total": 349.1
+   }
+  },
+  "WLMM4": {
+   "ativos": [],
+   "stats": {
+    "trades": 11,
+    "acerto": 45.5,
+    "r_medio": 5.39,
+    "r_total": 59.3
+   }
+  }
+ }
+}

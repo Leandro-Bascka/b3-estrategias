@@ -1,6 +1,6 @@
 {
- "atualizado_em": "2026-10-26 20:33",
- "ativos": 36,
+ "atualizado_em": "2026-10-27 20:08",
+ "ativos": 34,
  "falhas": [
   "GUAR4",
   "CRUZ3",
@@ -16,7 +16,6 @@
   "SEBB11",
   "LCAM3",
   "CMET4",
-  "CYRE4",
   "RDCD3",
   "TMGC3",
   "ACES3",
@@ -32,6 +31,7 @@
   "TMGC13",
   "MOAR3",
   "TMGC11",
+  "CYRE4",
   "AFLU3",
   "TMGC7",
   "AFLU5",
@@ -52,8 +52,8 @@
   "ILMD4",
   "TRFO4",
   "VINE3",
-  "CIQU3",
   "CIQU4",
+  "CIQU3",
   "ILMD3",
   "DXTG4",
   "TRFO3",
@@ -65,7 +65,9 @@
   "TSEP3",
   "CRTP5",
   "MRSL4",
-  "TKNO4"
+  "TKNO4",
+  "RAIA3",
+  "VULC4"
  ],
  "modo": "incremental"
 }
