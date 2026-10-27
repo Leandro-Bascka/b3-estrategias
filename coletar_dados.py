@@ -13,6 +13,7 @@ Modos:
 import json
 import os
 import time
+import unicodedata
 from datetime import datetime, timezone, timedelta
 from io import StringIO
 from pathlib import Path
@@ -45,6 +46,12 @@ FUSO_BR = timezone(timedelta(hours=-3))
 
 
 # ------------------------------ FUNÇÕES ---------------------------------
+def _normalizar(texto):
+    """Minúsculas, sem acento, sem espaços e pontuação: 'Liq.2meses' -> 'liq2meses'."""
+    sem_acento = unicodedata.normalize("NFKD", str(texto)).encode("ascii", "ignore").decode()
+    return "".join(ch for ch in sem_acento.lower() if ch.isalnum())
+
+
 def obter_acoes_mais_liquidas():
     url = "https://www.fundamentus.com.br/resultado.php"
     try:
@@ -55,13 +62,21 @@ def obter_acoes_mais_liquidas():
             raise ValueError("Nenhuma tabela encontrada.")
         df = tabelas[0]
 
+        # Liquidez = volume médio negociado nos últimos 2 meses ("Liq.2meses").
+        # Não basta procurar "liq": existem "P/Ativ Circ.Liq", "Liq. Corr." e "Patrim. Líq".
         coluna_liquidez = None
         for coluna in df.columns:
-            if "liq" in str(coluna).lower() and "patrim" not in str(coluna).lower():
+            if _normalizar(coluna) == "liq2meses":
                 coluna_liquidez = coluna
                 break
         if coluna_liquidez is None:
-            raise ValueError("Coluna de liquidez não encontrada.")
+            for coluna in df.columns:
+                if "2meses" in _normalizar(coluna):
+                    coluna_liquidez = coluna
+                    break
+        if coluna_liquidez is None:
+            raise ValueError(f"Coluna de liquidez (Liq.2meses) não encontrada. Colunas: {list(df.columns)}")
+        print(f"Coluna de liquidez usada: {coluna_liquidez!r}")
 
         coluna_papel = None
         for coluna in df.columns:
@@ -73,10 +88,14 @@ def obter_acoes_mais_liquidas():
 
         df = df[[coluna_papel, coluna_liquidez]].copy()
         df.columns = ["AÇÃO", "LIQUIDEZ"]
+        if df["LIQUIDEZ"].dtype == object:  # texto no formato brasileiro: 1.234.567,89
+            df["LIQUIDEZ"] = (df["LIQUIDEZ"].astype(str).str.replace(".", "", regex=False)
+                              .str.replace(",", ".", regex=False))
         df["LIQUIDEZ"] = pd.to_numeric(df["LIQUIDEZ"], errors="coerce")
         df = df.dropna()
         df = df[df["LIQUIDEZ"] > 0]
         df = df.sort_values("LIQUIDEZ", ascending=False).head(QTDE_ATIVOS).reset_index(drop=True)
+        print("Mais líquidas:", ", ".join(f"{a} ({l:,.0f})" for a, l in df.head(5).itertuples(index=False)))
         return df
     except Exception as e:
         print(f"ERRO AO OBTER AÇÕES: {e}")
