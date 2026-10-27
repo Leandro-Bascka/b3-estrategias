@@ -39,6 +39,9 @@ jobs:
           FULL_REFRESH: ${{ (github.event.schedule == '0 15 * * 6' || inputs.full_refresh) && '1' || '0' }}
         run: python coletar_dados.py
  
+      - name: Gerar sinais SMC
+        run: python gerar_smc.py
+ 
       - name: Commit dos dados
         run: |
           git config user.name "github-actions[bot]"
