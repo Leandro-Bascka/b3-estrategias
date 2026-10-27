@@ -42,6 +42,9 @@ jobs:
       - name: Gerar sinais SMC
         run: python gerar_smc.py
  
+      - name: Gerar sinais MACD + RSI
+        run: python gerar_macd_rsi.py
+ 
       - name: Commit dos dados
         run: |
           git config user.name "github-actions[bot]"
