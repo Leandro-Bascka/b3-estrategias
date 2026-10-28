@@ -1,18 +1,16 @@
 """
-Estratégia de MÉDIAS MÓVEIS 9/21/50/200 + VOLUME COMPRADOR (compra e venda), candles diários.
+Estratégia de MÉDIAS MÓVEIS 9/21/50/200 (compra), candles diários.
 
-Sinal de compra (no fechamento da barra t):
-  1. Alinhamento de alta: EMA9 > EMA21 > EMA50 > EMA200. O sinal só vale nos primeiros
-     `janela_alinh` pregões depois que o alinhamento se forma (um sinal por "episódio").
-  2. Volume confirma: média de volume dos últimos `vol_janela` pregões >= `vol_mult` x a média de
-     `vol_base` pregões, E pelo menos `comp_min` desse volume ocorreu em candles de alta
-     (volume comprador).
-Venda (opcional, `lados="CV"`): espelho exato (preços x -1; "volume comprador" vira "vendedor").
-Padrão = só compra: nos testes com 100 ações da B3 a venda perdeu em todas as variantes.
+Contexto: a EMA50 e a EMA200 estão ASCENDENTES (hoje acima do valor de `inclinacao` pregões atrás).
+Sinal de compra (no fechamento da barra t), dentro desse contexto:
+  A) EMA21 cruza para cima da EMA50;
+  B) EMA9 cruza para cima da EMA21.
+Não usa volume.
 
-Execução (igual à estratégia MACD+RSI): entrada na ABERTURA do pregão seguinte, stop abaixo da
-EMA50 (ou da mínima recente), alvo = `alvo_rr` x risco, uma posição por vez em cada ação,
-stop prioritário se stop e alvo caem na mesma barra.
+Execução (igual às outras estratégias): entrada na ABERTURA do pregão seguinte, stop abaixo da
+EMA50 / mínima recente, alvo = `alvo_rr` x risco, uma posição por vez em cada ação, stop
+prioritário se stop e alvo caem na mesma barra.
+Venda (opcional, `lados="CV"`): espelho exato (preços e médias x -1).
 """
 import numpy as np
 import pandas as pd
@@ -20,19 +18,16 @@ import pandas as pd
 import macd_rsi as _mr
 
 PARAMS = dict(
-    janela_alinh=5,     # pregões após o alinhamento em que o sinal ainda vale
-    vol_janela=5,       # pregões recentes usados para medir o volume
-    vol_base=20,        # pregões usados como média-base de volume
-    vol_mult=1.2,       # volume recente precisa ser >= X vezes a média-base
-    comp_min=0.60,      # parcela mínima do volume em candles na direção do sinal
-    usar_volume=True,   # False = ignora o filtro de volume (para medir a contribuição dele)
-    stop_tipo="ema50",  # "ema50" (abaixo da média de 50) ou "swing" (abaixo da mínima recente)
-    swing_stop=10,      # pregões olhados para a mínima, quando stop_tipo="swing"
-    buffer_atr=0.25,    # folga do stop, em ATR(14)
-    alvo_rr=2.0,        # alvo em múltiplos do risco
-    max_risco_pct=12.0, # ignora sinais com stop mais longe que isto (% do preço)
-    max_posicao=60,     # pregões máximos em operação
-    lados="C",          # "C" = só compra (padrão); "CV" = compra e venda. Nos testes a venda perdeu em todas as variantes.
+    inclinacao=10,        # EMA50 e EMA200 "ascendentes": valor de hoje > valor de N pregões atrás
+    sinais="ambos",       # "ambos" | "21x50" | "9x21": quais cruzamentos geram sinal
+    exigir_21_acima_50=False,  # se True, o cruzamento 9x21 só vale com EMA21 já acima da EMA50
+    stop_tipo="minimo",   # "ema50" | "swing" (mínima de `swing_stop` pregões) | "minimo" (a menor das duas)
+    swing_stop=10,
+    buffer_atr=0.25,      # folga do stop, em ATR(14)
+    alvo_rr=2.0,          # alvo em múltiplos do risco
+    max_risco_pct=12.0,   # ignora sinais com stop mais longe que isto (% do preço)
+    max_posicao=60,       # pregões máximos em operação
+    lados="C",            # "C" = só compra (padrão); "CV" = compra e venda
 )
 
 
@@ -45,46 +40,40 @@ def indicadores(df):
                 atr=tr.rolling(14, min_periods=1).mean().to_numpy())
 
 
-def _candidatos_compra(O, H, L, C, V, e9, e21, e50, e200, atr, p):
-    N, out = len(C), []
-    alinh = (e9 > e21) & (e21 > e50) & (e50 > e200)
-    inicio, sinalizou = None, False
-    w, b = p["vol_janela"], p["vol_base"]
-    for t in range(1, N):
-        if not alinh[t]:
-            inicio = None
+def _candidatos_compra(O, H, L, C, e9, e21, e50, e200, atr, p):
+    N, out, k = len(C), [], p["inclinacao"]
+    for t in range(max(210, k + 1), N):
+        if not (e50[t] > e50[t - k] and e200[t] > e200[t - k]):
+            continue  # contexto: EMA50 e EMA200 ascendentes
+        c2150 = e21[t] > e50[t] and e21[t - 1] <= e50[t - 1]
+        c921 = e9[t] > e21[t] and e9[t - 1] <= e21[t - 1] and (e21[t] > e50[t] or not p["exigir_21_acima_50"])
+        if p["sinais"] == "21x50":
+            c921 = False
+        elif p["sinais"] == "9x21":
+            c2150 = False
+        if not (c2150 or c921):
             continue
-        if not alinh[t - 1] or inicio is None:
-            inicio, sinalizou = (t if not alinh[t - 1] else None), False
-        if t < 210 or inicio is None or sinalizou or t - inicio >= p["janela_alinh"]:
+        swing = L[t - p["swing_stop"] + 1:t + 1].min()
+        ref = {"ema50": e50[t], "swing": swing, "minimo": min(e50[t], swing)}[p["stop_tipo"]]
+        stop = ref - p["buffer_atr"] * atr[t]
+        if stop >= C[t]:
             continue
-        vr, orr, cr = V[t - w + 1:t + 1], O[t - w + 1:t + 1], C[t - w + 1:t + 1]
-        base = V[t - b + 1:t + 1].mean()
-        ratio = vr.mean() / base if base > 0 else 0.0
-        up, dn = vr[cr > orr].sum(), vr[cr < orr].sum()
-        comp = up / (up + dn) if up + dn > 0 else 0.5
-        if p["usar_volume"] and not (ratio >= p["vol_mult"] and comp >= p["comp_min"]):
-            continue
-        sinalizou = True
-        ref = e50[t] if p["stop_tipo"] == "ema50" else L[t - p["swing_stop"] + 1:t + 1].min()
-        score = int(V[t] > 1.5 * base) + int(e200[t] > e200[t - 20]) + int(C[t] > e9[t])
-        out.append(dict(t=t, estrategia="med", stop=ref - p["buffer_atr"] * atr[t], score=score,
-                        med=dict(inicio=inicio, ratio=ratio, comp=comp)))
+        tipo = "ambos" if (c2150 and c921) else "21x50" if c2150 else "9x21"
+        score = int(e9[t] > e21[t]) + int(e21[t] > e50[t]) + int(e50[t] > e200[t])  # nº de pares de médias alinhados em alta (3 = 9>21>50>200)
+        out.append(dict(t=t, estrategia="med", stop=stop, score=score, tipo=tipo))
     return out
 
 
 def analisar(df, params=None, janela_desenho=300):
     p = {**PARAMS, **(params or {})}
     O, H, L, C = (df[c].to_numpy(dtype=float) for c in ("Open", "High", "Low", "Close"))
-    V = df["Volume"].to_numpy(dtype=float)
     datas = df.index.strftime("%Y-%m-%d").tolist()
     N, ind = len(df), indicadores(df)
     E = [ind[k] for k in ("e9", "e21", "e50", "e200")]
 
     candidatos = []
     for d in [x for x, l in ((1, "C"), (-1, "V")) if l in p["lados"]]:
-        a = (O, H, L, C, V, *E, ind["atr"]) if d == 1 else \
-            (-O, -L, -H, -C, V, *[-x for x in E], ind["atr"])  # espelho: preços e médias x -1
+        a = (O, H, L, C, *E, ind["atr"]) if d == 1 else (-O, -L, -H, -C, *[-x for x in E], ind["atr"])
         for c in _candidatos_compra(*a, p):
             candidatos.append((c["t"], d, c, a))
     candidatos.sort(key=lambda x: x[:2])
@@ -102,9 +91,7 @@ def analisar(df, params=None, janela_desenho=300):
         risco = sim["entrada"] - c["stop"]
         item = dict(estrategia="med", dir="C" if d == 1 else "V", score=c["score"], rr=p["alvo_rr"],
                     data=datas[t], entrada=sg(sim["entrada"]), stop=sg(c["stop"]), alvo=sg(sim["alvo"]),
-                    estado=sim["estado"], r=None,
-                    med=dict(desde=datas[c["med"]["inicio"]], vol_ratio=round(float(c["med"]["ratio"]), 2),
-                             pressao=round(float(c["med"]["comp"]) * 100)))
+                    estado=sim["estado"], r=None, med=dict(tipo=c["tipo"]))
         if "fill" in sim:
             item["data_entrada"] = datas[sim["fill"]]
             item["data_fim"] = datas[sim["fim"]] if "fim" in sim else None
@@ -127,6 +114,7 @@ def analisar(df, params=None, janela_desenho=300):
                    compra=estat([s for s in setups if s["dir"] == "C"]),
                    venda=estat([s for s in setups if s["dir"] == "V"]),
                    med_compra=estat([s for s in setups if s["dir"] == "C"]),
-                   med_venda=estat([s for s in setups if s["dir"] == "V"])),
+                   med_venda=estat([s for s in setups if s["dir"] == "V"]),
+                   **{f"tipo_{t}": estat([s for s in setups if s["med"]["tipo"] == t]) for t in ("21x50", "9x21", "ambos")}),
         _setups_completos=setups,
     )
