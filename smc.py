@@ -26,6 +26,11 @@ PARAMS = dict(
     rr_min=1.5,       # risco/retorno mínimo para aceitar o setup
     buffer_atr=0.1,   # folga do stop, em múltiplos do ATR(14)
     ob_busca=5,       # barras para trás da origem do impulso à procura da vela do OB
+    # filtros de ruído (None/0 = desligado). Padrão: só setups de qualidade e com entrada alcançável
+    dist_max_atr=3.0,   # descarta setups cuja entrada está a mais de X ATR do fechamento do sinal
+    score_min=2,        # descarta setups com score menor que isto
+    rr_max=8.0,         # descarta RR irreal (OB minúsculo vira stop de poucos centavos)
+    dist_cancela_atr=4.0,   # cancela a espera se o preço fugir mais que X ATR da entrada sem recuar (entrada perdida)
 )
 
 
@@ -85,8 +90,10 @@ def _criar_setup(ev, O, H, L, C, atr, p):
     if not alvo > entrada or not entrada > stop:
         return None
     rr = (alvo - entrada) / (entrada - stop)
-    if rr < p["rr_min"]:
+    if rr < p["rr_min"] or (p["rr_max"] and rr > p["rr_max"]):
         return None
+    if p["dist_max_atr"] is not None and abs(AC[t] - entrada) > p["dist_max_atr"] * atr[t]:
+        return None  # entrada longe demais do preço atual: exigiria um recuo/repique irreal
 
     fvg = None
     for k in range(j + 1, t):
@@ -96,12 +103,14 @@ def _criar_setup(ev, O, H, L, C, atr, p):
     varreu = any(_pivo_baixa(AL, m, n) and AL[origem] < AL[m]
                  for m in range(max(origem - 40, n), origem - n))
     score = int(ev["tipo"] == "CHoCH") + int(fvg is not None) + int(varreu)
+    if score < p["score_min"]:
+        return None
     return dict(d=d, t=t, j=j, origem=origem, base=base, topo=topo, entrada=entrada, stop=stop,
                 alvo=alvo, rr=rr, fvg=fvg, varreu=varreu, score=score,
                 tipo=ev["tipo"], nivel=ev["nivel"], idx_nivel=a, AO=AO, AH=AH, AL=AL, AC=AC)
 
 
-def _simular(s, N, p):
+def _simular(s, N, p, atr):
     """Percorre as barras após o setup. Devolve estado e dados de execução."""
     AO, AH, AL, AC = s["AO"], s["AH"], s["AL"], s["AC"]
     entrada, stop, alvo, base, t = s["entrada"], s["stop"], s["alvo"], s["base"], s["t"]
@@ -116,6 +125,8 @@ def _simular(s, N, p):
             if AL[u] > entrada:
                 # impulso continua sem recuar: o alvo acompanha a máxima estrutural (só dados já fechados)
                 alvo = s["alvo_final"] = max(alvo, AH[u])
+                if p["dist_cancela_atr"] is not None and AC[u] - entrada > p["dist_cancela_atr"] * atr[u]:
+                    return dict(estado="afastada", fim=u)  # o mercado fugiu sem recuar à zona
                 continue
             preco = min(entrada, AO[u])
             if preco <= stop:
@@ -156,7 +167,7 @@ def analisar(df, params=None, janela_desenho=300):
         s = _criar_setup(ev, O, H, L, C, atr, p)
         if s is None:
             continue
-        sim = _simular(s, N, p)
+        sim = _simular(s, N, p, atr)
         d = s["d"]
         r = None
         if "fill" in sim and "saida" in sim:
