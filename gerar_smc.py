@@ -29,10 +29,10 @@ def main(dir_ohlcv=DIR_OHLCV, dir_smc=DIR_SMC):
         completos = res.pop("_setups_completos")
         todos += completos
         (dir_smc / f"{acao}.json").write_text(json.dumps(res, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-        ativos = [s for s in res["setups"] if s["estado"] in ATIVOS]
+        ativos = [s for s in res["setups"] if s["estado"] in ATIVOS and s["recente"]]  # só sinais dos últimos 4 pregões
         por_acao[acao] = dict(
             ativos=[dict(dir=s["dir"], estado=s["estado"], tipo=s["tipo"], score=s["score"], rr=s["rr"],
-                         data=s["data"], entrada=s["entrada"], stop=s["stop"], alvo=s["alvo"]) for s in ativos],
+                         data=s["data"], idade=s["idade_pregoes"], entrada=s["entrada"], stop=s["stop"], alvo=s["alvo"]) for s in ativos],
             stats=res["stats"]["todos"],
         )
         print(f"{acao}: {len(completos)} setups, {len(ativos)} ativos")
