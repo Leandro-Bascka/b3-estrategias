@@ -168,6 +168,7 @@ const grupo = () => estr === "smc" ? "smc" : estr === "med" ? "med" : "mr"; // q
 const NOME_EST = {div:"Divergência", cont:"Continuação", med:"Médias 9/21/50/200"};
 const ESTADO_MR = {sinal:"Sinal (entra amanhã)", em_trade:"Em operação", alvo:"Alvo", stop:"Stop", timeout:"Saída por tempo"};
 const camadas = {estrutura:true, ob:true, fvg:true, ops:true, hist:false, div:true, emas:true};
+const IDADE_MAX = 4; // MACD/RSI e Médias: só mostra sinais dos últimos 4 pregões (o histórico completo mostra todos)
 const RECENTE = 60; // barras: sem "Histórico completo", só setups ativos ou criados nesta janela
 
 function compacto(n) {
@@ -229,7 +230,7 @@ class SMCPrimitive {
 /* ------------------------------ lista ------------------------------ */
 function desenharLista() {
   const f = $("#busca").value.trim().toUpperCase();
-  const ativosDe = t => ((resumos[grupo()]?.por_acao?.[t]?.ativos) || []).filter(s => estr === "smc" || s.estrategia === estr);
+  const ativosDe = t => ((resumos[grupo()]?.por_acao?.[t]?.ativos) || []).filter(s => estr === "smc" || (s.estrategia === estr && (s.idade == null || s.idade <= IDADE_MAX)));
   const nAtivas = acoes.filter(a => ativosDe(a.acao).length).length;
   document.querySelector('.filtros [data-f="ativos"]').textContent = `Com setup ativo (${nAtivas})`;
   let itens = acoes.filter(a => a.acao.includes(f));
@@ -439,7 +440,8 @@ function limparMR() {
 function situacaoMR() {
   const el = $("#situacao");
   if (!mrAtual) { el.innerHTML = `<div class="sit"><b>Sem dados MACD + RSI</b>Esta ação não tem histórico suficiente (mínimo de 260 pregões) ou os sinais ainda não foram gerados.</div>`; return; }
-  const lista = mrAtual.setups.filter(s => s.estrategia === estr && (s.estado === "sinal" || s.estado === "em_trade"));
+  const ultI = candlesData.length - 1;
+  const lista = mrAtual.setups.filter(s => s.estrategia === estr && (s.estado === "sinal" || s.estado === "em_trade") && ultI - (idxMap.get(s.data) ?? -99) <= IDADE_MAX);
   el.innerHTML = lista.length ? lista.map(s => {
     const compra = s.dir === "C", lado = compra ? "compra" : "venda", nome = NOME_EST[s.estrategia];
     const riscoPct = Math.abs(s.entrada - s.stop) / s.entrada * 100;
@@ -455,7 +457,7 @@ function situacaoMR() {
       resultado aberto <span class="${c}">${r > 0 ? "+" : ""}${fmt(r, 1)}R</span>.
       <br><small>Stop ${fmt(s.stop)} · Alvo ${fmt(s.alvo)} (${fmt(s.rr, 1)}R)</small>${div}${med}</div>`;
   }).join("") + `<div class="sub">Situação no fechamento de ${dataBR(mrAtual.ultimo_pregao)}.</div>`
-    : `<div class="sit"><b>Sem sinal ativo</b>Nenhum sinal novo nem operação em andamento de ${NOME_EST[estr]} nesta ação.</div>`;
+    : `<div class="sit"><b>Sem sinal recente</b>Nenhum sinal de ${NOME_EST[estr]} nos últimos ${IDADE_MAX} pregões nesta ação.</div>`;
 }
 
 function camadasMR() {
@@ -467,7 +469,7 @@ function camadasMR() {
   const ult = candlesData.length - 1, fimProj = ult + EXT, ix = d => idxMap.get(d);
   for (const s of mrAtual.setups.filter(x => x.estrategia === estr)) {
     const compra = s.dir === "C", ativo = s.estado === "sinal" || s.estado === "em_trade", iT = ix(s.data);
-    if (iT == null || (!ativo && !camadas.hist && iT < ult - RECENTE)) continue;
+    if (iT == null || (!camadas.hist && iT < ult - IDADE_MAX)) continue;
 
     if (camadas.ops) {
       const proj = s.estado === "sinal";
@@ -545,7 +547,7 @@ function atualizarGlobal() {
   const r = resumos[grupo()], el = $("#global");
   if (!r) { el.textContent = ""; return; }
   const g = estr === "smc" ? r.global_.todos : r.global_[estr];
-  const n = Object.values(r.por_acao).reduce((s, x) => s + x.ativos.filter(a => estr === "smc" || a.estrategia === estr).length, 0);
+  const n = Object.values(r.por_acao).reduce((s, x) => s + x.ativos.filter(a => estr === "smc" || (a.estrategia === estr && (a.idade == null || a.idade <= IDADE_MAX))).length, 0);
   const nome = estr === "smc" ? "SMC" : NOME_EST[estr];
   el.textContent = `· ${nome}: ${n} ${estr === "smc" ? "setups" : "sinais"} ativos · backtest: ${g.trades} ops` +
     (g.trades ? `, ${fmt(g.acerto, 0)}% acerto, ${fmt(g.r_medio)}R/op` : "") +
