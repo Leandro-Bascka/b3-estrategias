@@ -9,6 +9,7 @@ guarda tudo neste repositório e publica um painel que abre no PC e no celular.
 |---|---|
 | `coletar_dados.py` | Lista as N ações mais líquidas e baixa o OHLCV. Incremental: baixa só o último mês e mescla. |
 | `.github/workflows/atualizar.yml` | Seg-Sex 18:30 (Brasília): atualização incremental. Sábado 12:00: atualização completa (ajusta desdobramentos). Faz commit só se houver mudança. |
+| `quant.py` / `gerar_quant.py` | Estratégia Quantitativo (scanner V2.0): 80 ações mais líquidas, dados ajustados do Yahoo, treino 70% / teste 30%. Gera `docs/data/quant/`. |
 | `docs/data/` | `acoes.json` (resumo), `meta.json` (data da atualização), `ohlcv/TICKER.csv` (histórico). |
 | `docs/index.html` | Painel: lista com busca, variação do dia e gráfico de candles com volume. |
 
