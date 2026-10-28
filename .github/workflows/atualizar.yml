@@ -42,12 +42,6 @@ jobs:
       - name: Gerar sinais SMC
         run: python gerar_smc.py
 
-      - name: Gerar sinais MACD + RSI
-        run: python gerar_macd_rsi.py
-
-      - name: Gerar sinais Médias 9/21/50/200
-        run: python gerar_medias.py
-
       - name: Gerar sinais Quantitativo
         continue-on-error: true   # se o Yahoo falhar, os outros dados ainda são salvos
         run: python gerar_quant.py
