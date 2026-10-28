@@ -115,8 +115,8 @@ const $ = s => document.querySelector(s);
 const fmt = (n, d=2) => n == null ? "–" : n.toLocaleString("pt-BR", {minimumFractionDigits:d, maximumFractionDigits:d});
 const EXT = 12; // barras projetadas à direita
 const ESTADO = {pendente:"Aguardando entrada", em_trade:"Entrada acionada", alvo:"Alvo", stop:"Stop",
-                timeout:"Saída por tempo", invalidada:"Zona rompida", expirada:"Entrada perdida"};
-const MORTOS = ["invalidada", "expirada"];
+                timeout:"Saída por tempo", invalidada:"Zona rompida", expirada:"Entrada perdida (prazo)", afastada:"Entrada perdida (preço fugiu)"};
+const MORTOS = ["invalidada", "expirada", "afastada"];
 const dataBR = d => d.split("-").reverse().join("/");
 const pct = n => fmt(Math.abs(n), 1) + "%";
 
@@ -141,8 +141,9 @@ function situacaoHTML(s) {
   const msg = {
     invalidada: `O fechamento rompeu a zona em ${dataBR(s.data_fim)}. Setup cancelado, não entrar.`,
     expirada: `O preço não voltou à zona de entrada (${fmt(s.entrada)}) em ${smcAtual?.parametros?.max_espera ?? 30} pregões. Setup cancelado, a entrada foi perdida.`,
+    afastada: `O preço fugiu mais de ${smcAtual?.parametros?.dist_cancela_atr ?? 4} ATR da entrada (${fmt(s.entrada)}) sem recuar à zona, em ${dataBR(s.data_fim)}. Setup cancelado, a entrada foi perdida.`,
   }[s.estado];
-  return `<div class="sit mal"><b>${s.estado === "expirada" ? "⛔" : "✖"} ${ESTADO[s.estado]} · ${lado} · ★${s.score}</b>${msg}
+  return `<div class="sit mal"><b>${s.estado === "invalidada" ? "✖" : "⛔"} ${ESTADO[s.estado]} · ${lado} · ★${s.score}</b>${msg}
     <br><small>Setup de ${dataBR(s.data)} · entrada ${fmt(s.entrada)} · stop ${fmt(s.stop)} · alvo ${fmt(s.alvo)}</small></div>`;
 }
 
