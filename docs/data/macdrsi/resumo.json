@@ -330,14 +330,14 @@
    "ativos": [
     {
      "dir": "V",
-     "estado": "sinal",
+     "estado": "em_trade",
      "estrategia": "div",
      "score": 2,
      "rr": 2.0,
      "data": "2026-10-26",
-     "entrada": 21.05,
+     "entrada": 21.1,
      "stop": 22.13,
-     "alvo": 18.88
+     "alvo": 19.03
     }
    ],
    "stats": {

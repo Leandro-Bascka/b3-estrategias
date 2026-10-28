@@ -174,11 +174,11 @@
      "estado": "pendente",
      "tipo": "CHoCH",
      "score": 3,
-     "rr": 3.73,
+     "rr": 3.93,
      "data": "2026-10-26",
      "entrada": 4.11,
      "stop": 4.36,
-     "alvo": 3.17
+     "alvo": 3.12
     }
    ],
    "stats": {
@@ -204,11 +204,11 @@
      "estado": "pendente",
      "tipo": "CHoCH",
      "score": 2,
-     "rr": 2.71,
+     "rr": 3.59,
      "data": "2026-10-21",
      "entrada": 20.34,
      "stop": 20.94,
-     "alvo": 18.71
+     "alvo": 18.18
     }
    ],
    "stats": {
@@ -618,7 +618,19 @@
    }
   },
   "MBRF3": {
-   "ativos": [],
+   "ativos": [
+    {
+     "dir": "V",
+     "estado": "pendente",
+     "tipo": "CHoCH",
+     "score": 2,
+     "rr": 1.66,
+     "data": "2026-10-27",
+     "entrada": 16.41,
+     "stop": 16.94,
+     "alvo": 15.53
+    }
+   ],
    "stats": {
     "trades": 8,
     "acerto": 37.5,
@@ -726,7 +738,19 @@
    }
   },
   "POMO4": {
-   "ativos": [],
+   "ativos": [
+    {
+     "dir": "V",
+     "estado": "pendente",
+     "tipo": "CHoCH",
+     "score": 3,
+     "rr": 3.09,
+     "data": "2026-10-27",
+     "entrada": 4.73,
+     "stop": 5.02,
+     "alvo": 3.83
+    }
+   ],
    "stats": {
     "trades": 3,
     "acerto": 66.7,
