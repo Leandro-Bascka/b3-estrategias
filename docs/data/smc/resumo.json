@@ -168,19 +168,7 @@
    }
   },
   "BEEF3": {
-   "ativos": [
-    {
-     "dir": "V",
-     "estado": "pendente",
-     "tipo": "CHoCH",
-     "score": 3,
-     "rr": 3.93,
-     "data": "2026-10-26",
-     "entrada": 4.11,
-     "stop": 4.36,
-     "alvo": 3.12
-    }
-   ],
+   "ativos": [],
    "stats": {
     "trades": 6,
     "acerto": 33.3,
@@ -204,11 +192,11 @@
      "estado": "pendente",
      "tipo": "CHoCH",
      "score": 2,
-     "rr": 3.59,
+     "rr": 4.09,
      "data": "2026-10-21",
      "entrada": 20.34,
      "stop": 20.94,
-     "alvo": 18.18
+     "alvo": 17.88
     }
    ],
    "stats": {
@@ -522,7 +510,19 @@
    }
   },
   "IRBR3": {
-   "ativos": [],
+   "ativos": [
+    {
+     "dir": "V",
+     "estado": "pendente",
+     "tipo": "CHoCH",
+     "score": 3,
+     "rr": 2.44,
+     "data": "2026-10-28",
+     "entrada": 66.41,
+     "stop": 70.82,
+     "alvo": 55.66
+    }
+   ],
    "stats": {
     "trades": 8,
     "acerto": 12.5,
@@ -537,11 +537,11 @@
      "estado": "pendente",
      "tipo": "CHoCH",
      "score": 3,
-     "rr": 2.74,
+     "rr": 3.06,
      "data": "2026-10-26",
      "entrada": 27.55,
      "stop": 28.44,
-     "alvo": 25.11
+     "alvo": 24.83
     }
    ],
    "stats": {
@@ -585,11 +585,11 @@
      "estado": "pendente",
      "tipo": "CHoCH",
      "score": 3,
-     "rr": 2.39,
+     "rr": 2.77,
      "data": "2026-10-26",
      "entrada": 13.36,
      "stop": 14.78,
-     "alvo": 9.95
+     "alvo": 9.41
     }
    ],
    "stats": {
@@ -621,7 +621,7 @@
    "ativos": [
     {
      "dir": "V",
-     "estado": "pendente",
+     "estado": "em_trade",
      "tipo": "CHoCH",
      "score": 2,
      "rr": 1.66,
@@ -744,11 +744,11 @@
      "estado": "pendente",
      "tipo": "CHoCH",
      "score": 3,
-     "rr": 3.09,
+     "rr": 3.2,
      "data": "2026-10-27",
      "entrada": 4.73,
      "stop": 5.02,
-     "alvo": 3.83
+     "alvo": 3.8
     }
    ],
    "stats": {
@@ -957,11 +957,11 @@
      "estado": "pendente",
      "tipo": "CHoCH",
      "score": 3,
-     "rr": 1.6,
+     "rr": 2.13,
      "data": "2026-10-26",
      "entrada": 38.38,
      "stop": 41.14,
-     "alvo": 33.98
+     "alvo": 32.51
     }
    ],
    "stats": {
