@@ -11,6 +11,7 @@ RAIZ = Path(__file__).parent
 DIR_OHLCV = RAIZ / "docs" / "data" / "ohlcv"
 DIR_SAIDA = RAIZ / "docs" / "data" / "macdrsi"
 ATIVOS = ("sinal", "em_trade")
+IDADE_MAX = 4  # só mostra sinais dos últimos 4 pregões (idade = pregões desde o sinal)
 
 
 def main(dir_ohlcv=DIR_OHLCV, dir_saida=DIR_SAIDA):
@@ -27,17 +28,21 @@ def main(dir_ohlcv=DIR_OHLCV, dir_saida=DIR_SAIDA):
             print(f"{acao}: erro {e}", file=sys.stderr)
             continue
         completos = res.pop("_setups_completos")
+        pos = {d: i for i, d in enumerate(df.index.strftime("%Y-%m-%d"))}
+        for x in res["setups"]:
+            x["idade"] = len(df) - 1 - pos[x["data"]]
         todos += completos
         (dir_saida / f"{acao}.json").write_text(json.dumps(res, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-        ativos = [s for s in res["setups"] if s["estado"] in ATIVOS]
+        ativos = [s for s in res["setups"] if s["estado"] in ATIVOS and s["idade"] <= IDADE_MAX]
         por_acao[acao] = dict(
             ativos=[dict(dir=s["dir"], estado=s["estado"], estrategia=s["estrategia"], score=s["score"], rr=s["rr"],
-                         data=s["data"], entrada=s["entrada"], stop=s["stop"], alvo=s["alvo"]) for s in ativos],
+                         data=s["data"], idade=s["idade"], entrada=s["entrada"], stop=s["stop"], alvo=s["alvo"]) for s in ativos],
             stats=res["stats"]["todos"],
         )
         print(f"{acao}: {len(completos)} operações/sinais, {len(ativos)} ativos")
 
     resumo = dict(
+        idade_max=IDADE_MAX,
         parametros=macd_rsi.PARAMS,
         global_=dict(todos=macd_rsi.estatisticas(todos),
                      div=macd_rsi.estatisticas([s for s in todos if s["estrategia"] == "div"]),
