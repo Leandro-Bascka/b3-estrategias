@@ -9,7 +9,13 @@
   "dist_max_atr": 3.0,
   "score_min": 2,
   "rr_max": 8.0,
-  "dist_cancela_atr": 4.0
+  "dist_cancela_atr": 4.0,
+  "sinais_recentes": 4,
+  "alvo_parcial_r": [
+   1.0,
+   2.0,
+   3.0
+  ]
  },
  "global_": {
   "todos": {
@@ -186,19 +192,7 @@
    }
   },
   "BRAP4": {
-   "ativos": [
-    {
-     "dir": "V",
-     "estado": "pendente",
-     "tipo": "CHoCH",
-     "score": 2,
-     "rr": 4.09,
-     "data": "2026-10-21",
-     "entrada": 20.34,
-     "stop": 20.94,
-     "alvo": 17.88
-    }
-   ],
+   "ativos": [],
    "stats": {
     "trades": 9,
     "acerto": 33.3,
@@ -350,6 +344,7 @@
      "score": 2,
      "rr": 3.99,
      "data": "2026-10-26",
+     "idade": 2,
      "entrada": 10.86,
      "stop": 11.49,
      "alvo": 8.36
@@ -381,19 +376,7 @@
    }
   },
   "EMBJ3": {
-   "ativos": [
-    {
-     "dir": "V",
-     "estado": "pendente",
-     "tipo": "CHoCH",
-     "score": 3,
-     "rr": 6.5,
-     "data": "2026-10-07",
-     "entrada": 99.65,
-     "stop": 101.71,
-     "alvo": 86.24
-    }
-   ],
+   "ativos": [],
    "stats": {
     "trades": 5,
     "acerto": 20.0,
@@ -518,6 +501,7 @@
      "score": 3,
      "rr": 2.44,
      "data": "2026-10-28",
+     "idade": 0,
      "entrada": 66.41,
      "stop": 70.82,
      "alvo": 55.66
@@ -539,6 +523,7 @@
      "score": 3,
      "rr": 3.06,
      "data": "2026-10-26",
+     "idade": 2,
      "entrada": 27.55,
      "stop": 28.44,
      "alvo": 24.83
@@ -587,6 +572,7 @@
      "score": 3,
      "rr": 2.77,
      "data": "2026-10-26",
+     "idade": 2,
      "entrada": 13.36,
      "stop": 14.78,
      "alvo": 9.41
@@ -626,6 +612,7 @@
      "score": 2,
      "rr": 1.66,
      "data": "2026-10-27",
+     "idade": 1,
      "entrada": 16.41,
      "stop": 16.94,
      "alvo": 15.53
@@ -746,6 +733,7 @@
      "score": 3,
      "rr": 3.2,
      "data": "2026-10-27",
+     "idade": 1,
      "entrada": 4.73,
      "stop": 5.02,
      "alvo": 3.8
@@ -830,6 +818,7 @@
      "score": 3,
      "rr": 6.63,
      "data": "2026-10-26",
+     "idade": 2,
      "entrada": 40.72,
      "stop": 42.22,
      "alvo": 30.78
@@ -959,6 +948,7 @@
      "score": 3,
      "rr": 2.13,
      "data": "2026-10-26",
+     "idade": 2,
      "entrada": 38.38,
      "stop": 41.14,
      "alvo": 32.51
@@ -1007,6 +997,7 @@
      "score": 3,
      "rr": 4.43,
      "data": "2026-10-26",
+     "idade": 2,
      "entrada": 36.53,
      "stop": 38.46,
      "alvo": 27.98
