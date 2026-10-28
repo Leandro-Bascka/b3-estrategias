@@ -76,7 +76,7 @@
 </header>
 <main>
   <section class="card">
-    <div class="estr" id="estrategias"><button class="chip on" data-e="smc">SMC</button><button class="chip" data-e="div">MACD/RSI · Divergência</button><button class="chip" data-e="cont">MACD/RSI · Continuação</button><button class="chip" data-e="med">Médias 9/21/50/200 + Volume</button></div>
+    <div class="estr" id="estrategias"><button class="chip on" data-e="smc">SMC</button><button class="chip" data-e="div">MACD/RSI · Divergência</button><button class="chip" data-e="cont">MACD/RSI · Continuação</button><button class="chip" data-e="med">Médias 9/21/50/200</button></div>
     <input id="busca" type="search" placeholder="Buscar ticker (ex.: PETR4)" autocomplete="off">
     <div class="filtros">
       <button class="chip on" data-f="todos">Todos</button>
@@ -91,6 +91,7 @@
       <div class="barra" id="janelas">
         <button class="chip" data-d="63">3M</button><button class="chip" data-d="126">6M</button>
         <button class="chip on" data-d="252">1A</button><button class="chip" data-d="0">Tudo</button>
+        <button class="chip" data-ajustar="1" title="Reenquadra o gráfico nos candles">Ajustar</button>
         <span class="sep"></span>
         <button class="chip on so-smc" data-k="estrutura">BOS/CHoCH</button>
         <button class="chip on so-smc" data-k="ob">Order Blocks</button>
@@ -164,7 +165,7 @@ let chartRSI, chartMACD, sRSI, sHist, sMacd, sSig, sE50, sE200, sE9, sE21, linha
 const AVISO_SMC = "Estudo educacional, não é recomendação de investimento. O backtest usa candles diários, ordem limite na borda do OB, stop prioritário se stop e alvo caem na mesma barra, e não inclui custos, slippage nem dividendos. Zonas e níveis são calculados só com dados até o fechamento de cada setup.";
 const AVISO_MR = "Estudo educacional, não é recomendação de investimento. O sinal nasce no fechamento do candle diário e a entrada é na abertura do pregão seguinte; alvo de 2× o risco, uma posição por vez em cada ação, stop prioritário se stop e alvo caem na mesma barra. O backtest não inclui custos, slippage nem dividendos.";
 const grupo = () => estr === "smc" ? "smc" : estr === "med" ? "med" : "mr"; // qual arquivo de dados serve a estratégia escolhida
-const NOME_EST = {div:"Divergência", cont:"Continuação", med:"Médias + Volume"};
+const NOME_EST = {div:"Divergência", cont:"Continuação", med:"Médias 9/21/50/200"};
 const ESTADO_MR = {sinal:"Sinal (entra amanhã)", em_trade:"Em operação", alvo:"Alvo", stop:"Stop", timeout:"Saída por tempo"};
 const camadas = {estrutura:true, ob:true, fvg:true, ops:true, hist:false, div:true, emas:true};
 const RECENTE = 60; // barras: sem "Histórico completo", só setups ativos ou criados nesta janela
@@ -253,6 +254,9 @@ function criarGrafico() {
     grid: { vertLines:{color:borda}, horzLines:{color:borda} },
     rightPriceScale: { borderColor:borda, minimumWidth:64 },
     timeScale: { borderColor:borda, rightOffset: 0 },
+    // só rolagem/zoom horizontal: arrastar a escala de preço desligaria o ajuste automático e deixaria os candles fora da tela
+    handleScroll: { mouseWheel:true, pressedMouseMove:true, horzTouchDrag:true, vertTouchDrag:false },
+    handleScale: { mouseWheel:true, pinch:true, axisPressedMouseMove:{ time:true, price:false }, axisDoubleClickReset:true },
   });
   candles = chart.addCandlestickSeries({
     upColor:"#26a69a", downColor:"#ef5350", borderVisible:false,
@@ -262,10 +266,10 @@ function criarGrafico() {
   volume.priceScale().applyOptions({ scaleMargins:{top:0.85, bottom:0} });
   prim = new SMCPrimitive();
   candles.attachPrimitive(prim);
-  sE50 = chart.addLineSeries({ color:"#f5a623", lineWidth:1, priceLineVisible:false, lastValueVisible:false, crosshairMarkerVisible:false });
-  sE200 = chart.addLineSeries({ color:"#4c8dff", lineWidth:1, priceLineVisible:false, lastValueVisible:false, crosshairMarkerVisible:false });
-  sE9 = chart.addLineSeries({ color:"#26c6da", lineWidth:1, priceLineVisible:false, lastValueVisible:false, crosshairMarkerVisible:false });
-  sE21 = chart.addLineSeries({ color:"#9ccc65", lineWidth:1, priceLineVisible:false, lastValueVisible:false, crosshairMarkerVisible:false });
+  sE50 = chart.addLineSeries({ color:"#f5a623", lineWidth:1, priceLineVisible:false, lastValueVisible:false, crosshairMarkerVisible:false, autoscaleInfoProvider: () => null });
+  sE200 = chart.addLineSeries({ color:"#4c8dff", lineWidth:1, priceLineVisible:false, lastValueVisible:false, crosshairMarkerVisible:false, autoscaleInfoProvider: () => null });
+  sE9 = chart.addLineSeries({ color:"#26c6da", lineWidth:1, priceLineVisible:false, lastValueVisible:false, crosshairMarkerVisible:false, autoscaleInfoProvider: () => null });
+  sE21 = chart.addLineSeries({ color:"#9ccc65", lineWidth:1, priceLineVisible:false, lastValueVisible:false, crosshairMarkerVisible:false, autoscaleInfoProvider: () => null });
   chart.timeScale().subscribeVisibleLogicalRangeChange(r => {
     if (!r) return;
     chartRSI?.timeScale().setVisibleLogicalRange(r); chartMACD?.timeScale().setVisibleLogicalRange(r);
@@ -274,6 +278,7 @@ function criarGrafico() {
 
 function aplicarJanela() {
   if (!candlesData.length) return;
+  chart.priceScale("right").applyOptions({ autoScale:true }); // sempre reenquadra o preço nos candles visíveis
   const fim = candlesData.length - 1;
   const r = { from: janela ? Math.max(0, fim - janela + 1) : 0, to: fim + EXT + 2 };
   chart.timeScale().setVisibleLogicalRange(r);
@@ -438,7 +443,8 @@ function situacaoMR() {
   el.innerHTML = lista.length ? lista.map(s => {
     const compra = s.dir === "C", lado = compra ? "compra" : "venda", nome = NOME_EST[s.estrategia];
     const riscoPct = Math.abs(s.entrada - s.stop) / s.entrada * 100;
-    const med = s.med ? `<br><small>Médias alinhadas 9 > 21 > 50 > 200 desde ${dataBR(s.med.desde)} · volume ${fmt(s.med.vol_ratio, 1)}× a média de 20 pregões · ${s.med.pressao}% do volume em candles de ${compra ? "alta" : "baixa"}</small>` : "";
+    const GAT = {"21x50":"EMA21 cruzou acima da EMA50", "9x21":"EMA9 cruzou acima da EMA21", ambos:"EMA9 cruzou a EMA21 e a EMA21 cruzou a EMA50"};
+    const med = s.med ? `<br><small>Gatilho: ${GAT[s.med.tipo]} · contexto: EMA50 e EMA200 ascendentes · ★ = pares de médias alinhados em alta (3 = 9 > 21 > 50 > 200)</small>` : "";
     const div = s.div ? `<br><small>Divergência ${compra ? "de alta" : "de baixa"}: preço ${fmt(s.div.p1)} → ${fmt(s.div.p2)} (${dataBR(s.div.data1)} → ${dataBR(s.div.data2)}) · RSI ${fmt(s.div.rsi1, 0)} → ${fmt(s.div.rsi2, 0)}</small>` : "";
     if (s.estado === "sinal") return `<div class="sit esp"><b>🔔 Sinal no último fechamento · ${lado} · ${nome} · ★${s.score}</b>
       Entrada na <b style="display:inline">abertura do próximo pregão</b> (referência: fechamento ${fmt(s.entrada)}). Stop ${fmt(s.stop)} (risco ${pct(riscoPct)}) · alvo ${fmt(s.alvo)} (${fmt(s.rr, 1)}R).
@@ -505,14 +511,16 @@ function camadasMR() {
 
 function tabelaMR() {
   const st = mrAtual?.stats;
-  $("#stats").innerHTML = st ? statCard(`${NOME_EST[estr]} · backtest`, st[estr]) +
-    statCard("Compras", st[estr + "_compra"]) + statCard("Vendas", st[estr + "_venda"]) : "";
+  $("#stats").innerHTML = !st ? "" : estr === "med"
+    ? statCard("Médias · backtest", st.med) + statCard("Cruzamento 21×50", st["tipo_21x50"]) + statCard("Cruzamento 9×21", st["tipo_9x21"])
+    : statCard(`${NOME_EST[estr]} · backtest`, st[estr]) + statCard("Compras", st[estr + "_compra"]) + statCard("Vendas", st[estr + "_venda"]);
+  const GATILHO = {"21x50":"21×50", "9x21":"9×21", ambos:"9×21 e 21×50"}, med = estr === "med";
   const lista = (mrAtual?.setups || []).filter(s => s.estrategia === estr).sort((a, b) => {
     const pa = a.estado === "sinal" || a.estado === "em_trade", pb = b.estado === "sinal" || b.estado === "em_trade";
     return pa !== pb ? (pa ? -1 : 1) : (a.data < b.data ? 1 : -1);
   }).slice(0, 20);
-  $("#tabela").innerHTML = `<tr><th>Sinal</th><th>Lado</th><th>★</th><th>Entrada</th><th>Stop</th><th>Alvo</th><th>Situação</th><th>Resultado</th></tr>` +
-    lista.map(s => `<tr><td>${dataBR(s.data)}</td>
+  $("#tabela").innerHTML = `<tr><th>Sinal</th>${med ? "<th>Gatilho</th>" : ""}<th>Lado</th><th>★</th><th>Entrada</th><th>Stop</th><th>Alvo</th><th>Situação</th><th>Resultado</th></tr>` +
+    lista.map(s => `<tr><td>${dataBR(s.data)}</td>${med ? `<td>${GATILHO[s.med.tipo]}</td>` : ""}
       <td class="${s.dir === "C" ? "alta" : "baixa"}">${s.dir === "C" ? "Compra" : "Venda"}</td><td>${s.score}</td>
       <td>${fmt(s.entrada)}</td><td>${fmt(s.stop)}</td><td>${fmt(s.alvo)}</td><td>${ESTADO_MR[s.estado]}</td>
       <td class="${s.r > 0 ? "alta" : s.r < 0 ? "baixa" : ""}">${s.r == null ? "–" : (s.r > 0 ? "+" : "") + fmt(s.r, 1) + "R"}</td></tr>`).join("");
@@ -585,7 +593,8 @@ document.querySelector(".filtros").addEventListener("click", e => {
 });
 $("#janelas").addEventListener("click", e => {
   const b = e.target.closest("button"); if (!b) return;
-  if (b.dataset.d != null) {
+  if (b.dataset.ajustar) { aplicarJanela(); }
+  else if (b.dataset.d != null) {
     document.querySelectorAll("#janelas [data-d]").forEach(x => x.classList.toggle("on", x === b));
     janela = +b.dataset.d; aplicarJanela();
   } else if (b.dataset.k) {
