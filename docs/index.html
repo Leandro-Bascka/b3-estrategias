@@ -120,6 +120,9 @@ const MORTOS = ["invalidada", "expirada", "afastada"];
 const dataBR = d => d.split("-").reverse().join("/");
 const pct = n => fmt(Math.abs(n), 1) + "%";
 
+const idadeTxt = s => s.idade_pregoes == null ? "" : s.idade_pregoes === 0 ? "hoje" : `há ${s.idade_pregoes} pregão${s.idade_pregoes > 1 ? "es" : ""}`;
+const parciais = s => s.alvos_parciais ? `<br><small>Alvos parciais: ${Object.entries(s.alvos_parciais).map(([k, v]) => `${k.replace("alvo_", "")} ${fmt(v)}`).join(" · ")}</small>` : "";
+
 function situacaoHTML(s) {
   const compra = s.dir === "C", lado = compra ? "compra" : "venda";
   const zonaRompe = compra ? `fechar abaixo de ${fmt(s.zona[0])}` : `fechar acima de ${fmt(s.zona[1])}`;
@@ -129,14 +132,14 @@ function situacaoHTML(s) {
       Ordem limite em <b style="display:inline">${fmt(s.entrada)}</b>. O preço (${fmt(s.atual)}) está ${pct(dist)} ${lado2} da entrada e ainda não a tocou.
       Segue válida por mais ${s.restam} pregões; é cancelada se o preço ${zonaRompe} ou se não voltar à zona até lá.
       O alvo acompanha a máxima enquanto o preço não recua.
-      <br><small>Stop ${fmt(s.stop)} · Alvo ${fmt(s.alvo)} · RR ${fmt(s.rr, 1)} · setup de ${dataBR(s.data)}</small></div>`;
+      <br><small>Stop ${fmt(s.stop)} · Alvo estrutural ${fmt(s.alvo)} · RR ${fmt(s.rr, 1)} · setup de ${dataBR(s.data)} (${idadeTxt(s)})</small>${parciais(s)}</div>`;
   }
   if (s.estado === "em_trade") {
     const r = s.r_aberto, c = r >= 0 ? "alta" : "baixa";
     return `<div class="sit ok"><b>✅ Entrada acionada · ${lado} · ★${s.score}</b>
       Entrou em ${dataBR(s.data_entrada)} a ${fmt(s.preco_entrada)} (${s.pregoes_em_trade} pregões atrás). Preço atual ${fmt(s.atual)},
       resultado aberto <span class="${c}">${r > 0 ? "+" : ""}${fmt(r, 1)}R</span>.
-      <br><small>Stop ${fmt(s.stop)} · Alvo ${fmt(s.alvo)} · RR ${fmt(s.rr, 1)}</small></div>`;
+      <br><small>Stop ${fmt(s.stop)} · Alvo estrutural ${fmt(s.alvo)} · RR ${fmt(s.rr, 1)} · setup de ${dataBR(s.data)} (${idadeTxt(s)})</small>${parciais(s)}</div>`;
   }
   const msg = {
     invalidada: `O fechamento rompeu a zona em ${dataBR(s.data_fim)}. Setup cancelado, não entrar.`,
@@ -148,14 +151,16 @@ function situacaoHTML(s) {
 }
 
 function desenharSituacao() {
-  const ult = candlesData.length - 1, lista = (smcAtual?.setups || []).filter(s => {
+  const ult = candlesData.length - 1, nRec = smcAtual?.parametros?.sinais_recentes ?? 4;
+  const recente = s => s.recente ?? ult - (idxMap.get(s.data) ?? -99) < nRec; // setups criados nos últimos 4 pregões
+  const lista = (smcAtual?.setups || []).filter(s => {
+    if (!recente(s)) return false;
     if (s.estado === "pendente" || s.estado === "em_trade") return true;
-    const f = idxMap.get(s.data_fim);
-    return MORTOS.includes(s.estado) && f != null && f >= ult - 10; // perdidos/cancelados nos últimos 10 pregões
+    return MORTOS.includes(s.estado); // cancelados/perdidos dentro dos últimos 4 pregões
   }).sort((a, b) => a.data < b.data ? 1 : -1);
   $("#situacao").innerHTML = lista.length ? lista.map(situacaoHTML).join("") +
     `<div class="sub">Situação no fechamento de ${dataBR(smcAtual.ultimo_pregao)}.</div>`
-    : `<div class="sit"><b>Sem setup ativo</b>Nenhuma entrada aguardando ou em andamento nesta ação.</div>`;
+    : `<div class="sit"><b>Sem setup recente</b>Nenhum setup SMC criado nos últimos ${nRec} pregões nesta ação. Ative "Histórico completo" para ver os anteriores.</div>`;
 }
 let acoes = [], resumos = {smc:null, quant:null}, atual = null, estr = "smc";
 let chart, candles, volume, prim, candlesData = [], idxMap = new Map(), janela = 252, linhasPreco = [];
@@ -231,7 +236,7 @@ class SMCPrimitive {
 /* ------------------------------ lista ------------------------------ */
 function desenharLista() {
   const f = $("#busca").value.trim().toUpperCase();
-  const ativosDe = t => ((resumos[grupo()]?.por_acao?.[t]?.ativos) || []).filter(s => estr === "smc" || (s.estrategia === estr && (s.idade == null || s.idade <= IDADE_MAX)));
+  const ativosDe = t => ((resumos[grupo()]?.por_acao?.[t]?.ativos) || []).filter(s => estr === "smc" ? (s.idade == null || s.idade < (resumos.smc?.parametros?.sinais_recentes ?? 4)) : (s.estrategia === estr && (s.idade == null || s.idade <= IDADE_MAX)));
   const nAtivas = acoes.filter(a => ativosDe(a.acao).length).length;
   document.querySelector('.filtros [data-f="ativos"]').textContent = `Com setup ativo (${nAtivas})`;
   let itens = acoes.filter(a => a.acao.includes(f) && (estr !== "quant" || !resumos.quant || resumos.quant.por_acao[a.acao]));
@@ -307,6 +312,7 @@ function montarCamadas() {
     const ativo = s.estado === "pendente" || s.estado === "em_trade";
     const iT = ix(s.data), iOB = ix(s.data_ob);
     if (iT == null || iOB == null) continue;
+    if (!camadas.hist && !(s.recente ?? ult - iT < 4)) continue; // padrão: só setups dos últimos 4 pregões
     const iFim = s.data_fim ? (ix(s.data_fim) ?? ult) : fimProj;
     const morto = MORTOS.includes(s.estado);
     const fimIdx = s.data_fim ? ix(s.data_fim) : null;
@@ -341,6 +347,10 @@ function montarCamadas() {
       if (s.data_entrada && s.data_fim && s.r != null) marcadores.push({ time:s.data_fim,
         position: compra ? "aboveBar" : "belowBar", color: s.r > 0 ? "#26a69a" : "#ef5350", shape:"circle",
         text: `${s.r > 0 ? "+" : ""}${fmt(s.r, 1)}R` });
+    }
+    if (camadas.ops && ativo && s.alvos_parciais) for (const [k, v] of Object.entries(s.alvos_parciais)) {
+      const iE2 = s.data_entrada ? (ix(s.data_entrada) ?? iT) : iT;
+      shapes.push({ tipo:"linha", i1:iE2, i2:fimProj, p:v, tracejado:true, cor:"rgba(139,147,161,.9)", rotulo:`${k.replace("alvo_", "")} ${fmt(v)}` });
     }
     if (camadas.ops && ativo) {
       const rot = e => `${compra ? "C" : "V"} ${e}`;
@@ -538,7 +548,7 @@ function atualizarGlobal() {
   const r = resumos[grupo()], el = $("#global");
   if (!r) { el.textContent = ""; return; }
   const g = estr === "smc" ? r.global_.todos : r.global_[estr];
-  const n = Object.values(r.por_acao).reduce((s, x) => s + x.ativos.filter(a => estr === "smc" || (a.estrategia === estr && (a.idade == null || a.idade <= IDADE_MAX))).length, 0);
+  const n = Object.values(r.por_acao).reduce((s, x) => s + x.ativos.filter(a => estr === "smc" ? (a.idade == null || a.idade < (r.parametros?.sinais_recentes ?? 4)) : (a.estrategia === estr && (a.idade == null || a.idade <= IDADE_MAX))).length, 0);
   const nome = estr === "smc" ? "SMC" : NOME_EST[estr];
   el.textContent = `· ${nome}: ${n} ${estr === "smc" ? "setups" : "sinais"} ativos · backtest${estr === "quant" ? " fora da amostra" : ""}: ${g.trades} ops` +
     (g.trades ? `, ${fmt(g.acerto, 0)}% acerto, ${fmt(g.r_medio)}R/op` : "") +
