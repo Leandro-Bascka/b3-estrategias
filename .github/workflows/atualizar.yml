@@ -1,5 +1,5 @@
 name: Atualizar dados B3
- 
+
 on:
   schedule:
     # Seg-Sex, 18:30 de Brasília (21:30 UTC), depois do fechamento do pregão
@@ -12,39 +12,42 @@ on:
         description: "Rebaixar todo o histórico?"
         type: boolean
         default: false
- 
+
 permissions:
   contents: write
- 
+
 concurrency:
   group: atualizar-dados
   cancel-in-progress: false
- 
+
 jobs:
   atualizar:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
- 
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: pip
- 
+
       - run: pip install -r requirements.txt
- 
+
       - name: Coletar dados
         env:
           FULL_REFRESH: ${{ (github.event.schedule == '0 15 * * 6' || inputs.full_refresh) && '1' || '0' }}
         run: python coletar_dados.py
- 
+
       - name: Gerar sinais SMC
         run: python gerar_smc.py
- 
+
       - name: Gerar sinais MACD + RSI
         run: python gerar_macd_rsi.py
- 
+
+      - name: Gerar sinais Médias + Volume
+        run: python gerar_medias.py
+
       - name: Commit dos dados
         run: |
           git config user.name "github-actions[bot]"
