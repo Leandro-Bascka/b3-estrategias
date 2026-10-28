@@ -76,7 +76,7 @@
 </header>
 <main>
   <section class="card">
-    <div class="estr" id="estrategias"><button class="chip on" data-e="smc">SMC</button><button class="chip" data-e="div">MACD/RSI · Divergência</button><button class="chip" data-e="cont">MACD/RSI · Continuação</button><button class="chip" data-e="med">Médias 9/21/50/200</button></div>
+    <div class="estr" id="estrategias"><button class="chip on" data-e="smc">SMC</button><button class="chip" data-e="div">MACD/RSI · Divergência</button><button class="chip" data-e="cont">MACD/RSI · Continuação</button><button class="chip" data-e="med">Médias 9/21/50/200</button><button class="chip" data-e="quant">Quantitativo</button></div>
     <input id="busca" type="search" placeholder="Buscar ticker (ex.: PETR4)" autocomplete="off">
     <div class="filtros">
       <button class="chip on" data-f="todos">Todos</button>
@@ -158,16 +158,19 @@ function desenharSituacao() {
     `<div class="sub">Situação no fechamento de ${dataBR(smcAtual.ultimo_pregao)}.</div>`
     : `<div class="sit"><b>Sem setup ativo</b>Nenhuma entrada aguardando ou em andamento nesta ação.</div>`;
 }
-let acoes = [], resumos = {smc:null, mr:null, med:null}, atual = null, estr = "smc";
+let acoes = [], resumos = {smc:null, mr:null, med:null, quant:null}, atual = null, estr = "smc";
 let chart, candles, volume, prim, candlesData = [], idxMap = new Map(), janela = 252, linhasPreco = [];
-let smcAtual = null, mrAtual = null, mrJson = null, medJson = null, filtro = "todos", ind = null;
+let smcAtual = null, mrAtual = null, mrJson = null, medJson = null, quantJson = null, filtro = "todos", ind = null;
 let chartRSI, chartMACD, sRSI, sHist, sMacd, sSig, sE50, sE200, sE9, sE21, linhasDiv = [];
 const AVISO_SMC = "Estudo educacional, não é recomendação de investimento. O backtest usa candles diários, ordem limite na borda do OB, stop prioritário se stop e alvo caem na mesma barra, e não inclui custos, slippage nem dividendos. Zonas e níveis são calculados só com dados até o fechamento de cada setup.";
 const AVISO_MR = "Estudo educacional, não é recomendação de investimento. O sinal nasce no fechamento do candle diário e a entrada é na abertura do pregão seguinte; alvo de 2× o risco, uma posição por vez em cada ação, stop prioritário se stop e alvo caem na mesma barra. O backtest não inclui custos, slippage nem dividendos.";
-const grupo = () => estr === "smc" ? "smc" : estr === "med" ? "med" : "mr"; // qual arquivo de dados serve a estratégia escolhida
-const NOME_EST = {div:"Divergência", cont:"Continuação", med:"Médias 9/21/50/200"};
-const ESTADO_MR = {sinal:"Sinal (entra amanhã)", em_trade:"Em operação", alvo:"Alvo", stop:"Stop", timeout:"Saída por tempo"};
+const grupo = () => estr === "smc" ? "smc" : estr === "med" ? "med" : estr === "quant" ? "quant" : "mr"; // qual arquivo de dados serve a estratégia escolhida
+const NOME_EST = {div:"Divergência", cont:"Continuação", med:"Médias 9/21/50/200", quant:"Quantitativo"};
+const VIVO = ["sinal", "em_trade", "aguardar"]; // sinal novo, operação aberta ou pullback aguardando rompimento (Quantitativo)
+const pts = s => s.estrategia === "quant" ? `${s.score} pts` : `★${s.score}`;
+const ESTADO_MR = {aguardar:"Pullback · aguardar rompimento", sinal:"Sinal (entra amanhã)", em_trade:"Em operação", alvo:"Alvo", stop:"Stop", timeout:"Saída por tempo"};
 const camadas = {estrutura:true, ob:true, fvg:true, ops:true, hist:false, div:true, emas:true};
+const AVISO_QUANT = "Estudo educacional, não é recomendação de investimento. Scanner quantitativo (swing trade): tendência de alta + pullback na EMA21 + rompimento da máxima anterior com RSI, MACD, ADX, volume e força relativa vs. Ibovespa. Backtest: compra na abertura seguinte, stop de 1,5 ATR, alvo escolhido no treino (70% do histórico, por ação) e avaliado fora da amostra (30% finais), prazo de 15 pregões, custo de 0,10% + 0,05% de slippage por lado, dados ajustados por dividendos. O alvo de cada ação é escolhido no treino e pode não funcionar no teste. Quantidades são estimativas, não ordens.";
 const IDADE_MAX = 4; // MACD/RSI e Médias: só mostra sinais dos últimos 4 pregões (o histórico completo mostra todos)
 const RECENTE = 60; // barras: sem "Histórico completo", só setups ativos ou criados nesta janela
 
@@ -233,10 +236,10 @@ function desenharLista() {
   const ativosDe = t => ((resumos[grupo()]?.por_acao?.[t]?.ativos) || []).filter(s => estr === "smc" || (s.estrategia === estr && (s.idade == null || s.idade <= IDADE_MAX)));
   const nAtivas = acoes.filter(a => ativosDe(a.acao).length).length;
   document.querySelector('.filtros [data-f="ativos"]').textContent = `Com setup ativo (${nAtivas})`;
-  let itens = acoes.filter(a => a.acao.includes(f));
+  let itens = acoes.filter(a => a.acao.includes(f) && (estr !== "quant" || !resumos.quant || resumos.quant.por_acao[a.acao]));
   if (filtro === "ativos") itens = itens.filter(a => ativosDe(a.acao).length);
   $("#lista").innerHTML = itens.map(a => {
-    const b = ativosDe(a.acao).map(s => `<span class="badge ${s.dir}" title="RR ${s.rr}">${s.dir === "C" ? "Compra" : "Venda"} ★${s.score} · ${{sinal:"sinal hoje", pendente:"aguardando"}[s.estado] || "entrou"}</span>`).join("");
+    const b = ativosDe(a.acao).map(s => `<span class="badge ${s.dir}" title="RR ${s.rr}">${s.dir === "C" ? "Compra" : "Venda"} ${pts(s)} · ${{sinal:"sinal hoje", pendente:"aguardando", aguardar:"pullback: aguardar"}[s.estado] || "entrou"}</span>`).join("");
     return `<div class="linha ${a.acao === atual ? "ativa" : ""}" data-t="${a.acao}">
       <div><div class="tk">${a.acao}${b}</div><div class="sub">liq. ${compacto(a.liquidez)}</div></div>
       <div class="num">${fmt(a.fechamento)}</div>
@@ -357,7 +360,7 @@ function montarCamadas() {
 function statCard(rot, st) {
   if (!st || !st.trades) return `<div class="stat"><small>${rot}</small><b>sem operações</b></div>`;
   return `<div class="stat"><small>${rot} · ${st.trades} operações</small>
-    <b>${fmt(st.acerto, 0)}% acerto · ${st.r_medio > 0 ? "+" : ""}${fmt(st.r_medio)}R/op</b></div>`;
+    <b>${fmt(st.acerto, 0)}% acerto · ${st.r_medio > 0 ? "+" : ""}${fmt(st.r_medio)}R/op</b>${st.ret_medio != null ? `<small>retorno médio líquido ${st.ret_medio > 0 ? "+" : ""}${fmt(st.ret_medio)}% por operação</small>` : ""}</div>`;
 }
 
 function desenharTabela() {
@@ -423,8 +426,8 @@ function dadosSub() {
   if (!ind) return;
   const T = candlesData.map(c => c.time), serie = a => T.map((time, i) => ({ time, value:a[i] }));
   sE50.setData(camadas.emas ? serie(ind.ema50) : []); sE200.setData(camadas.emas ? serie(ind.ema200) : []);
-  const med = estr === "med" && camadas.emas;
-  sE9.setData(med ? serie(ind.ema9) : []); sE21.setData(med ? serie(ind.ema21) : []);
+  const med = estr === "med" && camadas.emas, e21 = (estr === "med" || estr === "quant") && camadas.emas;
+  sE9.setData(med ? serie(ind.ema9) : []); sE21.setData(e21 ? serie(ind.ema21) : []);
   if (!chartRSI) return;
   sRSI.setData(serie(ind.rsi)); sMacd.setData(serie(ind.macd)); sSig.setData(serie(ind.sinal));
   sHist.setData(T.map((time, i) => ({ time, value:ind.hist[i],
@@ -439,7 +442,8 @@ function limparMR() {
 /* ------------------------- MACD + RSI: situação e desenho ------------------------ */
 function situacaoMR() {
   const el = $("#situacao");
-  if (!mrAtual) { el.innerHTML = `<div class="sit"><b>Sem dados MACD + RSI</b>Esta ação não tem histórico suficiente (mínimo de 260 pregões) ou os sinais ainda não foram gerados.</div>`; return; }
+  if (!mrAtual) { el.innerHTML = `<div class="sit"><b>Sem dados ${NOME_EST[estr]}</b>${estr === "quant" ? "Esta ação não está entre as 80 mais líquidas analisadas pelo Quantitativo, não tem histórico suficiente ou os dados ainda não foram gerados." : "Esta ação não tem histórico suficiente (mínimo de 260 pregões) ou os sinais ainda não foram gerados."}</div>`; return; }
+  if (estr === "quant") { situacaoQuant(el); return; }
   const ultI = candlesData.length - 1;
   const lista = mrAtual.setups.filter(s => s.estrategia === estr && (s.estado === "sinal" || s.estado === "em_trade") && ultI - (idxMap.get(s.data) ?? -99) <= IDADE_MAX);
   el.innerHTML = lista.length ? lista.map(s => {
@@ -448,16 +452,38 @@ function situacaoMR() {
     const GAT = {"21x50":"EMA21 cruzou acima da EMA50", "9x21":"EMA9 cruzou acima da EMA21", ambos:"EMA9 cruzou a EMA21 e a EMA21 cruzou a EMA50"};
     const med = s.med ? `<br><small>Gatilho: ${GAT[s.med.tipo]} · contexto: EMA50 e EMA200 ascendentes · ★ = pares de médias alinhados em alta (3 = 9 > 21 > 50 > 200)</small>` : "";
     const div = s.div ? `<br><small>Divergência ${compra ? "de alta" : "de baixa"}: preço ${fmt(s.div.p1)} → ${fmt(s.div.p2)} (${dataBR(s.div.data1)} → ${dataBR(s.div.data2)}) · RSI ${fmt(s.div.rsi1, 0)} → ${fmt(s.div.rsi2, 0)}</small>` : "";
-    if (s.estado === "sinal") return `<div class="sit esp"><b>🔔 Sinal no último fechamento · ${lado} · ${nome} · ★${s.score}</b>
+    if (s.estado === "sinal") return `<div class="sit esp"><b>🔔 Sinal no último fechamento · ${lado} · ${nome} · ${pts(s)}</b>
       Entrada na <b style="display:inline">abertura do próximo pregão</b> (referência: fechamento ${fmt(s.entrada)}). Stop ${fmt(s.stop)} (risco ${pct(riscoPct)}) · alvo ${fmt(s.alvo)} (${fmt(s.rr, 1)}R).
       Se a abertura vier além do stop, ignore o sinal.${div}${med}</div>`;
     const r = s.r_aberto, c = r >= 0 ? "alta" : "baixa";
-    return `<div class="sit ok"><b>✅ Em operação · ${lado} · ${nome} · ★${s.score}</b>
+    return `<div class="sit ok"><b>✅ Em operação · ${lado} · ${nome} · ${pts(s)}</b>
       Entrou em ${dataBR(s.data_entrada)} na abertura, a ${fmt(s.entrada)} (${s.pregoes_em_trade} pregões atrás). Preço atual ${fmt(s.atual)},
       resultado aberto <span class="${c}">${r > 0 ? "+" : ""}${fmt(r, 1)}R</span>.
       <br><small>Stop ${fmt(s.stop)} · Alvo ${fmt(s.alvo)} (${fmt(s.rr, 1)}R)</small>${div}${med}</div>`;
   }).join("") + `<div class="sub">Situação no fechamento de ${dataBR(mrAtual.ultimo_pregao)}.</div>`
     : `<div class="sit"><b>Sem sinal recente</b>Nenhum sinal de ${NOME_EST[estr]} nos últimos ${IDADE_MAX} pregões nesta ação.</div>`;
+}
+
+function situacaoQuant(el) {
+  const sc = mrAtual.scanner, ultI = candlesData.length - 1, p = mrAtual.parametros;
+  const dentro = mrAtual.setups.filter(s => VIVO.includes(s.estado) && ultI - (idxMap.get(s.data) ?? -99) <= IDADE_MAX);
+  const T = {"COMPRA: GATILHO":["🔔","esp","Gatilho de compra no último fechamento"], "PULLBACK: AGUARDAR":["⏳","esp","Pullback em tendência de alta: aguardar rompimento"],
+             "TENDENCIA DE ALTA":["📈","","Tendência de alta, sem pullback"], "SEM ENTRADA":["⛔","","Sem entrada"]}[sc.sinal];
+  const niveis = `Entrada de referência ${fmt(sc.entrada_ref)} (máxima anterior + 0,01) · stop ${fmt(sc.stop)} (−${fmt(p.atr_stop, 1)} ATR) · alvo ${fmt(sc.alvo)} (${fmt(sc.alvo_r, 1)}R) · risco ${fmt(sc.risco_pct)}% · quantidade teórica ${sc.qtd_teorica} (capital R$ ${fmt(p.capital, 0)}, risco ${fmt(p.risco_operacao * 100, 1)}%)`;
+  const cards = [`<div class="sit ${T[1]}"><b>${T[0]} ${T[2]} · ${sc.score} pts</b>
+    RSI ${fmt(sc.rsi, 0)} · ADX ${fmt(sc.adx, 0)} · volume ${fmt(sc.vol_rel, 1)}× a média · força vs. Ibovespa ${sc.forca_3m > 0 ? "+" : ""}${fmt(sc.forca_3m, 1)}% (3M) e ${sc.forca_6m > 0 ? "+" : ""}${fmt(sc.forca_6m, 1)}% (6M) · Ibovespa ${sc.ibov_alta ? "acima" : "abaixo"} da EMA200
+    ${["COMPRA: GATILHO", "PULLBACK: AGUARDAR"].includes(sc.sinal) ? `<br><small>${niveis}</small>` : ""}
+    <br><small>Alvo de ${fmt(sc.alvo_r, 1)}R escolhido no treino desta ação.</small></div>`];
+  for (const s of dentro) {
+    if (s.estado === "sinal") cards.push(`<div class="sit esp"><b>Como o backtest executa este sinal</b>
+      Compra na <b style="display:inline">abertura de amanhã</b>; stop = abertura − ${fmt(p.atr_stop, 1)} × ATR (ATR = ${fmt(s.atr)}) e alvo = abertura + ${fmt(s.rr * p.atr_stop, 1)} × ATR, prazo máximo de ${p.max_dias} pregões.
+      Os níveis desenhados são os de referência do scanner.</div>`);
+    else if (s.estado === "em_trade") cards.push(`<div class="sit ok"><b>✅ Em operação · compra · ${s.score} pts</b>
+      Entrou em ${dataBR(s.data_entrada)} na abertura, a ${fmt(s.entrada)} (${s.pregoes_em_trade} pregões atrás; prazo ${p.max_dias}). Preço atual ${fmt(s.atual)},
+      resultado aberto <span class="${s.r_aberto >= 0 ? "alta" : "baixa"}">${s.r_aberto > 0 ? "+" : ""}${fmt(s.r_aberto, 1)}R</span>.
+      <br><small>Stop ${fmt(s.stop)} · Alvo ${fmt(s.alvo)} (${fmt(s.rr, 1)}R)</small></div>`);
+  }
+  el.innerHTML = cards.join("") + `<div class="sub">Situação no fechamento de ${dataBR(mrAtual.ultimo_pregao)}.</div>`;
 }
 
 function camadasMR() {
@@ -468,11 +494,11 @@ function camadasMR() {
   if (!mrAtual) { prim.set([]); candles.setMarkers([]); return; }
   const ult = candlesData.length - 1, fimProj = ult + EXT, ix = d => idxMap.get(d);
   for (const s of mrAtual.setups.filter(x => x.estrategia === estr)) {
-    const compra = s.dir === "C", ativo = s.estado === "sinal" || s.estado === "em_trade", iT = ix(s.data);
+    const compra = s.dir === "C", ativo = VIVO.includes(s.estado), iT = ix(s.data);
     if (iT == null || (!camadas.hist && iT < ult - IDADE_MAX)) continue;
 
     if (camadas.ops) {
-      const proj = s.estado === "sinal";
+      const proj = s.estado === "sinal" || s.estado === "aguardar";
       const iE = s.data_entrada ? (ix(s.data_entrada) ?? iT + 1) : iT + 1;
       const iX = s.data_fim ? (ix(s.data_fim) ?? ult) : fimProj;
       shapes.push({ tipo:"rect", i1:iE, i2:iX, p1:s.entrada, p2:s.alvo, fill:`rgba(${VERDE},${proj ? .10 : .20})`,
@@ -480,9 +506,9 @@ function camadasMR() {
       shapes.push({ tipo:"rect", i1:iE, i2:iX, p1:s.entrada, p2:s.stop, fill:`rgba(${VERM},${proj ? .10 : .20})`,
         borda:`rgba(${VERM},.6)`, tracejado:proj, rotulo:`Stop ${fmt(s.stop)}` });
       shapes.push({ tipo:"linha", i1:iE, i2:iX, p:s.entrada, cor: compra ? "#26a69a" : "#ef5350",
-        rotulo:`${proj ? "Entrada (abertura de amanhã)" : "Entrada"} ${fmt(s.entrada)}` });
+        rotulo:`${proj ? (estr === "quant" ? "Entrada ref." : "Entrada (abertura de amanhã)") : "Entrada"} ${fmt(s.entrada)}` });
       marcadores.push(proj ? { time:s.data, position: compra ? "belowBar" : "aboveBar", color:"#f5a623",
-          shape: compra ? "arrowUp" : "arrowDown", text:"Sinal" }
+          shape: compra ? "arrowUp" : "arrowDown", text: s.estado === "aguardar" ? "Aguardar" : "Sinal" }
         : { time:s.data_entrada, position: compra ? "belowBar" : "aboveBar", color: compra ? "#26a69a" : "#ef5350",
           shape: compra ? "arrowUp" : "arrowDown", text: compra ? "C" : "V" });
       if (s.data_fim && s.r != null) marcadores.push({ time:s.data_fim, position: compra ? "aboveBar" : "belowBar",
@@ -513,31 +539,35 @@ function camadasMR() {
 
 function tabelaMR() {
   const st = mrAtual?.stats;
-  $("#stats").innerHTML = !st ? "" : estr === "med"
+  $("#stats").innerHTML = !st ? "" : estr === "quant"
+    ? statCard("Teste · fora da amostra (30% finais)", st.teste) + statCard("Treino (70% iniciais)", st.treino) + statCard("Todo o período", st.todos) +
+      (st.teste_m && st.teste_m.Operacoes ? `<div class="stat"><small>Teste · retorno composto desta ação</small><b>${st.teste_m.Retorno_pct > 0 ? "+" : ""}${fmt(st.teste_m.Retorno_pct)}% · fator de lucro ${st.teste_m.Fator_lucro == null ? "∞" : fmt(st.teste_m.Fator_lucro)} · DD ${fmt(st.teste_m.Drawdown_pct)}%</b></div>` : "")
+    : estr === "med"
     ? statCard("Médias · backtest", st.med) + statCard("Cruzamento 21×50", st["tipo_21x50"]) + statCard("Cruzamento 9×21", st["tipo_9x21"])
     : statCard(`${NOME_EST[estr]} · backtest`, st[estr]) + statCard("Compras", st[estr + "_compra"]) + statCard("Vendas", st[estr + "_venda"]);
   const GATILHO = {"21x50":"21×50", "9x21":"9×21", ambos:"9×21 e 21×50"}, med = estr === "med";
   const lista = (mrAtual?.setups || []).filter(s => s.estrategia === estr).sort((a, b) => {
-    const pa = a.estado === "sinal" || a.estado === "em_trade", pb = b.estado === "sinal" || b.estado === "em_trade";
+    const pa = VIVO.includes(a.estado), pb = VIVO.includes(b.estado);
     return pa !== pb ? (pa ? -1 : 1) : (a.data < b.data ? 1 : -1);
   }).slice(0, 20);
-  $("#tabela").innerHTML = `<tr><th>Sinal</th>${med ? "<th>Gatilho</th>" : ""}<th>Lado</th><th>★</th><th>Entrada</th><th>Stop</th><th>Alvo</th><th>Situação</th><th>Resultado</th></tr>` +
+  const q = estr === "quant";
+  $("#tabela").innerHTML = `<tr><th>Sinal</th>${med ? "<th>Gatilho</th>" : ""}<th>Lado</th><th>${q ? "Pts" : "★"}</th><th>Entrada</th><th>Stop</th><th>Alvo</th><th>Situação</th><th>Resultado</th></tr>` +
     lista.map(s => `<tr><td>${dataBR(s.data)}</td>${med ? `<td>${GATILHO[s.med.tipo]}</td>` : ""}
-      <td class="${s.dir === "C" ? "alta" : "baixa"}">${s.dir === "C" ? "Compra" : "Venda"}</td><td>${s.score}</td>
-      <td>${fmt(s.entrada)}</td><td>${fmt(s.stop)}</td><td>${fmt(s.alvo)}</td><td>${ESTADO_MR[s.estado]}</td>
-      <td class="${s.r > 0 ? "alta" : s.r < 0 ? "baixa" : ""}">${s.r == null ? "–" : (s.r > 0 ? "+" : "") + fmt(s.r, 1) + "R"}</td></tr>`).join("");
+      <td class="${s.dir === "C" ? "alta" : "baixa"}">${s.dir === "C" ? "Compra" : "Venda"}</td><td>${q ? s.score : s.score}</td>
+      <td>${fmt(s.entrada)}</td><td>${fmt(s.stop)}</td><td>${fmt(s.alvo)}</td><td>${ESTADO_MR[s.estado]}${q && s.periodo === "teste" ? " · teste" : ""}</td>
+      <td class="${s.r > 0 ? "alta" : s.r < 0 ? "baixa" : ""}">${s.r == null ? "–" : (s.r > 0 ? "+" : "") + fmt(s.r, 1) + "R" + (q && s.ret != null ? ` (${s.ret > 0 ? "+" : ""}${fmt(s.ret, 1)}%)` : "")}</td></tr>`).join("");
 }
 
 /* --------------------------- despacho por estratégia --------------------------- */
 function renderizar() {
-  const smcMode = estr === "smc", mr = estr === "div" || estr === "cont", med = estr === "med";
+  const smcMode = estr === "smc", mr = estr === "div" || estr === "cont" || estr === "quant", med = estr === "med";
   document.querySelectorAll(".so-smc").forEach(b => b.hidden = !smcMode);
   document.querySelectorAll(".so-mr").forEach(b => b.hidden = smcMode);
   document.querySelector('[data-k="div"]').hidden = estr !== "div"; // linha de divergência só faz sentido nela
-  document.querySelector('[data-k="emas"]').textContent = med ? "EMAs 9/21/50/200" : "EMA 50/200";
+  document.querySelector('[data-k="emas"]').textContent = med ? "EMAs 9/21/50/200" : estr === "quant" ? "EMAs 21/50/200" : "EMA 50/200";
   $("#sub").hidden = !mr; // RSI e MACD só nas estratégias de MACD/RSI
-  $("#aviso").textContent = smcMode ? AVISO_SMC : AVISO_MR;
-  mrAtual = med ? medJson : mrJson;
+  $("#aviso").textContent = smcMode ? AVISO_SMC : estr === "quant" ? AVISO_QUANT : AVISO_MR;
+  mrAtual = med ? medJson : estr === "quant" ? quantJson : mrJson;
   if (!smcMode) { if (mr) criarSub(); situacaoMR(); camadasMR(); tabelaMR(); }
   else { limparMR(); desenharSituacao(); montarCamadas(); desenharTabela(); }
   aplicarJanela();
@@ -549,7 +579,7 @@ function atualizarGlobal() {
   const g = estr === "smc" ? r.global_.todos : r.global_[estr];
   const n = Object.values(r.por_acao).reduce((s, x) => s + x.ativos.filter(a => estr === "smc" || (a.estrategia === estr && (a.idade == null || a.idade <= IDADE_MAX))).length, 0);
   const nome = estr === "smc" ? "SMC" : NOME_EST[estr];
-  el.textContent = `· ${nome}: ${n} ${estr === "smc" ? "setups" : "sinais"} ativos · backtest: ${g.trades} ops` +
+  el.textContent = `· ${nome}: ${n} ${estr === "smc" ? "setups" : "sinais"} ativos · backtest${estr === "quant" ? " fora da amostra" : ""}: ${g.trades} ops` +
     (g.trades ? `, ${fmt(g.acerto, 0)}% acerto, ${fmt(g.r_medio)}R/op` : "") +
     (estr === "smc" && r.global_.score2.trades ? ` · score ≥ 2: ${r.global_.score2.trades} ops, ${fmt(r.global_.score2.r_medio)}R/op` : "");
 }
@@ -559,9 +589,9 @@ async function abrir(t) {
   $("#vazio").hidden = true; $("#conteudo").hidden = false;
   if (!chart) criarGrafico();
   const json = u => fetch(u, {cache:"no-cache"}).then(r => r.ok ? r.json() : null).catch(() => null);
-  const [csv, sm, mr, md] = await Promise.all([
+  const [csv, sm, mr, md, qt] = await Promise.all([
     fetch(`data/ohlcv/${t}.csv`).then(r => r.text()),
-    json(`data/smc/${t}.json`), json(`data/macdrsi/${t}.json`), json(`data/medias/${t}.json`),
+    json(`data/smc/${t}.json`), json(`data/macdrsi/${t}.json`), json(`data/medias/${t}.json`), json(`data/quant/${t}.json`),
   ]);
   const linhas = csv.trim().split("\n").slice(1).map(l => l.split(","));
   candlesData = linhas.map(([d,o,h,l,c]) => ({ time:d.slice(0,10), open:+o, high:+h, low:+l, close:+c }));
@@ -569,7 +599,7 @@ async function abrir(t) {
   candles.setData(candlesData);
   volume.setData(linhas.map(([d,o,h,l,c,v]) => ({
     time:d.slice(0,10), value:+v, color: +c >= +o ? "rgba(38,166,154,.45)" : "rgba(239,83,80,.45)" })));
-  smcAtual = sm; mrJson = mr; medJson = md;
+  smcAtual = sm; mrJson = mr; medJson = md; quantJson = qt;
   ind = calcIndicadores(candlesData.map(c => c.close));
   const a = acoes.find(x => x.acao === t);
   $("#tk").textContent = t;
@@ -613,7 +643,7 @@ $("#janelas").addEventListener("click", e => {
     ]);
     acoes = a;
     $("#meta").textContent = `${m.ativos} ativos · atualizado em ${m.atualizado_em}`;
-    for (const [k, u] of [["smc", "data/smc/resumo.json"], ["mr", "data/macdrsi/resumo.json"], ["med", "data/medias/resumo.json"]])
+    for (const [k, u] of [["smc", "data/smc/resumo.json"], ["mr", "data/macdrsi/resumo.json"], ["med", "data/medias/resumo.json"], ["quant", "data/quant/resumo.json"]])
       try { resumos[k] = await fetch(u, {cache:"no-cache"}).then(r => r.json()); } catch (e) {}
     atualizarGlobal();
     desenharLista();
