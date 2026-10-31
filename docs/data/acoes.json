@@ -1,893 +1,893 @@
 [
  {
   "acao": "PETR4",
-  "liquidez": 2542630000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 52.2,
-  "variacao_dia_pct": -0.59,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 2559440000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 52.71,
+  "variacao_dia_pct": 0.98,
+  "volume": 61713100,
+  "linhas": 1249
  },
  {
   "acao": "VALE3",
-  "liquidez": 1956620000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 60.05,
-  "variacao_dia_pct": -2.17,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 1961190000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 62.02,
+  "variacao_dia_pct": 3.28,
+  "volume": 34838200,
+  "linhas": 1249
  },
  {
   "acao": "ITUB4",
-  "liquidez": 1615040000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 39.54,
-  "variacao_dia_pct": -0.6,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 1623810000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 38.69,
+  "variacao_dia_pct": -2.15,
+  "volume": 51118900,
+  "linhas": 1249
  },
  {
   "acao": "BBDC4",
-  "liquidez": 1248240000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 14.16,
-  "variacao_dia_pct": -3.54,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 1247350000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 13.86,
+  "variacao_dia_pct": -2.12,
+  "volume": 86555300,
+  "linhas": 1249
  },
  {
   "acao": "B3SA3",
-  "liquidez": 1183830000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 14.2,
-  "variacao_dia_pct": -3.34,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 1185070000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 13.43,
+  "variacao_dia_pct": -5.42,
+  "volume": 91190700,
+  "linhas": 1249
  },
  {
   "acao": "BPAC11",
-  "liquidez": 1161750000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 54.04,
-  "variacao_dia_pct": -4.05,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 1170690000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 51.52,
+  "variacao_dia_pct": -4.66,
+  "volume": 29959200,
+  "linhas": 1249
  },
  {
   "acao": "BBAS3",
-  "liquidez": 1155430000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 16.46,
-  "variacao_dia_pct": -1.97,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 1151980000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 16.47,
+  "variacao_dia_pct": 0.06,
+  "volume": 61272900,
+  "linhas": 1249
  },
  {
   "acao": "AXIA3",
-  "liquidez": 1040120000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 47.68,
-  "variacao_dia_pct": -1.14,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 1032670000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 47.43,
+  "variacao_dia_pct": -0.52,
+  "volume": 15261200,
+  "linhas": 1249
  },
  {
   "acao": "PETR3",
-  "liquidez": 797821000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 59.06,
-  "variacao_dia_pct": 0.05,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 810674000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 60.01,
+  "variacao_dia_pct": 1.61,
+  "volume": 22505500,
+  "linhas": 1249
  },
  {
   "acao": "SBSP3",
-  "liquidez": 759265000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 25.14,
-  "variacao_dia_pct": 0.12,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 755020000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 24.7,
+  "variacao_dia_pct": -1.75,
+  "volume": 23470800,
+  "linhas": 1249
  },
  {
   "acao": "RENT3",
-  "liquidez": 693221000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 29.03,
-  "variacao_dia_pct": -2.78,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 689446000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 27.85,
+  "variacao_dia_pct": -4.06,
+  "volume": 18977200,
+  "linhas": 1249
  },
  {
   "acao": "EQTL3",
-  "liquidez": 634263000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 32.9,
-  "variacao_dia_pct": -3.41,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 632234000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 32.6,
+  "variacao_dia_pct": -0.91,
+  "volume": 16909500,
+  "linhas": 1249
  },
  {
   "acao": "PRIO3",
-  "liquidez": 621014000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 70.47,
-  "variacao_dia_pct": -1.72,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 621425000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 71.49,
+  "variacao_dia_pct": 1.45,
+  "volume": 8976000,
+  "linhas": 1249
  },
  {
   "acao": "EMBJ3",
-  "liquidez": 609576000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 102.4,
-  "variacao_dia_pct": 5.25,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 611737000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 99.62,
+  "variacao_dia_pct": -2.71,
+  "volume": 7014700,
+  "linhas": 1249
  },
  {
   "acao": "WEGE3",
-  "liquidez": 594154000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 49.28,
-  "variacao_dia_pct": 4.41,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 599454000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 48.36,
+  "variacao_dia_pct": -1.87,
+  "volume": 16833400,
+  "linhas": 1249
  },
  {
   "acao": "ABEV3",
-  "liquidez": 583143000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 14.55,
-  "variacao_dia_pct": -4.4,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 584632000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 14.6,
+  "variacao_dia_pct": 0.34,
+  "volume": 44291400,
+  "linhas": 1249
  },
  {
   "acao": "ITSA4",
-  "liquidez": 540323000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 12.85,
-  "variacao_dia_pct": -0.46,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 542667000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 12.45,
+  "variacao_dia_pct": -3.11,
+  "volume": 51259200,
+  "linhas": 1249
  },
  {
   "acao": "VBBR3",
-  "liquidez": 512862000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 30.46,
-  "variacao_dia_pct": -0.65,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 510962000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 29.6,
+  "variacao_dia_pct": -2.82,
+  "volume": 14543200,
+  "linhas": 1249
  },
  {
   "acao": "UGPA3",
-  "liquidez": 425864000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 32.01,
-  "variacao_dia_pct": -2.88,
-  "volume": 0,
-  "linhas": 1248
- },
- {
-  "acao": "MGLU3",
-  "liquidez": 393285000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 5.13,
-  "variacao_dia_pct": -1.72,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 423266000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 31.76,
+  "variacao_dia_pct": -0.78,
+  "volume": 9943300,
+  "linhas": 1249
  },
  {
   "acao": "CPLE3",
-  "liquidez": 392919000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 14.5,
-  "variacao_dia_pct": -1.29,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 395471000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 14.32,
+  "variacao_dia_pct": -1.24,
+  "volume": 35148300,
+  "linhas": 1249
+ },
+ {
+  "acao": "MGLU3",
+  "liquidez": 390095000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 5.35,
+  "variacao_dia_pct": 4.29,
+  "volume": 49041300,
+  "linhas": 1249
  },
  {
   "acao": "ENEV3",
-  "liquidez": 378922000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 25.83,
-  "variacao_dia_pct": -2.08,
-  "volume": 0,
-  "linhas": 1248
- },
- {
-  "acao": "RDOR3",
-  "liquidez": 374906000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 32.35,
-  "variacao_dia_pct": -3.98,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 380171000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 25.7,
+  "variacao_dia_pct": -0.5,
+  "volume": 16990000,
+  "linhas": 1249
  },
  {
   "acao": "SUZB3",
-  "liquidez": 368937000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 49.72,
-  "variacao_dia_pct": 3.37,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 374757000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 50.14,
+  "variacao_dia_pct": 0.84,
+  "volume": 12388600,
+  "linhas": 1249
+ },
+ {
+  "acao": "RDOR3",
+  "liquidez": 372011000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 31.68,
+  "variacao_dia_pct": -2.07,
+  "volume": 7935300,
+  "linhas": 1249
  },
  {
   "acao": "MOTV3",
-  "liquidez": 335421000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 14.22,
-  "variacao_dia_pct": -1.59,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 335286000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 14.0,
+  "variacao_dia_pct": -1.55,
+  "volume": 23503300,
+  "linhas": 1249
  },
  {
   "acao": "CYRE3",
-  "liquidez": 331569000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 17.37,
-  "variacao_dia_pct": -2.31,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 329165000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 17.09,
+  "variacao_dia_pct": -1.61,
+  "volume": 13434400,
+  "linhas": 1249
  },
  {
   "acao": "CSMG3",
-  "liquidez": 322966000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 49.11,
-  "variacao_dia_pct": -1.78,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 323395000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 48.11,
+  "variacao_dia_pct": -2.04,
+  "volume": 7130200,
+  "linhas": 1249
  },
  {
   "acao": "LREN3",
-  "liquidez": 320168000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 9.38,
-  "variacao_dia_pct": -2.19,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 321155000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 8.98,
+  "variacao_dia_pct": -4.26,
+  "volume": 40046800,
+  "linhas": 1249
  },
  {
   "acao": "BBSE3",
-  "liquidez": 308610000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 42.05,
-  "variacao_dia_pct": 1.69,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 306133000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 41.32,
+  "variacao_dia_pct": -1.74,
+  "volume": 4886900,
+  "linhas": 1249
  },
  {
   "acao": "GGBR4",
-  "liquidez": 274940000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 25.46,
-  "variacao_dia_pct": 5.69,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 277415000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 25.13,
+  "variacao_dia_pct": -1.3,
+  "volume": 15132500,
+  "linhas": 1249
  },
  {
   "acao": "ENGI11",
-  "liquidez": 271338000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 44.5,
-  "variacao_dia_pct": -2.65,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 273177000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 44.29,
+  "variacao_dia_pct": -0.47,
+  "volume": 8000400,
+  "linhas": 1249
  },
  {
   "acao": "BBDC3",
-  "liquidez": 264808000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 12.95,
-  "variacao_dia_pct": -3.21,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 265166000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 12.71,
+  "variacao_dia_pct": -1.85,
+  "volume": 21954900,
+  "linhas": 1249
  },
  {
   "acao": "RAIL3",
-  "liquidez": 259419000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 14.24,
-  "variacao_dia_pct": -1.66,
-  "volume": 0,
-  "linhas": 1248
- },
- {
-  "acao": "MULT3",
-  "liquidez": 253557000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 25.27,
-  "variacao_dia_pct": -2.62,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 259050000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 13.78,
+  "variacao_dia_pct": -3.23,
+  "volume": 17673600,
+  "linhas": 1249
  },
  {
   "acao": "ALOS3",
-  "liquidez": 253225000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 23.55,
-  "variacao_dia_pct": -3.92,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 255641000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 23.5,
+  "variacao_dia_pct": -0.21,
+  "volume": 15263300,
+  "linhas": 1249
+ },
+ {
+  "acao": "MULT3",
+  "liquidez": 254306000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 25.19,
+  "variacao_dia_pct": -0.32,
+  "volume": 11428000,
+  "linhas": 1249
  },
  {
   "acao": "RADL3",
-  "liquidez": 247773000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 15.5,
-  "variacao_dia_pct": -1.27,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 247636000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 15.22,
+  "variacao_dia_pct": -1.81,
+  "volume": 15918100,
+  "linhas": 1249
  },
  {
   "acao": "SMFT3",
-  "liquidez": 241789000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 15.55,
-  "variacao_dia_pct": -2.99,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 240693000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 15.52,
+  "variacao_dia_pct": -0.19,
+  "volume": 12863000,
+  "linhas": 1249
  },
  {
   "acao": "TOTS3",
-  "liquidez": 230722000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 33.23,
-  "variacao_dia_pct": -2.58,
-  "volume": 0,
-  "linhas": 1248
- },
- {
-  "acao": "ASAI3",
-  "liquidez": 216298000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 7.81,
-  "variacao_dia_pct": -0.89,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 231224000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 32.0,
+  "variacao_dia_pct": -3.7,
+  "volume": 7834400,
+  "linhas": 1249
  },
  {
   "acao": "CMIG4",
-  "liquidez": 215289000.0,
-  "ultimo_pregao": "2026-10-29",
+  "liquidez": 216510000.0,
+  "ultimo_pregao": "2026-10-30",
   "fechamento": 10.07,
-  "variacao_dia_pct": -0.69,
-  "volume": 0,
-  "linhas": 1248
+  "variacao_dia_pct": 0.0,
+  "volume": 26695000,
+  "linhas": 1249
+ },
+ {
+  "acao": "ASAI3",
+  "liquidez": 216477000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 7.88,
+  "variacao_dia_pct": 0.9,
+  "volume": 28591200,
+  "linhas": 1249
  },
  {
   "acao": "VIVT3",
-  "liquidez": 202358000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 30.75,
-  "variacao_dia_pct": 0.03,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 201624000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 30.7,
+  "variacao_dia_pct": -0.16,
+  "volume": 5552900,
+  "linhas": 1249
  },
  {
   "acao": "CSAN3",
-  "liquidez": 186060000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 2.25,
-  "variacao_dia_pct": -4.26,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 184511000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 2.33,
+  "variacao_dia_pct": 3.56,
+  "volume": 52432300,
+  "linhas": 1249
  },
  {
   "acao": "MOVI3",
-  "liquidez": 179342000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 5.87,
-  "variacao_dia_pct": -11.06,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 178753000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 5.61,
+  "variacao_dia_pct": -4.43,
+  "volume": 26892800,
+  "linhas": 1249
  },
  {
   "acao": "CXSE3",
-  "liquidez": 176176000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 21.5,
-  "variacao_dia_pct": 1.13,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 175548000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 21.38,
+  "variacao_dia_pct": -0.56,
+  "volume": 7005900,
+  "linhas": 1249
  },
  {
   "acao": "TIMS3",
-  "liquidez": 169441000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 19.43,
-  "variacao_dia_pct": -0.05,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 171856000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 19.17,
+  "variacao_dia_pct": -1.34,
+  "volume": 14205400,
+  "linhas": 1249
  },
  {
   "acao": "CURY3",
-  "liquidez": 164121000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 26.16,
-  "variacao_dia_pct": -2.93,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 163860000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 25.9,
+  "variacao_dia_pct": -0.99,
+  "volume": 5946300,
+  "linhas": 1249
  },
  {
   "acao": "ECOR3",
-  "liquidez": 158116000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 5.2,
-  "variacao_dia_pct": -1.7,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 156373000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 4.89,
+  "variacao_dia_pct": -5.96,
+  "volume": 16776900,
+  "linhas": 1249
  },
  {
   "acao": "DIRR3",
-  "liquidez": 152601000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 8.23,
-  "variacao_dia_pct": -6.16,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 153327000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 8.06,
+  "variacao_dia_pct": -2.07,
+  "volume": 22883500,
+  "linhas": 1249
  },
  {
   "acao": "CSNA3",
-  "liquidez": 149673000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 4.24,
-  "variacao_dia_pct": -2.08,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 149289000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 3.88,
+  "variacao_dia_pct": -8.49,
+  "volume": 32707800,
+  "linhas": 1249
  },
  {
   "acao": "SANB11",
-  "liquidez": 145707000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 24.64,
-  "variacao_dia_pct": 1.19,
-  "volume": 0,
-  "linhas": 1248
- },
- {
-  "acao": "TEND3",
-  "liquidez": 140541000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 20.34,
-  "variacao_dia_pct": -4.86,
-  "volume": 0,
-  "linhas": 1248
- },
- {
-  "acao": "FLRY3",
-  "liquidez": 139025000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 20.74,
-  "variacao_dia_pct": -5.04,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 144217000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 23.94,
+  "variacao_dia_pct": -2.84,
+  "volume": 3407900,
+  "linhas": 1249
  },
  {
   "acao": "GOAU4",
-  "liquidez": 138732000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 11.2,
-  "variacao_dia_pct": 5.16,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 141647000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 11.11,
+  "variacao_dia_pct": -0.8,
+  "volume": 23790300,
+  "linhas": 1249
+ },
+ {
+  "acao": "TEND3",
+  "liquidez": 140217000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 20.01,
+  "variacao_dia_pct": -1.62,
+  "volume": 6375500,
+  "linhas": 1249
+ },
+ {
+  "acao": "FLRY3",
+  "liquidez": 139776000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 20.47,
+  "variacao_dia_pct": -1.3,
+  "volume": 8407900,
+  "linhas": 1249
  },
  {
   "acao": "ISAE4",
-  "liquidez": 135047000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 24.9,
-  "variacao_dia_pct": -1.78,
-  "volume": 0,
-  "linhas": 1248
- },
- {
-  "acao": "VAMO3",
-  "liquidez": 132668000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 2.46,
-  "variacao_dia_pct": -4.65,
-  "volume": 0,
-  "linhas": 1248
- },
- {
-  "acao": "CEAB3",
-  "liquidez": 132355000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 6.64,
-  "variacao_dia_pct": -2.64,
-  "volume": 0,
-  "linhas": 1248
- },
- {
-  "acao": "COGN3",
-  "liquidez": 132089000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 1.61,
-  "variacao_dia_pct": -5.85,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 136891000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 24.76,
+  "variacao_dia_pct": -0.56,
+  "volume": 8703800,
+  "linhas": 1249
  },
  {
   "acao": "IGTI11",
-  "liquidez": 131580000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 22.2,
-  "variacao_dia_pct": -1.94,
-  "volume": 0,
-  "linhas": 1234
+  "liquidez": 133792000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 21.79,
+  "variacao_dia_pct": -1.85,
+  "volume": 10427200,
+  "linhas": 1235
  },
  {
-  "acao": "KLBN11",
-  "liquidez": 125791000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 17.37,
-  "variacao_dia_pct": -0.69,
-  "volume": 0,
-  "linhas": 1248
+  "acao": "CEAB3",
+  "liquidez": 132367000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 6.55,
+  "variacao_dia_pct": -1.36,
+  "volume": 20618400,
+  "linhas": 1249
+ },
+ {
+  "acao": "VAMO3",
+  "liquidez": 132257000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 2.38,
+  "variacao_dia_pct": -3.25,
+  "volume": 47353900,
+  "linhas": 1249
+ },
+ {
+  "acao": "COGN3",
+  "liquidez": 132125000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 1.58,
+  "variacao_dia_pct": -1.86,
+  "volume": 85007100,
+  "linhas": 1249
  },
  {
   "acao": "SAUD3",
-  "liquidez": 125315000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 14.77,
-  "variacao_dia_pct": -0.07,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 126912000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 14.1,
+  "variacao_dia_pct": -4.54,
+  "volume": 13467100,
+  "linhas": 1249
  },
  {
-  "acao": "ITUB3",
-  "liquidez": 118253000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 44.05,
-  "variacao_dia_pct": -0.02,
-  "volume": 0,
-  "linhas": 1248
+  "acao": "KLBN11",
+  "liquidez": 126617000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 17.2,
+  "variacao_dia_pct": -0.98,
+  "volume": 9457200,
+  "linhas": 1249
  },
  {
   "acao": "AURA33",
-  "liquidez": 117762000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 138.5,
-  "variacao_dia_pct": -5.36,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 119185000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 121.37,
+  "variacao_dia_pct": -12.37,
+  "volume": 1440842,
+  "linhas": 1249
+ },
+ {
+  "acao": "ITUB3",
+  "liquidez": 118256000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 43.06,
+  "variacao_dia_pct": -2.25,
+  "volume": 2734100,
+  "linhas": 1249
  },
  {
   "acao": "EGIE3",
-  "liquidez": 116385000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 26.46,
-  "variacao_dia_pct": -3.43,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 115895000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 26.26,
+  "variacao_dia_pct": -0.76,
+  "volume": 3633100,
+  "linhas": 1249
  },
  {
   "acao": "HYPE3",
-  "liquidez": 112973000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 21.52,
-  "variacao_dia_pct": -1.01,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 113964000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 21.27,
+  "variacao_dia_pct": -1.16,
+  "volume": 7283500,
+  "linhas": 1249
  },
  {
   "acao": "MRVE3",
-  "liquidez": 112791000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 4.04,
-  "variacao_dia_pct": -6.7,
-  "volume": 0,
-  "linhas": 1248
- },
- {
-  "acao": "PSSA3",
-  "liquidez": 111422000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 45.86,
-  "variacao_dia_pct": -1.8,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 111986000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 4.05,
+  "variacao_dia_pct": 0.25,
+  "volume": 19503400,
+  "linhas": 1249
  },
  {
   "acao": "MBRF3",
-  "liquidez": 110767000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 16.44,
-  "variacao_dia_pct": -1.85,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 111075000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 15.61,
+  "variacao_dia_pct": -5.05,
+  "volume": 7790500,
+  "linhas": 1249
+ },
+ {
+  "acao": "PSSA3",
+  "liquidez": 110706000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 44.75,
+  "variacao_dia_pct": -2.42,
+  "volume": 1785000,
+  "linhas": 1249
  },
  {
   "acao": "TAEE11",
-  "liquidez": 108381000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 39.2,
-  "variacao_dia_pct": -1.28,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 108834000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 39.59,
+  "variacao_dia_pct": 0.99,
+  "volume": 3250000,
+  "linhas": 1249
  },
  {
   "acao": "CPFE3",
-  "liquidez": 108055000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 42.51,
-  "variacao_dia_pct": -1.02,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 107890000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 41.9,
+  "variacao_dia_pct": -1.43,
+  "volume": 2408100,
+  "linhas": 1249
  },
  {
   "acao": "BEEF3",
-  "liquidez": 102822000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 2.69,
-  "variacao_dia_pct": -6.92,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 101955000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 2.55,
+  "variacao_dia_pct": -5.2,
+  "volume": 25281700,
+  "linhas": 1249
  },
  {
   "acao": "GGPS3",
-  "liquidez": 102716000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 10.51,
-  "variacao_dia_pct": -4.02,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 101808000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 10.5,
+  "variacao_dia_pct": -0.1,
+  "volume": 6105800,
+  "linhas": 1249
  },
  {
   "acao": "AZZA3",
-  "liquidez": 96849200.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 14.16,
-  "variacao_dia_pct": -5.6,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 96235300.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 14.33,
+  "variacao_dia_pct": 1.2,
+  "volume": 5087000,
+  "linhas": 1249
  },
  {
   "acao": "VIVA3",
-  "liquidez": 90844500.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 17.35,
-  "variacao_dia_pct": -1.81,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 91351900.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 17.3,
+  "variacao_dia_pct": -0.29,
+  "volume": 6528400,
+  "linhas": 1249
  },
  {
   "acao": "POMO4",
-  "liquidez": 90102200.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 3.8,
-  "variacao_dia_pct": -3.06,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 90324000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 3.7,
+  "variacao_dia_pct": -2.63,
+  "volume": 26509000,
+  "linhas": 1249
  },
  {
   "acao": "USIM5",
-  "liquidez": 87895300.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 5.47,
-  "variacao_dia_pct": -3.87,
-  "volume": 0,
-  "linhas": 1248
- },
- {
-  "acao": "SIMH3",
-  "liquidez": 87602000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 4.83,
-  "variacao_dia_pct": -7.82,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 89675100.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 5.0,
+  "variacao_dia_pct": -8.59,
+  "volume": 31966600,
+  "linhas": 1249
  },
  {
   "acao": "NATU3",
-  "liquidez": 87342600.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 4.76,
-  "variacao_dia_pct": -4.99,
-  "volume": 0,
-  "linhas": 338
+  "liquidez": 87935800.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 4.86,
+  "variacao_dia_pct": 2.1,
+  "volume": 24400500,
+  "linhas": 339
+ },
+ {
+  "acao": "SIMH3",
+  "liquidez": 86551400.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 4.84,
+  "variacao_dia_pct": 0.21,
+  "volume": 8769800,
+  "linhas": 1249
  },
  {
   "acao": "HAPV3",
-  "liquidez": 84193900.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 4.23,
-  "variacao_dia_pct": -0.47,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 83438100.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 4.2,
+  "variacao_dia_pct": -0.71,
+  "volume": 12328200,
+  "linhas": 1249
  },
  {
   "acao": "SAPR11",
-  "liquidez": 82197900.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 31.85,
-  "variacao_dia_pct": -1.76,
-  "volume": 0,
-  "linhas": 1248
- },
- {
-  "acao": "BRAV3",
-  "liquidez": 77424500.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 17.86,
-  "variacao_dia_pct": -2.62,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 82108100.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 30.85,
+  "variacao_dia_pct": -3.14,
+  "volume": 2539800,
+  "linhas": 1249
  },
  {
   "acao": "BRAP4",
-  "liquidez": 77347900.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 17.78,
-  "variacao_dia_pct": -1.77,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 78794000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 18.27,
+  "variacao_dia_pct": 2.76,
+  "volume": 7701500,
+  "linhas": 1249
+ },
+ {
+  "acao": "BRAV3",
+  "liquidez": 77393500.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 18.42,
+  "variacao_dia_pct": 3.14,
+  "volume": 4156100,
+  "linhas": 1249
  },
  {
   "acao": "ORVR3",
-  "liquidez": 74304300.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 15.88,
-  "variacao_dia_pct": 0.06,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 74649500.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 15.96,
+  "variacao_dia_pct": 0.5,
+  "volume": 5669100,
+  "linhas": 1249
  },
  {
   "acao": "YDUQ3",
-  "liquidez": 73009700.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 8.96,
-  "variacao_dia_pct": 0.67,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 72471500.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 8.91,
+  "variacao_dia_pct": -0.56,
+  "volume": 5641900,
+  "linhas": 1249
  },
  {
   "acao": "EZTC3",
-  "liquidez": 72405900.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 9.13,
-  "variacao_dia_pct": -4.9,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 71923300.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 8.96,
+  "variacao_dia_pct": -1.86,
+  "volume": 5770900,
+  "linhas": 1249
  },
  {
   "acao": "IRBR3",
-  "liquidez": 68483700.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 55.5,
-  "variacao_dia_pct": -2.53,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 68627900.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 55.68,
+  "variacao_dia_pct": 0.32,
+  "volume": 1349200,
+  "linhas": 1249
  },
  {
   "acao": "AURE3",
-  "liquidez": 68465300.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 10.97,
-  "variacao_dia_pct": -0.54,
-  "volume": 0,
-  "linhas": 1148
+  "liquidez": 68588400.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 10.87,
+  "variacao_dia_pct": -0.91,
+  "volume": 6821600,
+  "linhas": 1149
  },
  {
   "acao": "JHSF3",
-  "liquidez": 60917100.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 8.7,
-  "variacao_dia_pct": -10.03,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 61688700.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 8.97,
+  "variacao_dia_pct": 3.1,
+  "volume": 10731000,
+  "linhas": 1249
  },
  {
   "acao": "SLCE3",
-  "liquidez": 59725500.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 17.01,
-  "variacao_dia_pct": 0.41,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 59353300.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 17.02,
+  "variacao_dia_pct": 0.06,
+  "volume": 2581500,
+  "linhas": 1249
  },
  {
   "acao": "ALUP11",
-  "liquidez": 54175000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 31.29,
-  "variacao_dia_pct": -1.45,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 54520400.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 31.4,
+  "variacao_dia_pct": 0.35,
+  "volume": 2185200,
+  "linhas": 1249
  },
  {
   "acao": "MDNE3",
-  "liquidez": 53064400.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 15.53,
-  "variacao_dia_pct": -8.91,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 53037800.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 15.95,
+  "variacao_dia_pct": 2.7,
+  "volume": 3303300,
+  "linhas": 1249
  },
  {
   "acao": "CMIN3",
-  "liquidez": 50072100.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 4.5,
-  "variacao_dia_pct": 0.67,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 50234200.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 4.86,
+  "variacao_dia_pct": 8.0,
+  "volume": 12246000,
+  "linhas": 1249
  },
  {
   "acao": "SBFG3",
-  "liquidez": 48919600.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 4.94,
-  "variacao_dia_pct": -3.14,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 48844400.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 4.78,
+  "variacao_dia_pct": -3.24,
+  "volume": 9385200,
+  "linhas": 1249
  },
  {
   "acao": "PGMN3",
-  "liquidez": 48740100.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 2.56,
-  "variacao_dia_pct": -4.83,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 48514700.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 2.48,
+  "variacao_dia_pct": -3.12,
+  "volume": 15776700,
+  "linhas": 1249
  },
  {
   "acao": "BRSR6",
-  "liquidez": 46047100.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 12.55,
-  "variacao_dia_pct": -3.61,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 45921000.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 12.36,
+  "variacao_dia_pct": -1.51,
+  "volume": 3272200,
+  "linhas": 1249
  },
  {
   "acao": "ALPA4",
-  "liquidez": 44386900.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 12.95,
-  "variacao_dia_pct": -3.36,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 43853400.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 12.38,
+  "variacao_dia_pct": -4.4,
+  "volume": 1714400,
+  "linhas": 1249
  },
  {
   "acao": "VULC3",
-  "liquidez": 43651000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 11.59,
-  "variacao_dia_pct": -3.26,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 43226800.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 11.53,
+  "variacao_dia_pct": -0.52,
+  "volume": 2208100,
+  "linhas": 1249
  },
  {
   "acao": "CBAV3",
-  "liquidez": 42562400.0,
-  "ultimo_pregao": "2026-10-29",
+  "liquidez": 43096400.0,
+  "ultimo_pregao": "2026-10-30",
   "fechamento": 11.27,
-  "variacao_dia_pct": -0.53,
-  "volume": 0,
-  "linhas": 1248
+  "variacao_dia_pct": 0.0,
+  "volume": 5840000,
+  "linhas": 1249
  },
  {
   "acao": "SMTO3",
-  "liquidez": 41555000.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 19.55,
-  "variacao_dia_pct": 2.04,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 41971200.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 21.09,
+  "variacao_dia_pct": 7.88,
+  "volume": 2874000,
+  "linhas": 1249
  },
  {
   "acao": "ANIM3",
-  "liquidez": 39885200.0,
-  "ultimo_pregao": "2026-10-29",
-  "fechamento": 2.39,
-  "variacao_dia_pct": -1.65,
-  "volume": 0,
-  "linhas": 1248
+  "liquidez": 39729700.0,
+  "ultimo_pregao": "2026-10-30",
+  "fechamento": 2.29,
+  "variacao_dia_pct": -4.18,
+  "volume": 14670400,
+  "linhas": 1249
  }
 ]
