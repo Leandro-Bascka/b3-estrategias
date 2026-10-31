@@ -1,8 +1,8 @@
 {
- "atualizado_em": "2026-10-30 21:56",
+ "atualizado_em": "2026-10-31 16:06",
  "ativos": 99,
  "falhas": [
   "PASS3"
  ],
- "modo": "incremental"
+ "modo": "completo"
 }
