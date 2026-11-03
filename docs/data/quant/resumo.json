@@ -16,18 +16,18 @@
  },
  "global_": {
   "todos": {
-   "trades": 306,
-   "acerto": 43.5,
+   "trades": 308,
+   "acerto": 43.2,
    "r_medio": 0.05,
-   "r_total": 16.4,
+   "r_total": 16.5,
    "ret_medio": 0.21
   },
   "treino": {
-   "trades": 224,
-   "acerto": 41.5,
+   "trades": 226,
+   "acerto": 41.2,
    "r_medio": -0.01,
-   "r_total": -1.8,
-   "ret_medio": 0.08
+   "r_total": -1.7,
+   "ret_medio": 0.09
   },
   "teste": {
    "trades": 82,
