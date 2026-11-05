@@ -246,7 +246,20 @@
    }
   },
   "CMIN3": {
-   "ativos": [],
+   "ativos": [
+    {
+     "dir": "C",
+     "estado": "pendente",
+     "tipo": "CHoCH",
+     "score": 2,
+     "rr": 2.99,
+     "data": "2026-11-04",
+     "idade": 0,
+     "entrada": 4.6,
+     "stop": 4.32,
+     "alvo": 5.43
+    }
+   ],
    "stats": {
     "trades": 9,
     "acerto": 44.4,
@@ -471,20 +484,7 @@
    }
   },
   "IRBR3": {
-   "ativos": [
-    {
-     "dir": "V",
-     "estado": "pendente",
-     "tipo": "CHoCH",
-     "score": 3,
-     "rr": 2.68,
-     "data": "2026-10-28",
-     "idade": 3,
-     "entrada": 66.41,
-     "stop": 70.82,
-     "alvo": 54.6
-    }
-   ],
+   "ativos": [],
    "stats": {
     "trades": 8,
     "acerto": 12.5,
@@ -673,7 +673,20 @@
    }
   },
   "PRIO3": {
-   "ativos": [],
+   "ativos": [
+    {
+     "dir": "V",
+     "estado": "pendente",
+     "tipo": "CHoCH",
+     "score": 3,
+     "rr": 3.49,
+     "data": "2026-11-04",
+     "idade": 0,
+     "entrada": 70.71,
+     "stop": 73.17,
+     "alvo": 62.14
+    }
+   ],
    "stats": {
     "trades": 9,
     "acerto": 11.1,

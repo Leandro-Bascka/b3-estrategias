@@ -16,32 +16,32 @@
  },
  "global_": {
   "todos": {
-   "trades": 304,
-   "acerto": 43.8,
-   "r_medio": 0.07,
-   "r_total": 20.1,
-   "ret_medio": 0.26
+   "trades": 305,
+   "acerto": 43.6,
+   "r_medio": 0.06,
+   "r_total": 17.3,
+   "ret_medio": 0.22
   },
   "treino": {
    "trades": 224,
    "acerto": 41.5,
-   "r_medio": 0.0,
-   "r_total": 0.2,
-   "ret_medio": 0.12
+   "r_medio": -0.01,
+   "r_total": -1.6,
+   "ret_medio": 0.08
   },
   "teste": {
-   "trades": 80,
-   "acerto": 50.0,
-   "r_medio": 0.25,
-   "r_total": 19.9,
-   "ret_medio": 0.65
+   "trades": 81,
+   "acerto": 49.4,
+   "r_medio": 0.23,
+   "r_total": 18.8,
+   "ret_medio": 0.59
   },
   "quant": {
-   "trades": 80,
-   "acerto": 50.0,
-   "r_medio": 0.25,
-   "r_total": 19.9,
-   "ret_medio": 0.65
+   "trades": 81,
+   "acerto": 49.4,
+   "r_medio": 0.23,
+   "r_total": 18.8,
+   "ret_medio": 0.59
   }
  },
  "por_acao": {
@@ -168,11 +168,11 @@
   "PRIO3": {
    "ativos": [],
    "stats": {
-    "trades": 1,
+    "trades": 2,
     "acerto": 0.0,
-    "r_medio": -1.05,
-    "r_total": -1.1,
-    "ret_medio": -5.49
+    "r_medio": -1.04,
+    "r_total": -2.1,
+    "ret_medio": -5.24
    }
   },
   "EMBJ3": {
@@ -184,7 +184,7 @@
      "score": 100,
      "rr": 2.0,
      "data": "2026-10-29",
-     "idade": 2,
+     "idade": 3,
      "entrada": 102.35,
      "stop": 97.2,
      "alvo": 112.64
@@ -206,11 +206,11 @@
      "estrategia": "quant",
      "score": 90,
      "rr": 2.0,
-     "data": "2026-11-03",
+     "data": "2026-11-04",
      "idade": 0,
-     "entrada": 49.67,
-     "stop": 46.82,
-     "alvo": 55.37
+     "entrada": 49.86,
+     "stop": 47.0,
+     "alvo": 55.58
     }
    ],
    "stats": {
@@ -362,20 +362,7 @@
    }
   },
   "GGBR4": {
-   "ativos": [
-    {
-     "dir": "C",
-     "estado": "aguardar",
-     "estrategia": "quant",
-     "score": 75,
-     "rr": 2.0,
-     "data": "2026-11-03",
-     "idade": 0,
-     "entrada": 25.54,
-     "stop": 23.83,
-     "alvo": 28.95
-    }
-   ],
+   "ativos": [],
    "stats": {
     "trades": 2,
     "acerto": 100.0,
@@ -505,7 +492,20 @@
    }
   },
   "CXSE3": {
-   "ativos": [],
+   "ativos": [
+    {
+     "dir": "C",
+     "estado": "aguardar",
+     "estrategia": "quant",
+     "score": 75,
+     "rr": 2.0,
+     "data": "2026-11-04",
+     "idade": 0,
+     "entrada": 21.01,
+     "stop": 20.03,
+     "alvo": 22.98
+    }
+   ],
    "stats": {
     "trades": 1,
     "acerto": 100.0,
@@ -675,7 +675,20 @@
    }
   },
   "SAUD3": {
-   "ativos": [],
+   "ativos": [
+    {
+     "dir": "C",
+     "estado": "aguardar",
+     "estrategia": "quant",
+     "score": 75,
+     "rr": 2.0,
+     "data": "2026-11-04",
+     "idade": 0,
+     "entrada": 13.96,
+     "stop": 12.83,
+     "alvo": 16.22
+    }
+   ],
    "stats": {
     "trades": 3,
     "acerto": 0.0,
