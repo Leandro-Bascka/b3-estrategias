@@ -19,22 +19,22 @@
  },
  "global_": {
   "todos": {
-   "trades": 629,
-   "acerto": 26.1,
+   "trades": 623,
+   "acerto": 26.0,
    "r_medio": 0.1,
-   "r_total": 64.3
+   "r_total": 61.4
   },
   "score2": {
-   "trades": 629,
-   "acerto": 26.1,
+   "trades": 623,
+   "acerto": 26.0,
    "r_medio": 0.1,
-   "r_total": 64.3
+   "r_total": 61.4
   },
   "score3": {
-   "trades": 367,
+   "trades": 364,
    "acerto": 26.4,
    "r_medio": 0.21,
-   "r_total": 76.2
+   "r_total": 75.4
   }
  },
  "por_acao": {
@@ -254,7 +254,7 @@
      "score": 2,
      "rr": 2.99,
      "data": "2026-11-04",
-     "idade": 0,
+     "idade": 1,
      "entrada": 4.6,
      "stop": 4.32,
      "alvo": 5.43
@@ -679,12 +679,12 @@
      "estado": "pendente",
      "tipo": "CHoCH",
      "score": 3,
-     "rr": 3.49,
+     "rr": 3.73,
      "data": "2026-11-04",
-     "idade": 0,
+     "idade": 1,
      "entrada": 70.71,
      "stop": 73.17,
-     "alvo": 62.14
+     "alvo": 61.54
     }
    ],
    "stats": {
@@ -926,15 +926,6 @@
     "acerto": 37.5,
     "r_medio": 0.23,
     "r_total": 1.8
-   }
-  },
-  "VULC3": {
-   "ativos": [],
-   "stats": {
-    "trades": 6,
-    "acerto": 33.3,
-    "r_medio": 0.49,
-    "r_total": 2.9
    }
   },
   "WEGE3": {
