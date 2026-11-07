@@ -1,9 +1,9 @@
 {
- "atualizado_em": "2026-11-06 22:01",
+ "atualizado_em": "2026-11-07 16:15",
  "ativos": 98,
  "falhas": [
   "AXIA7",
   "PASS3"
  ],
- "modo": "incremental"
+ "modo": "completo"
 }

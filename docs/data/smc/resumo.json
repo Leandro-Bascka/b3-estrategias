@@ -19,22 +19,22 @@
  },
  "global_": {
   "todos": {
-   "trades": 623,
-   "acerto": 26.0,
+   "trades": 621,
+   "acerto": 25.9,
    "r_medio": 0.1,
-   "r_total": 61.4
+   "r_total": 59.5
   },
   "score2": {
-   "trades": 623,
-   "acerto": 26.0,
+   "trades": 621,
+   "acerto": 25.9,
    "r_medio": 0.1,
-   "r_total": 61.4
+   "r_total": 59.5
   },
   "score3": {
-   "trades": 364,
-   "acerto": 26.4,
-   "r_medio": 0.21,
-   "r_total": 75.4
+   "trades": 363,
+   "acerto": 26.2,
+   "r_medio": 0.2,
+   "r_total": 72.6
   }
  },
  "por_acao": {
@@ -221,10 +221,10 @@
   "CBAV3": {
    "ativos": [],
    "stats": {
-    "trades": 10,
-    "acerto": 10.0,
-    "r_medio": -0.57,
-    "r_total": -5.7
+    "trades": 9,
+    "acerto": 11.1,
+    "r_medio": -0.52,
+    "r_total": -4.7
    }
   },
   "CEAB3": {
@@ -315,10 +315,10 @@
   "CSNA3": {
    "ativos": [],
    "stats": {
-    "trades": 15,
-    "acerto": 20.0,
-    "r_medio": -0.39,
-    "r_total": -5.8
+    "trades": 14,
+    "acerto": 14.3,
+    "r_medio": -0.62,
+    "r_total": -8.7
    }
   },
   "CURY3": {
@@ -684,7 +684,7 @@
      "idade": 2,
      "entrada": 70.71,
      "stop": 73.17,
-     "alvo": 60.01
+     "alvo": 60.0
     }
    ],
    "stats": {
