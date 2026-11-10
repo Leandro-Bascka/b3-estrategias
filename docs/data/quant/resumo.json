@@ -16,32 +16,32 @@
  },
  "global_": {
   "todos": {
-   "trades": 309,
-   "acerto": 44.3,
-   "r_medio": 0.07,
-   "r_total": 21.8,
-   "ret_medio": 0.26
+   "trades": 305,
+   "acerto": 43.6,
+   "r_medio": 0.05,
+   "r_total": 15.7,
+   "ret_medio": 0.2
   },
   "treino": {
-   "trades": 227,
-   "acerto": 42.3,
-   "r_medio": 0.01,
-   "r_total": 1.2,
-   "ret_medio": 0.13
+   "trades": 224,
+   "acerto": 41.5,
+   "r_medio": -0.01,
+   "r_total": -3.2,
+   "ret_medio": 0.06
   },
   "teste": {
-   "trades": 82,
-   "acerto": 50.0,
-   "r_medio": 0.25,
-   "r_total": 20.6,
-   "ret_medio": 0.63
+   "trades": 81,
+   "acerto": 49.4,
+   "r_medio": 0.23,
+   "r_total": 18.8,
+   "ret_medio": 0.58
   },
   "quant": {
-   "trades": 82,
-   "acerto": 50.0,
-   "r_medio": 0.25,
-   "r_total": 20.6,
-   "ret_medio": 0.63
+   "trades": 81,
+   "acerto": 49.4,
+   "r_medio": 0.23,
+   "r_total": 18.8,
+   "ret_medio": 0.58
   }
  },
  "por_acao": {
@@ -68,11 +68,11 @@
   "ITUB4": {
    "ativos": [],
    "stats": {
-    "trades": 2,
+    "trades": 1,
     "acerto": 100.0,
-    "r_medio": 1.05,
-    "r_total": 2.1,
-    "ret_medio": 2.73
+    "r_medio": 0.36,
+    "r_total": 0.4,
+    "ret_medio": 1.13
    }
   },
   "BBDC4": {
@@ -155,16 +155,6 @@
     "ret_medio": null
    }
   },
-  "PRIO3": {
-   "ativos": [],
-   "stats": {
-    "trades": 2,
-    "acerto": 0.0,
-    "r_medio": -1.04,
-    "r_total": -2.1,
-    "ret_medio": -5.24
-   }
-  },
   "EMBJ3": {
    "ativos": [],
    "stats": {
@@ -175,14 +165,14 @@
     "ret_medio": -1.93
    }
   },
-  "EQTL3": {
+  "PRIO3": {
    "ativos": [],
    "stats": {
-    "trades": 0,
-    "acerto": null,
-    "r_medio": null,
-    "r_total": 0.0,
-    "ret_medio": null
+    "trades": 2,
+    "acerto": 0.0,
+    "r_medio": -1.04,
+    "r_total": -2.1,
+    "ret_medio": -5.24
    }
   },
   "WEGE3": {
@@ -193,6 +183,16 @@
     "r_medio": 1.84,
     "r_total": 1.8,
     "ret_medio": 7.08
+   }
+  },
+  "EQTL3": {
+   "ativos": [],
+   "stats": {
+    "trades": 0,
+    "acerto": null,
+    "r_medio": null,
+    "r_total": 0.0,
+    "ret_medio": null
    }
   },
   "ABEV3": {
@@ -315,16 +315,6 @@
     "ret_medio": -0.36
    }
   },
-  "BBSE3": {
-   "ativos": [],
-   "stats": {
-    "trades": 1,
-    "acerto": 100.0,
-    "r_medio": 1.8,
-    "r_total": 1.8,
-    "ret_medio": 5.35
-   }
-  },
   "CSMG3": {
    "ativos": [],
    "stats": {
@@ -342,7 +332,17 @@
     "acerto": 100.0,
     "r_medio": 1.85,
     "r_total": 3.7,
-    "ret_medio": 7.43
+    "ret_medio": 7.38
+   }
+  },
+  "BBSE3": {
+   "ativos": [],
+   "stats": {
+    "trades": 1,
+    "acerto": 100.0,
+    "r_medio": 1.8,
+    "r_total": 1.8,
+    "ret_medio": 5.35
    }
   },
   "ENGI11": {
@@ -435,16 +435,6 @@
     "ret_medio": null
    }
   },
-  "CMIG4": {
-   "ativos": [],
-   "stats": {
-    "trades": 0,
-    "acerto": null,
-    "r_medio": null,
-    "r_total": 0.0,
-    "ret_medio": null
-   }
-  },
   "VIVT3": {
    "ativos": [],
    "stats": {
@@ -453,6 +443,16 @@
     "r_medio": -1.05,
     "r_total": -1.1,
     "ret_medio": -3.56
+   }
+  },
+  "CMIG4": {
+   "ativos": [],
+   "stats": {
+    "trades": 0,
+    "acerto": null,
+    "r_medio": null,
+    "r_total": 0.0,
+    "ret_medio": null
    }
   },
   "MOVI3": {
@@ -575,16 +575,6 @@
     "ret_medio": null
    }
   },
-  "ISAE4": {
-   "ativos": [],
-   "stats": {
-    "trades": 0,
-    "acerto": null,
-    "r_medio": null,
-    "r_total": 0.0,
-    "ret_medio": null
-   }
-  },
   "IGTI11": {
    "ativos": [],
    "stats": {
@@ -603,6 +593,16 @@
     "r_medio": -1.02,
     "r_total": -1.0,
     "ret_medio": -7.49
+   }
+  },
+  "ISAE4": {
+   "ativos": [],
+   "stats": {
+    "trades": 0,
+    "acerto": null,
+    "r_medio": null,
+    "r_total": 0.0,
+    "ret_medio": null
    }
   },
   "COGN3": {
@@ -635,6 +635,16 @@
     "ret_medio": null
    }
   },
+  "AURA33": {
+   "ativos": [],
+   "stats": {
+    "trades": 1,
+    "acerto": 100.0,
+    "r_medio": 1.93,
+    "r_total": 1.9,
+    "ret_medio": 16.05
+   }
+  },
   "SAUD3": {
    "ativos": [
     {
@@ -656,16 +666,6 @@
     "r_medio": -1.03,
     "r_total": -3.1,
     "ret_medio": -4.71
-   }
-  },
-  "AURA33": {
-   "ativos": [],
-   "stats": {
-    "trades": 1,
-    "acerto": 100.0,
-    "r_medio": 1.93,
-    "r_total": 1.9,
-    "ret_medio": 16.05
    }
   },
   "ITUB3": {
@@ -698,16 +698,6 @@
     "ret_medio": 5.78
    }
   },
-  "MRVE3": {
-   "ativos": [],
-   "stats": {
-    "trades": 1,
-    "acerto": 100.0,
-    "r_medio": 1.89,
-    "r_total": 1.9,
-    "ret_medio": 10.34
-   }
-  },
   "MBRF3": {
    "ativos": [],
    "stats": {
@@ -716,6 +706,16 @@
     "r_medio": -1.55,
     "r_total": -1.6,
     "ret_medio": -8.37
+   }
+  },
+  "MRVE3": {
+   "ativos": [],
+   "stats": {
+    "trades": 1,
+    "acerto": 100.0,
+    "r_medio": 1.89,
+    "r_total": 1.9,
+    "ret_medio": 10.34
    }
   },
   "CPFE3": {
@@ -728,7 +728,7 @@
     "ret_medio": -2.03
    }
   },
-  "EGIE3": {
+  "TAEE11": {
    "ativos": [],
    "stats": {
     "trades": 0,
@@ -738,7 +738,7 @@
     "ret_medio": null
    }
   },
-  "TAEE11": {
+  "EGIE3": {
    "ativos": [],
    "stats": {
     "trades": 0,
@@ -758,16 +758,6 @@
     "ret_medio": -3.68
    }
   },
-  "BEEF3": {
-   "ativos": [],
-   "stats": {
-    "trades": 1,
-    "acerto": 0.0,
-    "r_medio": -1.03,
-    "r_total": -1.0,
-    "ret_medio": -4.85
-   }
-  },
   "VIVA3": {
    "ativos": [],
    "stats": {
@@ -776,6 +766,16 @@
     "r_medio": -1.03,
     "r_total": -1.0,
     "ret_medio": -5.38
+   }
+  },
+  "BEEF3": {
+   "ativos": [],
+   "stats": {
+    "trades": 1,
+    "acerto": 0.0,
+    "r_medio": -1.03,
+    "r_total": -1.0,
+    "ret_medio": -4.85
    }
   },
   "AZZA3": {
@@ -798,16 +798,6 @@
     "ret_medio": null
    }
   },
-  "USIM5": {
-   "ativos": [],
-   "stats": {
-    "trades": 2,
-    "acerto": 50.0,
-    "r_medio": 0.43,
-    "r_total": 0.9,
-    "ret_medio": 3.02
-   }
-  },
   "BRAP4": {
    "ativos": [],
    "stats": {
@@ -816,6 +806,16 @@
     "r_medio": null,
     "r_total": 0.0,
     "ret_medio": null
+   }
+  },
+  "USIM5": {
+   "ativos": [],
+   "stats": {
+    "trades": 2,
+    "acerto": 50.0,
+    "r_medio": 0.43,
+    "r_total": 0.9,
+    "ret_medio": 3.02
    }
   },
   "SIMH3": {
