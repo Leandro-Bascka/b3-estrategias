@@ -246,20 +246,7 @@
    }
   },
   "CMIN3": {
-   "ativos": [
-    {
-     "dir": "C",
-     "estado": "pendente",
-     "tipo": "CHoCH",
-     "score": 2,
-     "rr": 2.99,
-     "data": "2026-11-04",
-     "idade": 2,
-     "entrada": 4.6,
-     "stop": 4.32,
-     "alvo": 5.43
-    }
-   ],
+   "ativos": [],
    "stats": {
     "trades": 9,
     "acerto": 44.4,
@@ -673,20 +660,7 @@
    }
   },
   "PRIO3": {
-   "ativos": [
-    {
-     "dir": "V",
-     "estado": "pendente",
-     "tipo": "CHoCH",
-     "score": 3,
-     "rr": 4.36,
-     "data": "2026-11-04",
-     "idade": 2,
-     "entrada": 70.71,
-     "stop": 73.17,
-     "alvo": 60.0
-    }
-   ],
+   "ativos": [],
    "stats": {
     "trades": 9,
     "acerto": 11.1,
