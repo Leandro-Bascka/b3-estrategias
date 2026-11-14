@@ -17,17 +17,17 @@
  "global_": {
   "todos": {
    "trades": 303,
-   "acerto": 43.9,
+   "acerto": 44.2,
    "r_medio": 0.06,
-   "r_total": 17.1,
-   "ret_medio": 0.21
+   "r_total": 18.3,
+   "ret_medio": 0.25
   },
   "treino": {
    "trades": 223,
-   "acerto": 41.3,
-   "r_medio": -0.03,
-   "r_total": -5.7,
-   "ret_medio": -0.01
+   "acerto": 41.7,
+   "r_medio": -0.02,
+   "r_total": -4.5,
+   "ret_medio": 0.04
   },
   "teste": {
    "trades": 80,
@@ -407,7 +407,7 @@
     "acerto": 100.0,
     "r_medio": 1.85,
     "r_total": 3.7,
-    "ret_medio": 7.38
+    "ret_medio": 7.43
    }
   },
   "ENGI11": {
