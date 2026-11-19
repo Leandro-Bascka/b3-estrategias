@@ -19,22 +19,22 @@
  },
  "global_": {
   "todos": {
-   "trades": 620,
-   "acerto": 26.0,
-   "r_medio": 0.1,
-   "r_total": 60.5
+   "trades": 622,
+   "acerto": 25.7,
+   "r_medio": 0.05,
+   "r_total": 34.2
   },
   "score2": {
-   "trades": 620,
-   "acerto": 26.0,
-   "r_medio": 0.1,
-   "r_total": 60.5
+   "trades": 622,
+   "acerto": 25.7,
+   "r_medio": 0.05,
+   "r_total": 34.2
   },
   "score3": {
-   "trades": 362,
+   "trades": 363,
    "acerto": 26.2,
-   "r_medio": 0.2,
-   "r_total": 73.6
+   "r_medio": 0.19,
+   "r_total": 68.2
   }
  },
  "por_acao": {
@@ -209,15 +209,6 @@
     "r_total": 3.4
    }
   },
-  "BRSR6": {
-   "ativos": [],
-   "stats": {
-    "trades": 5,
-    "acerto": 60.0,
-    "r_medio": 1.4,
-    "r_total": 7.0
-   }
-  },
   "CBAV3": {
    "ativos": [],
    "stats": {
@@ -248,10 +239,10 @@
   "CMIN3": {
    "ativos": [],
    "stats": {
-    "trades": 9,
-    "acerto": 44.4,
-    "r_medio": 0.63,
-    "r_total": 5.7
+    "trades": 10,
+    "acerto": 40.0,
+    "r_medio": -1.09,
+    "r_total": -10.9
    }
   },
   "COGN3": {
@@ -432,6 +423,15 @@
     "acerto": 0.0,
     "r_medio": -1.0,
     "r_total": -2.0
+   }
+  },
+  "GMAT3": {
+   "ativos": [],
+   "stats": {
+    "trades": 6,
+    "acerto": 33.3,
+    "r_medio": -0.46,
+    "r_total": -2.8
    }
   },
   "GOAU4": {
