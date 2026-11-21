@@ -16,18 +16,18 @@
  },
  "global_": {
   "todos": {
-   "trades": 299,
-   "acerto": 44.1,
-   "r_medio": 0.06,
-   "r_total": 19.4,
-   "ret_medio": 0.27
+   "trades": 303,
+   "acerto": 43.9,
+   "r_medio": 0.05,
+   "r_total": 16.0,
+   "ret_medio": 0.21
   },
   "treino": {
-   "trades": 219,
-   "acerto": 41.6,
-   "r_medio": -0.02,
-   "r_total": -3.4,
-   "ret_medio": 0.06
+   "trades": 223,
+   "acerto": 41.3,
+   "r_medio": -0.03,
+   "r_total": -6.8,
+   "ret_medio": -0.01
   },
   "teste": {
    "trades": 80,
@@ -381,7 +381,7 @@
     "acerto": 100.0,
     "r_medio": 1.85,
     "r_total": 3.7,
-    "ret_medio": 7.43
+    "ret_medio": 7.38
    }
   },
   "RAIL3": {
