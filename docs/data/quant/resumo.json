@@ -17,31 +17,31 @@
  "global_": {
   "todos": {
    "trades": 303,
-   "acerto": 43.9,
-   "r_medio": 0.05,
-   "r_total": 16.0,
-   "ret_medio": 0.21
+   "acerto": 44.2,
+   "r_medio": 0.06,
+   "r_total": 19.2,
+   "ret_medio": 0.24
   },
   "treino": {
-   "trades": 223,
-   "acerto": 41.3,
-   "r_medio": -0.03,
-   "r_total": -6.8,
-   "ret_medio": -0.01
+   "trades": 222,
+   "acerto": 41.4,
+   "r_medio": -0.02,
+   "r_total": -5.3,
+   "ret_medio": 0.01
   },
   "teste": {
-   "trades": 80,
-   "acerto": 51.2,
-   "r_medio": 0.28,
-   "r_total": 22.8,
-   "ret_medio": 0.82
+   "trades": 81,
+   "acerto": 51.9,
+   "r_medio": 0.3,
+   "r_total": 24.5,
+   "ret_medio": 0.87
   },
   "quant": {
-   "trades": 80,
-   "acerto": 51.2,
-   "r_medio": 0.28,
-   "r_total": 22.8,
-   "ret_medio": 0.82
+   "trades": 81,
+   "acerto": 51.9,
+   "r_medio": 0.3,
+   "r_total": 24.5,
+   "ret_medio": 0.87
   }
  },
  "por_acao": {
@@ -68,11 +68,11 @@
   "ITUB4": {
    "ativos": [],
    "stats": {
-    "trades": 1,
+    "trades": 2,
     "acerto": 100.0,
-    "r_medio": 0.36,
-    "r_total": 0.4,
-    "ret_medio": 1.13
+    "r_medio": 1.05,
+    "r_total": 2.1,
+    "ret_medio": 2.73
    }
   },
   "BPAC11": {
@@ -381,7 +381,7 @@
     "acerto": 100.0,
     "r_medio": 1.85,
     "r_total": 3.7,
-    "ret_medio": 7.38
+    "ret_medio": 7.43
    }
   },
   "RAIL3": {

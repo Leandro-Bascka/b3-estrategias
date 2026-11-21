@@ -19,22 +19,22 @@
  },
  "global_": {
   "todos": {
-   "trades": 621,
+   "trades": 619,
    "acerto": 25.8,
-   "r_medio": 0.08,
-   "r_total": 50.7
+   "r_medio": 0.09,
+   "r_total": 52.7
   },
   "score2": {
-   "trades": 621,
+   "trades": 619,
    "acerto": 25.8,
-   "r_medio": 0.08,
-   "r_total": 50.7
+   "r_medio": 0.09,
+   "r_total": 52.7
   },
   "score3": {
-   "trades": 363,
+   "trades": 362,
    "acerto": 26.2,
    "r_medio": 0.19,
-   "r_total": 68.2
+   "r_total": 69.2
   }
  },
  "por_acao": {
@@ -158,10 +158,10 @@
   "BBDC4": {
    "ativos": [],
    "stats": {
-    "trades": 7,
-    "acerto": 42.9,
-    "r_medio": 0.72,
-    "r_total": 5.1
+    "trades": 6,
+    "acerto": 50.0,
+    "r_medio": 1.01,
+    "r_total": 6.1
    }
   },
   "BBSE3": {
@@ -567,10 +567,10 @@
   "MDNE3": {
    "ativos": [],
    "stats": {
-    "trades": 7,
-    "acerto": 14.3,
-    "r_medio": -0.17,
-    "r_total": -1.2
+    "trades": 6,
+    "acerto": 16.7,
+    "r_medio": -0.03,
+    "r_total": -0.2
    }
   },
   "MGLU3": {

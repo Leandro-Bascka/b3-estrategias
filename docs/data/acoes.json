@@ -6,7 +6,7 @@
   "fechamento": 42.67,
   "variacao_dia_pct": -1.16,
   "volume": 39268400,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "VALE3",
@@ -15,7 +15,7 @@
   "fechamento": 58.48,
   "variacao_dia_pct": -0.88,
   "volume": 23314600,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "ITUB4",
@@ -24,7 +24,7 @@
   "fechamento": 40.07,
   "variacao_dia_pct": -0.3,
   "volume": 30824700,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "BPAC11",
@@ -33,7 +33,7 @@
   "fechamento": 49.69,
   "variacao_dia_pct": -0.84,
   "volume": 19807100,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "BBDC4",
@@ -42,7 +42,7 @@
   "fechamento": 13.83,
   "variacao_dia_pct": -1.78,
   "volume": 60048700,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "BBAS3",
@@ -51,7 +51,7 @@
   "fechamento": 14.3,
   "variacao_dia_pct": 1.27,
   "volume": 66147900,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "B3SA3",
@@ -60,7 +60,7 @@
   "fechamento": 14.28,
   "variacao_dia_pct": -0.14,
   "volume": 73044800,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "AXIA3",
@@ -69,7 +69,7 @@
   "fechamento": 46.0,
   "variacao_dia_pct": -0.65,
   "volume": 21025500,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "PETR3",
@@ -78,7 +78,7 @@
   "fechamento": 48.63,
   "variacao_dia_pct": -1.36,
   "volume": 10256500,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "SBSP3",
@@ -87,7 +87,7 @@
   "fechamento": 27.35,
   "variacao_dia_pct": -0.29,
   "volume": 19498000,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "RENT3",
@@ -96,7 +96,7 @@
   "fechamento": 28.86,
   "variacao_dia_pct": -2.0,
   "volume": 13832000,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "EMBJ3",
@@ -105,7 +105,7 @@
   "fechamento": 110.15,
   "variacao_dia_pct": 0.33,
   "volume": 5513100,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "EQTL3",
@@ -114,7 +114,7 @@
   "fechamento": 32.9,
   "variacao_dia_pct": -2.29,
   "volume": 19002900,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "PRIO3",
@@ -123,7 +123,7 @@
   "fechamento": 60.2,
   "variacao_dia_pct": -2.7,
   "volume": 9773600,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "WEGE3",
@@ -132,7 +132,7 @@
   "fechamento": 51.13,
   "variacao_dia_pct": -0.49,
   "volume": 10434400,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "ABEV3",
@@ -141,7 +141,7 @@
   "fechamento": 16.08,
   "variacao_dia_pct": 0.06,
   "volume": 32940200,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "ITSA4",
@@ -150,7 +150,7 @@
   "fechamento": 13.17,
   "variacao_dia_pct": 0.15,
   "volume": 30299100,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "VBBR3",
@@ -159,7 +159,7 @@
   "fechamento": 30.13,
   "variacao_dia_pct": -0.86,
   "volume": 10150900,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "MGLU3",
@@ -168,7 +168,7 @@
   "fechamento": 8.2,
   "variacao_dia_pct": -1.44,
   "volume": 60504400,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "SUZB3",
@@ -177,7 +177,7 @@
   "fechamento": 55.32,
   "variacao_dia_pct": -0.5,
   "volume": 8297100,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "UGPA3",
@@ -186,7 +186,7 @@
   "fechamento": 31.36,
   "variacao_dia_pct": -0.76,
   "volume": 9334700,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "CPLE3",
@@ -195,7 +195,7 @@
   "fechamento": 15.19,
   "variacao_dia_pct": -0.59,
   "volume": 59685800,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "ENEV3",
@@ -204,7 +204,7 @@
   "fechamento": 26.22,
   "variacao_dia_pct": 0.34,
   "volume": 7665900,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "RDOR3",
@@ -213,7 +213,7 @@
   "fechamento": 35.91,
   "variacao_dia_pct": -1.1,
   "volume": 5803000,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "LREN3",
@@ -222,7 +222,7 @@
   "fechamento": 9.1,
   "variacao_dia_pct": -3.91,
   "volume": 33759800,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "CSMG3",
@@ -231,7 +231,7 @@
   "fechamento": 56.09,
   "variacao_dia_pct": 1.06,
   "volume": 6163000,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "BBSE3",
@@ -240,7 +240,7 @@
   "fechamento": 36.99,
   "variacao_dia_pct": 0.9,
   "volume": 5161900,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "CYRE3",
@@ -249,7 +249,7 @@
   "fechamento": 18.43,
   "variacao_dia_pct": -3.51,
   "volume": 5577800,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "MOTV3",
@@ -258,7 +258,7 @@
   "fechamento": 15.82,
   "variacao_dia_pct": 0.13,
   "volume": 14519200,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "GGBR4",
@@ -267,7 +267,7 @@
   "fechamento": 25.86,
   "variacao_dia_pct": 1.06,
   "volume": 12830300,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "RAIL3",
@@ -276,7 +276,7 @@
   "fechamento": 16.8,
   "variacao_dia_pct": 0.36,
   "volume": 11188300,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "ENGI11",
@@ -285,7 +285,7 @@
   "fechamento": 48.44,
   "variacao_dia_pct": -0.78,
   "volume": 5633300,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "BBDC3",
@@ -294,7 +294,7 @@
   "fechamento": 12.74,
   "variacao_dia_pct": -1.24,
   "volume": 16247600,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "SMFT3",
@@ -303,7 +303,7 @@
   "fechamento": 17.69,
   "variacao_dia_pct": -0.34,
   "volume": 13605500,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "ALOS3",
@@ -312,7 +312,7 @@
   "fechamento": 25.75,
   "variacao_dia_pct": -1.76,
   "volume": 6759400,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "MULT3",
@@ -321,7 +321,7 @@
   "fechamento": 26.4,
   "variacao_dia_pct": -1.01,
   "volume": 5285300,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "RADL3",
@@ -330,7 +330,7 @@
   "fechamento": 13.72,
   "variacao_dia_pct": -2.21,
   "volume": 9390500,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "TOTS3",
@@ -339,7 +339,7 @@
   "fechamento": 31.11,
   "variacao_dia_pct": -2.57,
   "volume": 4097600,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "ASAI3",
@@ -348,7 +348,7 @@
   "fechamento": 9.38,
   "variacao_dia_pct": -0.95,
   "volume": 18754000,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "VIVT3",
@@ -357,7 +357,7 @@
   "fechamento": 35.22,
   "variacao_dia_pct": -0.96,
   "volume": 5284500,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "TIMS3",
@@ -366,7 +366,7 @@
   "fechamento": 22.0,
   "variacao_dia_pct": -0.9,
   "volume": 4657300,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "CMIG4",
@@ -375,7 +375,7 @@
   "fechamento": 10.94,
   "variacao_dia_pct": 0.09,
   "volume": 13544600,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "MOVI3",
@@ -384,7 +384,7 @@
   "fechamento": 5.64,
   "variacao_dia_pct": -4.41,
   "volume": 6719600,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "CXSE3",
@@ -393,7 +393,7 @@
   "fechamento": 20.57,
   "variacao_dia_pct": 0.34,
   "volume": 4331700,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "CSAN3",
@@ -402,7 +402,7 @@
   "fechamento": 3.08,
   "variacao_dia_pct": -1.6,
   "volume": 40498600,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "CURY3",
@@ -411,7 +411,7 @@
   "fechamento": 25.01,
   "variacao_dia_pct": -1.15,
   "volume": 3844200,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "ECOR3",
@@ -420,7 +420,7 @@
   "fechamento": 5.87,
   "variacao_dia_pct": -0.68,
   "volume": 8112700,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "DIRR3",
@@ -429,7 +429,7 @@
   "fechamento": 8.74,
   "variacao_dia_pct": -2.13,
   "volume": 11506200,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "SANB11",
@@ -438,7 +438,7 @@
   "fechamento": 28.15,
   "variacao_dia_pct": 0.0,
   "volume": 4063400,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "IGTI11",
@@ -456,7 +456,7 @@
   "fechamento": 11.5,
   "variacao_dia_pct": 2.22,
   "volume": 16058800,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "FLRY3",
@@ -465,7 +465,7 @@
   "fechamento": 21.51,
   "variacao_dia_pct": 2.53,
   "volume": 5532900,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "TEND3",
@@ -474,7 +474,7 @@
   "fechamento": 15.23,
   "variacao_dia_pct": 1.13,
   "volume": 8581900,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "COGN3",
@@ -483,7 +483,7 @@
   "fechamento": 1.57,
   "variacao_dia_pct": -1.87,
   "volume": 53992100,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "CEAB3",
@@ -492,7 +492,7 @@
   "fechamento": 7.5,
   "variacao_dia_pct": -4.82,
   "volume": 9696100,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "KLBN11",
@@ -501,7 +501,7 @@
   "fechamento": 16.94,
   "variacao_dia_pct": -1.11,
   "volume": 8751300,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "VAMO3",
@@ -510,7 +510,7 @@
   "fechamento": 2.49,
   "variacao_dia_pct": -3.86,
   "volume": 27345800,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "ISAE4",
@@ -519,7 +519,7 @@
   "fechamento": 26.05,
   "variacao_dia_pct": -0.53,
   "volume": 2207600,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "CSNA3",
@@ -528,7 +528,7 @@
   "fechamento": 3.43,
   "variacao_dia_pct": -6.03,
   "volume": 27625700,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "AURA33",
@@ -537,7 +537,7 @@
   "fechamento": 122.0,
   "variacao_dia_pct": -3.75,
   "volume": 729620,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "ITUB3",
@@ -546,7 +546,7 @@
   "fechamento": 44.42,
   "variacao_dia_pct": 0.41,
   "volume": 2723200,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "MBRF3",
@@ -555,7 +555,7 @@
   "fechamento": 18.39,
   "variacao_dia_pct": -1.61,
   "volume": 5626500,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "MRVE3",
@@ -564,7 +564,7 @@
   "fechamento": 4.59,
   "variacao_dia_pct": -3.77,
   "volume": 21227900,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "PSSA3",
@@ -573,7 +573,7 @@
   "fechamento": 43.96,
   "variacao_dia_pct": -1.57,
   "volume": 1963600,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "HYPE3",
@@ -582,7 +582,7 @@
   "fechamento": 21.77,
   "variacao_dia_pct": -0.91,
   "volume": 3368300,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "SAUD3",
@@ -591,7 +591,7 @@
   "fechamento": 15.54,
   "variacao_dia_pct": -1.89,
   "volume": 6665200,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "TAEE11",
@@ -600,7 +600,7 @@
   "fechamento": 40.17,
   "variacao_dia_pct": -0.96,
   "volume": 2078600,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "GGPS3",
@@ -609,7 +609,7 @@
   "fechamento": 10.27,
   "variacao_dia_pct": -2.93,
   "volume": 4840400,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "CPFE3",
@@ -618,7 +618,7 @@
   "fechamento": 43.78,
   "variacao_dia_pct": -0.82,
   "volume": 1038300,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "BRAP4",
@@ -627,7 +627,7 @@
   "fechamento": 16.58,
   "variacao_dia_pct": -1.66,
   "volume": 3929300,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "EGIE3",
@@ -636,7 +636,7 @@
   "fechamento": 25.32,
   "variacao_dia_pct": -0.67,
   "volume": 2820000,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "VIVA3",
@@ -645,7 +645,7 @@
   "fechamento": 16.05,
   "variacao_dia_pct": -3.02,
   "volume": 3598900,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "AZZA3",
@@ -654,7 +654,7 @@
   "fechamento": 14.63,
   "variacao_dia_pct": -7.29,
   "volume": 4650700,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "BEEF3",
@@ -663,7 +663,7 @@
   "fechamento": 3.73,
   "variacao_dia_pct": 0.54,
   "volume": 33088100,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "POMO4",
@@ -672,7 +672,7 @@
   "fechamento": 3.62,
   "variacao_dia_pct": -4.23,
   "volume": 33520400,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "NATU3",
@@ -690,7 +690,7 @@
   "fechamento": 5.14,
   "variacao_dia_pct": 2.59,
   "volume": 14045500,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "HAPV3",
@@ -699,7 +699,7 @@
   "fechamento": 6.16,
   "variacao_dia_pct": -3.14,
   "volume": 14369600,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "SIMH3",
@@ -708,7 +708,7 @@
   "fechamento": 5.33,
   "variacao_dia_pct": -4.99,
   "volume": 4220000,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "SAPR11",
@@ -717,7 +717,7 @@
   "fechamento": 34.14,
   "variacao_dia_pct": 1.04,
   "volume": 1756600,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "ORVR3",
@@ -726,7 +726,7 @@
   "fechamento": 17.98,
   "variacao_dia_pct": -4.11,
   "volume": 3805000,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "BRAV3",
@@ -735,7 +735,7 @@
   "fechamento": 12.83,
   "variacao_dia_pct": -2.51,
   "volume": 5305000,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "AURE3",
@@ -753,7 +753,7 @@
   "fechamento": 9.24,
   "variacao_dia_pct": -0.86,
   "volume": 4500900,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "YDUQ3",
@@ -762,7 +762,7 @@
   "fechamento": 9.54,
   "variacao_dia_pct": 0.21,
   "volume": 4639700,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "IRBR3",
@@ -771,7 +771,7 @@
   "fechamento": 58.79,
   "variacao_dia_pct": -1.82,
   "volume": 701900,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "JHSF3",
@@ -780,7 +780,7 @@
   "fechamento": 9.53,
   "variacao_dia_pct": -2.36,
   "volume": 6688300,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "ALUP11",
@@ -789,7 +789,7 @@
   "fechamento": 32.86,
   "variacao_dia_pct": 0.03,
   "volume": 1088800,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "PGMN3",
@@ -798,7 +798,7 @@
   "fechamento": 2.29,
   "variacao_dia_pct": -3.38,
   "volume": 21596100,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "MDNE3",
@@ -807,7 +807,7 @@
   "fechamento": 16.89,
   "variacao_dia_pct": 0.36,
   "volume": 1123500,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "SBFG3",
@@ -816,7 +816,7 @@
   "fechamento": 4.0,
   "variacao_dia_pct": -2.91,
   "volume": 6491900,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "CBAV3",
@@ -825,7 +825,7 @@
   "fechamento": 11.37,
   "variacao_dia_pct": 0.26,
   "volume": 4490000,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "SLCE3",
@@ -834,7 +834,7 @@
   "fechamento": 17.53,
   "variacao_dia_pct": -1.96,
   "volume": 2071700,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "CMIN3",
@@ -843,7 +843,7 @@
   "fechamento": 5.02,
   "variacao_dia_pct": -0.99,
   "volume": 5617100,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "SMTO3",
@@ -852,7 +852,7 @@
   "fechamento": 17.65,
   "variacao_dia_pct": -1.18,
   "volume": 2735900,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "ANIM3",
@@ -861,7 +861,7 @@
   "fechamento": 2.37,
   "variacao_dia_pct": -2.47,
   "volume": 5442800,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "GMAT3",
@@ -870,7 +870,7 @@
   "fechamento": 4.18,
   "variacao_dia_pct": 3.21,
   "volume": 8849700,
-  "linhas": 1250
+  "linhas": 1249
  },
  {
   "acao": "ALPA4",
@@ -879,6 +879,6 @@
   "fechamento": 13.3,
   "variacao_dia_pct": -0.6,
   "volume": 1122500,
-  "linhas": 1250
+  "linhas": 1249
  }
 ]
