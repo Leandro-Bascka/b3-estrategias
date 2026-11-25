@@ -19,16 +19,16 @@
  },
  "global_": {
   "todos": {
-   "trades": 620,
+   "trades": 619,
    "acerto": 25.8,
-   "r_medio": 0.06,
-   "r_total": 36.2
+   "r_medio": 0.09,
+   "r_total": 52.7
   },
   "score2": {
-   "trades": 620,
+   "trades": 619,
    "acerto": 25.8,
-   "r_medio": 0.06,
-   "r_total": 36.2
+   "r_medio": 0.09,
+   "r_total": 52.7
   },
   "score3": {
    "trades": 362,
@@ -239,10 +239,10 @@
   "CMIN3": {
    "ativos": [],
    "stats": {
-    "trades": 10,
-    "acerto": 40.0,
-    "r_medio": -1.09,
-    "r_total": -10.9
+    "trades": 9,
+    "acerto": 44.4,
+    "r_medio": 0.63,
+    "r_total": 5.7
    }
   },
   "COGN3": {
@@ -435,7 +435,20 @@
    }
   },
   "GOAU4": {
-   "ativos": [],
+   "ativos": [
+    {
+     "dir": "C",
+     "estado": "pendente",
+     "tipo": "CHoCH",
+     "score": 2,
+     "rr": 2.22,
+     "data": "2026-11-19",
+     "idade": 1,
+     "entrada": 10.97,
+     "stop": 10.7,
+     "alvo": 11.56
+    }
+   ],
    "stats": {
     "trades": 5,
     "acerto": 0.0,
@@ -786,20 +799,7 @@
    }
   },
   "SMTO3": {
-   "ativos": [
-    {
-     "dir": "V",
-     "estado": "pendente",
-     "tipo": "CHoCH",
-     "score": 2,
-     "rr": 3.18,
-     "data": "2026-11-19",
-     "idade": 0,
-     "entrada": 20.38,
-     "stop": 21.34,
-     "alvo": 17.33
-    }
-   ],
+   "ativos": [],
    "stats": {
     "trades": 9,
     "acerto": 22.2,
