@@ -16,18 +16,18 @@
  },
  "global_": {
   "todos": {
-   "trades": 300,
-   "acerto": 43.7,
-   "r_medio": 0.05,
-   "r_total": 16.4,
-   "ret_medio": 0.21
+   "trades": 297,
+   "acerto": 44.1,
+   "r_medio": 0.06,
+   "r_total": 18.9,
+   "ret_medio": 0.24
   },
   "treino": {
-   "trades": 217,
-   "acerto": 40.6,
-   "r_medio": -0.04,
-   "r_total": -8.7,
-   "ret_medio": -0.06
+   "trades": 214,
+   "acerto": 41.1,
+   "r_medio": -0.03,
+   "r_total": -6.2,
+   "ret_medio": -0.01
   },
   "teste": {
    "trades": 83,
@@ -146,7 +146,20 @@
    }
   },
   "EMBJ3": {
-   "ativos": [],
+   "ativos": [
+    {
+     "dir": "C",
+     "estado": "aguardar",
+     "estrategia": "quant",
+     "score": 75,
+     "rr": 2.0,
+     "data": "2026-11-26",
+     "idade": 0,
+     "entrada": 107.0,
+     "stop": 100.39,
+     "alvo": 120.22
+    }
+   ],
    "stats": {
     "trades": 2,
     "acerto": 50.0,
@@ -176,7 +189,20 @@
    }
   },
   "WEGE3": {
-   "ativos": [],
+   "ativos": [
+    {
+     "dir": "C",
+     "estado": "aguardar",
+     "estrategia": "quant",
+     "score": 80,
+     "rr": 2.0,
+     "data": "2026-11-26",
+     "idade": 0,
+     "entrada": 50.37,
+     "stop": 47.79,
+     "alvo": 55.53
+    }
+   ],
    "stats": {
     "trades": 1,
     "acerto": 100.0,
@@ -196,7 +222,20 @@
    }
   },
   "ABEV3": {
-   "ativos": [],
+   "ativos": [
+    {
+     "dir": "C",
+     "estado": "aguardar",
+     "estrategia": "quant",
+     "score": 70,
+     "rr": 2.0,
+     "data": "2026-11-26",
+     "idade": 0,
+     "entrada": 16.23,
+     "stop": 15.68,
+     "alvo": 17.32
+    }
+   ],
    "stats": {
     "trades": 1,
     "acerto": 0.0,
@@ -225,6 +264,29 @@
     "ret_medio": -7.31
    }
   },
+  "SUZB3": {
+   "ativos": [
+    {
+     "dir": "C",
+     "estado": "aguardar",
+     "estrategia": "quant",
+     "score": 75,
+     "rr": 2.0,
+     "data": "2026-11-26",
+     "idade": 0,
+     "entrada": 56.15,
+     "stop": 53.61,
+     "alvo": 61.24
+    }
+   ],
+   "stats": {
+    "trades": 0,
+    "acerto": null,
+    "r_medio": null,
+    "r_total": 0.0,
+    "ret_medio": null
+   }
+  },
   "VBBR3": {
    "ativos": [],
    "stats": {
@@ -235,18 +297,21 @@
     "ret_medio": 3.51
    }
   },
-  "SUZB3": {
-   "ativos": [],
-   "stats": {
-    "trades": 0,
-    "acerto": null,
-    "r_medio": null,
-    "r_total": 0.0,
-    "ret_medio": null
-   }
-  },
   "CPLE3": {
-   "ativos": [],
+   "ativos": [
+    {
+     "dir": "C",
+     "estado": "aguardar",
+     "estrategia": "quant",
+     "score": 90,
+     "rr": 2.0,
+     "data": "2026-11-26",
+     "idade": 0,
+     "entrada": 15.15,
+     "stop": 14.45,
+     "alvo": 16.56
+    }
+   ],
    "stats": {
     "trades": 2,
     "acerto": 100.0,
@@ -256,7 +321,20 @@
    }
   },
   "UGPA3": {
-   "ativos": [],
+   "ativos": [
+    {
+     "dir": "C",
+     "estado": "aguardar",
+     "estrategia": "quant",
+     "score": 80,
+     "rr": 2.0,
+     "data": "2026-11-26",
+     "idade": 0,
+     "entrada": 31.13,
+     "stop": 29.29,
+     "alvo": 34.8
+    }
+   ],
    "stats": {
     "trades": 1,
     "acerto": 100.0,
@@ -271,13 +349,13 @@
      "dir": "C",
      "estado": "aguardar",
      "estrategia": "quant",
-     "score": 100,
+     "score": 90,
      "rr": 2.0,
-     "data": "2026-11-25",
+     "data": "2026-11-26",
      "idade": 0,
-     "entrada": 26.94,
-     "stop": 25.53,
-     "alvo": 29.76
+     "entrada": 27.85,
+     "stop": 26.41,
+     "alvo": 30.72
     }
    ],
    "stats": {
@@ -319,13 +397,36 @@
    }
   },
   "MOTV3": {
-   "ativos": [],
+   "ativos": [
+    {
+     "dir": "C",
+     "estado": "aguardar",
+     "estrategia": "quant",
+     "score": 90,
+     "rr": 2.0,
+     "data": "2026-11-26",
+     "idade": 0,
+     "entrada": 16.21,
+     "stop": 15.19,
+     "alvo": 18.25
+    }
+   ],
    "stats": {
     "trades": 1,
     "acerto": 0.0,
     "r_medio": -0.1,
     "r_total": -0.1,
     "ret_medio": -0.36
+   }
+  },
+  "GGBR4": {
+   "ativos": [],
+   "stats": {
+    "trades": 2,
+    "acerto": 100.0,
+    "r_medio": 1.85,
+    "r_total": 3.7,
+    "ret_medio": 7.38
    }
   },
   "BBSE3": {
@@ -336,29 +437,6 @@
     "r_medio": 1.8,
     "r_total": 1.8,
     "ret_medio": 5.35
-   }
-  },
-  "GGBR4": {
-   "ativos": [
-    {
-     "dir": "C",
-     "estado": "em_trade",
-     "estrategia": "quant",
-     "score": 100,
-     "rr": 2.0,
-     "data": "2026-11-18",
-     "idade": 4,
-     "entrada": 25.65,
-     "stop": 24.23,
-     "alvo": 28.49
-    }
-   ],
-   "stats": {
-    "trades": 2,
-    "acerto": 100.0,
-    "r_medio": 1.85,
-    "r_total": 3.7,
-    "ret_medio": 7.38
    }
   },
   "CYRE3": {
@@ -491,14 +569,14 @@
     "ret_medio": 0.56
    }
   },
-  "CXSE3": {
+  "ISAE4": {
    "ativos": [],
    "stats": {
-    "trades": 1,
-    "acerto": 100.0,
-    "r_medio": 0.91,
-    "r_total": 0.9,
-    "ret_medio": 3.16
+    "trades": 0,
+    "acerto": null,
+    "r_medio": null,
+    "r_total": 0.0,
+    "ret_medio": null
    }
   },
   "MOVI3": {
@@ -509,6 +587,16 @@
     "r_medio": -0.1,
     "r_total": -0.1,
     "ret_medio": -0.91
+   }
+  },
+  "CXSE3": {
+   "ativos": [],
+   "stats": {
+    "trades": 1,
+    "acerto": 100.0,
+    "r_medio": 0.91,
+    "r_total": 0.9,
+    "ret_medio": 3.16
    }
   },
   "CSAN3": {
@@ -559,11 +647,11 @@
      "estrategia": "quant",
      "score": 90,
      "rr": 2.0,
-     "data": "2026-11-25",
+     "data": "2026-11-26",
      "idade": 0,
-     "entrada": 11.49,
-     "stop": 10.81,
-     "alvo": 12.86
+     "entrada": 11.8,
+     "stop": 11.12,
+     "alvo": 13.15
     }
    ],
    "stats": {
@@ -602,11 +690,11 @@
      "estrategia": "quant",
      "score": 90,
      "rr": 2.0,
-     "data": "2026-11-25",
+     "data": "2026-11-26",
      "idade": 0,
-     "entrada": 22.66,
-     "stop": 21.39,
-     "alvo": 25.19
+     "entrada": 22.82,
+     "stop": 21.43,
+     "alvo": 25.6
     }
    ],
    "stats": {
@@ -627,16 +715,6 @@
     "ret_medio": -7.49
    }
   },
-  "ISAE4": {
-   "ativos": [],
-   "stats": {
-    "trades": 0,
-    "acerto": null,
-    "r_medio": null,
-    "r_total": 0.0,
-    "ret_medio": null
-   }
-  },
   "COGN3": {
    "ativos": [],
    "stats": {
@@ -645,6 +723,16 @@
     "r_medio": 1.9,
     "r_total": 1.9,
     "ret_medio": 11.15
+   }
+  },
+  "PSSA3": {
+   "ativos": [],
+   "stats": {
+    "trades": 2,
+    "acerto": 100.0,
+    "r_medio": 1.64,
+    "r_total": 3.3,
+    "ret_medio": 5.78
    }
   },
   "TEND3": {
@@ -667,27 +755,7 @@
     "ret_medio": null
    }
   },
-  "PSSA3": {
-   "ativos": [],
-   "stats": {
-    "trades": 2,
-    "acerto": 100.0,
-    "r_medio": 1.64,
-    "r_total": 3.3,
-    "ret_medio": 5.78
-   }
-  },
   "KLBN11": {
-   "ativos": [],
-   "stats": {
-    "trades": 0,
-    "acerto": null,
-    "r_medio": null,
-    "r_total": 0.0,
-    "ret_medio": null
-   }
-  },
-  "CSNA3": {
    "ativos": [],
    "stats": {
     "trades": 0,
@@ -707,6 +775,16 @@
     "ret_medio": 10.34
    }
   },
+  "CSNA3": {
+   "ativos": [],
+   "stats": {
+    "trades": 0,
+    "acerto": null,
+    "r_medio": null,
+    "r_total": 0.0,
+    "ret_medio": null
+   }
+  },
   "ITUB3": {
    "ativos": [],
    "stats": {
@@ -715,6 +793,29 @@
     "r_medio": 1.62,
     "r_total": 4.9,
     "ret_medio": 5.62
+   }
+  },
+  "TAEE11": {
+   "ativos": [
+    {
+     "dir": "C",
+     "estado": "aguardar",
+     "estrategia": "quant",
+     "score": 90,
+     "rr": 2.0,
+     "data": "2026-11-26",
+     "idade": 0,
+     "entrada": 40.38,
+     "stop": 38.73,
+     "alvo": 43.67
+    }
+   ],
+   "stats": {
+    "trades": 0,
+    "acerto": null,
+    "r_medio": null,
+    "r_total": 0.0,
+    "ret_medio": null
    }
   },
   "AURA33": {
@@ -737,16 +838,6 @@
     "ret_medio": -8.37
    }
   },
-  "TAEE11": {
-   "ativos": [],
-   "stats": {
-    "trades": 0,
-    "acerto": null,
-    "r_medio": null,
-    "r_total": 0.0,
-    "ret_medio": null
-   }
-  },
   "HYPE3": {
    "ativos": [],
    "stats": {
@@ -758,7 +849,20 @@
    }
   },
   "SAUD3": {
-   "ativos": [],
+   "ativos": [
+    {
+     "dir": "C",
+     "estado": "aguardar",
+     "estrategia": "quant",
+     "score": 65,
+     "rr": 2.0,
+     "data": "2026-11-26",
+     "idade": 0,
+     "entrada": 16.47,
+     "stop": 15.51,
+     "alvo": 18.39
+    }
+   ],
    "stats": {
     "trades": 3,
     "acerto": 0.0,
@@ -777,16 +881,6 @@
     "ret_medio": -3.68
    }
   },
-  "CPFE3": {
-   "ativos": [],
-   "stats": {
-    "trades": 2,
-    "acerto": 0.0,
-    "r_medio": -0.53,
-    "r_total": -1.1,
-    "ret_medio": -2.03
-   }
-  },
   "AZZA3": {
    "ativos": [],
    "stats": {
@@ -795,6 +889,16 @@
     "r_medio": null,
     "r_total": 0.0,
     "ret_medio": null
+   }
+  },
+  "CPFE3": {
+   "ativos": [],
+   "stats": {
+    "trades": 2,
+    "acerto": 0.0,
+    "r_medio": -0.53,
+    "r_total": -1.1,
+    "ret_medio": -2.03
    }
   },
   "BRAP4": {
@@ -817,6 +921,16 @@
     "ret_medio": null
    }
   },
+  "VIVA3": {
+   "ativos": [],
+   "stats": {
+    "trades": 1,
+    "acerto": 0.0,
+    "r_medio": -1.03,
+    "r_total": -1.0,
+    "ret_medio": -5.38
+   }
+  },
   "EGIE3": {
    "ativos": [],
    "stats": {
@@ -835,16 +949,6 @@
     "r_medio": -1.03,
     "r_total": -1.0,
     "ret_medio": -4.85
-   }
-  },
-  "VIVA3": {
-   "ativos": [],
-   "stats": {
-    "trades": 1,
-    "acerto": 0.0,
-    "r_medio": -1.03,
-    "r_total": -1.0,
-    "ret_medio": -5.38
    }
   },
   "HAPV3": {
@@ -885,11 +989,11 @@
      "estrategia": "quant",
      "score": 80,
      "rr": 2.0,
-     "data": "2026-11-25",
+     "data": "2026-11-26",
      "idade": 0,
-     "entrada": 18.89,
-     "stop": 17.65,
-     "alvo": 21.37
+     "entrada": 18.85,
+     "stop": 17.6,
+     "alvo": 21.36
     }
    ],
    "stats": {
